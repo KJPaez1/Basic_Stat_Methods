@@ -1,0 +1,128 @@
+---
+title: "Sistematización de Métodos Estadísticos"
+author: "Kevin J. Paez"
+format: html
+editor: visual
+---
+
+## Aspectos básicos sobre el uso de Quarto
+
+Ejecuta códigos de R en Quarto Markdown
+
+```{r}
+1+1
+```
+
+Asignando un valor a un objeto: \<- o =
+
+```{r}
+numero <- 8
+```
+
+```{r}
+numeros <- c(5,6,3,7,8,5)
+```
+
+Comentarios en R usando numeral: \#
+
+```{r}
+# Este objeto contiene solo un número
+numero = 8
+
+## Este objeto contiene varios números
+numeros = c(5,6,7,4,6)
+```
+
+## Objetos en R
+
+Numérico
+
+Caractéres
+
+Factores
+
+Matriz
+
+Array
+
+Listas
+
+Data frames
+
+```{r}
+
+```
+
+## Funciones en R
+
+## Paquetes en R
+
+Instalar un paquete usando la función library()
+
+```{r}
+library(tidyverse)
+library(tidyplots)
+library(ggpubr)
+```
+
+Cargar paquetes con la función library()
+
+```{r}
+library(gtsummary)
+library(ggplot2)
+library(ggpubr)
+```
+
+## Importar datos
+
+```{r}
+
+```
+
+## Análsis descriptivo
+
+Calculando medidas de centralidad
+
+```{r}
+
+```
+
+Medidas de dispersión
+
+```{r}
+summary(trial$age)
+```
+
+## Visualización de datos
+
+### Histogramas
+
+```{r}
+gghistogram(data = trial,
+          x = "age")
+```
+
+### Boxplots
+
+Para la base de datos Trial, veamos la distribución de edad de los pacientes según el tipo de tratamiento asignado.
+
+```{r}
+ggplot(data = trial, aes(trt, age)) + 
+  geom_boxplot()
+```
+
+```{r}
+ggboxplot(data = trial, 
+          x = "trt", 
+          y = "age",
+          add = "jitter")
+
+```
+
+```{r}
+trial %>% 
+  tidyplot(x = trt, y = age, color = trt) %>% 
+  add(ggplot2::geom_point())
+```
+
+### Gráficos de dispersión

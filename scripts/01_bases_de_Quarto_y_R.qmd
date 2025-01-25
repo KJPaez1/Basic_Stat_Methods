@@ -1,0 +1,34 @@
+---
+title: "Aspectos básicos de Quarto"
+author: "Kevin J. Paez"
+format: html
+editor: visual
+---
+
+## Aspectos básicos sobre el uso de Quarto
+
+Ejecuta códigos de R en Quarto Markdown
+
+```{r}
+1 + 1
+```
+
+Asignando un valor a un objeto: \<- o =
+
+```{r}
+numero <- 8
+```
+
+```{r}
+numeros <- c(5,6,3,7,8,5)
+```
+
+Comentarios en R usando numeral: \#
+
+```{r}
+# Este objeto contiene solo un número
+numero = 8
+
+## Este objeto contiene varios números
+numeros = c(5,6,7,4,6)
+```
