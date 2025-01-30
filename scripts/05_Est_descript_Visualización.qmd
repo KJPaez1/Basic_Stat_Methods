@@ -126,3 +126,7 @@ trial %>%
 ```
 
 ### Gráficos de dispersión
+
+```{r}
+filter()
+```
