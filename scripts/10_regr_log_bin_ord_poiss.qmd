@@ -1,0 +1,5 @@
+---
+title: "10_regr_log_bin_ord_poiss"
+format: html
+---
+
