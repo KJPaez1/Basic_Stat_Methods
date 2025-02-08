@@ -1,34 +1,171 @@
 ---
-title: "Aspectos básicos de Quarto"
+title: "Aspectos básicos de r y documentos Quarto"
 author: "Kevin J. Paez"
 format: html
 editor: visual
 ---
 
-## Aspectos básicos sobre el uso de Quarto
+# 1 Aspectos básicos sobre el uso de Quarto
 
-Ejecuta códigos de R en Quarto Markdown
+Los documentos Quarto permiten combinar texto y código de R. Es importante documentar detalladamente los procesos realizados durante el análisis de datos. Quarto es el documento perfecto para eso.
+
+Ejecuta códigos de R en un documento Quarto en la zona sombreada llamada "Chunk", traducido, "bloque \[de código\]"
+
+```{r}
+
+```
 
 ```{r}
 1 + 1
 ```
 
-Asignando un valor a un objeto: \<- o =
+# 2 Aspectos básicos sobre el uso de R
+
+### 2.1 Ejecutando códigos en R
+
+Hay al menos 3 formas de correr código en R
 
 ```{r}
-numero <- 8
+1 + 1
+```
+
+### 2.2. Asignando valores a un objeto
+
+Para asignar un valor a un objeto usa el operador \<- o =. De este modo guardará información en un objeto.
+
+Un valor a un objeto nombrado "x"
+
+```{r}
+x <- 5
+```
+
+¿Qué hay en el objeto "x"?
+
+```{r}
+x
 ```
 
 ```{r}
-numeros <- c(5,6,3,7,8,5)
+y = 5
 ```
 
-Comentarios en R usando numeral: \#
+Tres valores a un objeto llamado "y"
 
 ```{r}
-# Este objeto contiene solo un número
-numero = 8
+z <- c(3, 7, 2)
+```
 
-## Este objeto contiene varios números
-numeros = c(5,6,7,4,6)
+Los objetos en R pueden ser vizualizados, referenciados y manipulados
+
+```{r}
+s = x + y
+```
+
+### Comentando códigos en R
+
+Al escribir código en R, es importante documentar los pasos. Puedes añadir comentarios a partir de anteponer el numeral "\#" a su comentario.
+
+```{r}
+# Un valor a un objeto nombrado "x"
+x <- 5
+# ¿Qué hay en el objeto x?
+x
+# Tres valores en un objeto
+z <- c(3, 7, 2)
+```
+
+### Tipos (o clases) de objetos en R
+
+#### Numérico (Valor único numérico)
+
+```{r}
+a = 8
+```
+
+```{r}
+class(a)
+```
+
+```{r}
+is.vector(a)
+```
+
+#### Caracter (Valor único de carácter)
+
+```{r}
+b = "Hipertenso"
+c = "> 65 años"
+d = "este es un caracter"
+```
+
+#### Vector
+
+Los vectores son objetos donde podemos guardar más de un valor numérico o más de un caracter. En un vector no podemos combinar valores numéricos y caracteres. Para crear un vector necesitamos usar la función c().
+
+```{r}
+e = c(4, 3, 7)
+```
+
+```{r}
+f = c("Leve", "Moderado", "Grave")
+```
+
+```{r}
+g = c(6, "Alto")
+```
+
+#### Factor
+
+Un factor es un tipo de vector junto con un conjunto de valores permitidos. Para crear un factor, debemos usar la función factor() y c().
+
+```{r}
+gr = factor(c("Grado I", "Grado II", "Grado III"))
+```
+
+```{r}
+gs = factor(c("O", "A", "AB", "B"))
+```
+
+Ahora un vector, pero no factor
+
+```{r}
+gsc = c("O", "A", "AB", "B")
+```
+
+Nota la diferencia
+
+```{r}
+gsc
+```
+
+```{r}
+gs
+```
+
+Los vectores del tipo factor son importantes porque, en general, las variables categóricas deben ser de este tipo para analizarlos en R.
+
+#### Lista (list)
+
+Una lista es una colección de objetos: un objeto que contiene varios objetos. Una lista, entonces, puede contener objetos de varios tipos (o clases). Para crear una lista, usamos la función list()
+
+```{r}
+mi_lista <- list("5", c(1,2,3))
+```
+
+```{r}
+x <- list(a = "5", c(1,2,3), gs)
+```
+
+#### Data frame
+
+un data.frame es un tipo de lista que podría resultarte familiar. La estructura de un data.frame es similar a cómo solemos guardar información. Por ejemplo, en una hoja de excel la información es ordenada de modo que cada columna es una variable y cada fila es una observación. Para crear un data.frame usamos la función data.frame
+
+```{r}
+anemia = data.frame(anemia = c("Sí", "Sí", "No", "Sí"),
+                    sexo = c("f", "m", "f", "f"),
+                    edad = c(8, 7, 5, 7))
+```
+
+```{r}
+class(anemia)
 ```
