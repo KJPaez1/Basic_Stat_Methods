@@ -1,4 +1,4 @@
-﻿Edad,Raza,Estado_marital,Estadio_T,Estadio_N,Estadio_6th,Diferenciacion,Grado,Estadio_A,Tamaño_tumor,Recep_estrogeno,Recep_progesterona,Ganglio_regional_examin,Ganglio_regional_pos,Supervivencia_meses,Estado
+Edad,Raza,Estado_marital,Estadio_T,Estadio_N,Estadio_6th,Diferenciacion,Grado,Estadio_A,Tama�o_tumor,Recep_estrogeno,Recep_progesterona,Ganglio_regional_examin,Ganglio_regional_pos,Supervivencia_meses,Estado
 68,Blanca,Casada,T1,N1,IIA,Poco diferenciado,3,Regional,4,Positivo,Positivo,24,1,60,Vivo
 50,Blanca,Casada,T2,N2,IIIA,Moderadamente diferenciado,2,Regional,35,Positivo,Positivo,14,5,62,Vivo
 58,Blanca,Divorciada,T3,N3,IIIC,Moderadamente diferenciado,2,Regional,63,Positivo,Positivo,14,7,75,Vivo
@@ -276,7 +276,7 @@
 38,Blanca,Casada,T2,N1,IIB,Poco diferenciado,3,Regional,34,Positivo,Negativo,11,1,55,Vivo
 57,Blanca,Divorciada,T1,N1,IIA,Poco diferenciado,3,Regional,6,Negativo,Negativo,2,1,68,Vivo
 65,Blanca,Casada,T3,N1,IIIA,Bien diferenciado,1,Regional,105,Positivo,Positivo,4,2,49,Vivo
-52,Negra,Soltera ,T3,N3,IIIC,Indiferenciado, Anaplásico; Grado IV,Regional,100,Positivo,Positivo,23,17,16,Fallecido
+52,Negra,Soltera ,T3,N3,IIIC,Indiferenciado, Anapl�sico; Grado IV,Regional,100,Positivo,Positivo,23,17,16,Fallecido
 67,Blanca,Casada,T1,N1,IIA,Bien diferenciado,1,Regional,20,Positivo,Positivo,14,2,99,Vivo
 57,Blanca,Casada,T3,N1,IIIA,Moderadamente diferenciado,2,Regional,57,Positivo,Positivo,14,3,88,Vivo
 61,Blanca,Divorciada,T1,N1,IIA,Bien diferenciado,1,Regional,10,Positivo,Positivo,16,1,87,Vivo
@@ -615,9 +615,9 @@
 34,Blanca,Soltera ,T1,N1,IIA,Moderadamente diferenciado,2,Regional,12,Positivo,Positivo,8,3,66,Vivo
 36,Blanca,Casada,T2,N1,IIB,Poco diferenciado,3,Regional,30,Positivo,Negativo,13,1,75,Vivo
 40,Blanca,Soltera ,T2,N2,IIIA,Poco diferenciado,3,Regional,29,Positivo,Positivo,8,8,89,Vivo
-38,Blanca,Casada,T3,N1,IIIA,Indiferenciado, Anaplásico; Grado IV,Regional,70,Positivo,Positivo,10,1,102,Vivo
+38,Blanca,Casada,T3,N1,IIIA,Indiferenciado, Anapl�sico; Grado IV,Regional,70,Positivo,Positivo,10,1,102,Vivo
 61,Blanca,Casada,T2,N1,IIB,Bien diferenciado,1,Regional,21,Positivo,Positivo,2,1,72,Vivo
-37,Negra,Casada,T3,N1,IIIA,Indiferenciado, Anaplásico; Grado IV,Regional,60,Positivo,Positivo,5,2,97,Vivo
+37,Negra,Casada,T3,N1,IIIA,Indiferenciado, Anapl�sico; Grado IV,Regional,60,Positivo,Positivo,5,2,97,Vivo
 60,Blanca,Viuda,T2,N1,IIB,Moderadamente diferenciado,2,Regional,25,Positivo,Positivo,11,1,103,Vivo
 38,Otro,Divorciada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,20,Positivo,Positivo,6,1,88,Fallecido
 56,Blanca,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,22,Positivo,Positivo,23,1,60,Vivo
@@ -766,7 +766,7 @@
 59,Blanca,Casada,T1,N1,IIA,Bien diferenciado,1,Regional,14,Positivo,Positivo,2,1,97,Vivo
 59,Blanca,Casada,T2,N2,IIIA,Poco diferenciado,3,Regional,25,Positivo,Positivo,24,6,87,Vivo
 44,Blanca,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,35,Positivo,Positivo,19,1,74,Vivo
-69,Blanca,Casada,T1,N1,IIA,Indiferenciado, Anaplásico; Grado IV,Regional,20,Positivo,Positivo,17,3,85,Vivo
+69,Blanca,Casada,T1,N1,IIA,Indiferenciado, Anapl�sico; Grado IV,Regional,20,Positivo,Positivo,17,3,85,Vivo
 43,Negra,Soltera ,T2,N1,IIB,Poco diferenciado,3,Regional,25,Positivo,Positivo,2,1,69,Vivo
 63,Otro,Casada,T3,N1,IIIA,Moderadamente diferenciado,2,Regional,90,Positivo,Positivo,13,2,99,Vivo
 43,Blanca,Divorciada,T1,N2,IIIA,Moderadamente diferenciado,2,Regional,13,Positivo,Positivo,11,6,82,Vivo
@@ -1012,7 +1012,7 @@
 68,Blanca,Divorciada,T3,N1,IIIA,Poco diferenciado,3,Regional,55,Positivo,Positivo,15,1,58,Vivo
 42,Blanca,Soltera ,T1,N1,IIA,Moderadamente diferenciado,2,Regional,17,Positivo,Positivo,20,5,92,Vivo
 47,Blanca,Divorciada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,29,Positivo,Positivo,24,1,60,Vivo
-59,Blanca,Soltera ,T2,N2,IIIA,Indiferenciado, Anaplásico; Grado IV,Regional,40,Negativo,Negativo,10,9,33,Fallecido
+59,Blanca,Soltera ,T2,N2,IIIA,Indiferenciado, Anapl�sico; Grado IV,Regional,40,Negativo,Negativo,10,9,33,Fallecido
 65,Blanca,Casada,T1,N2,IIIA,Moderadamente diferenciado,2,Regional,17,Positivo,Positivo,17,7,81,Vivo
 32,Blanca,Soltera ,T2,N1,IIB,Poco diferenciado,3,Regional,30,Negativo,Negativo,3,1,17,Fallecido
 49,Blanca,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,32,Positivo,Positivo,23,2,52,Vivo
@@ -1060,7 +1060,7 @@
 32,Blanca,Casada,T1,N1,IIA,Poco diferenciado,3,Regional,19,Positivo,Positivo,24,3,99,Vivo
 65,Blanca,Divorciada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,18,Positivo,Positivo,7,1,83,Vivo
 63,Blanca,Soltera ,T1,N3,IIIC,Moderadamente diferenciado,2,Regional,16,Positivo,Positivo,19,18,83,Vivo
-67,Blanca,Casada,T2,N3,IIIC,Indiferenciado, Anaplásico; Grado IV,Regional,21,Positivo,Positivo,25,17,75,Vivo
+67,Blanca,Casada,T2,N3,IIIC,Indiferenciado, Anapl�sico; Grado IV,Regional,21,Positivo,Positivo,25,17,75,Vivo
 62,Blanca,Soltera ,T2,N2,IIIA,Moderadamente diferenciado,2,Regional,32,Positivo,Positivo,19,8,93,Fallecido
 67,Otro,Casada,T1,N1,IIA,Poco diferenciado,3,Regional,13,Negativo,Negativo,19,1,73,Vivo
 42,Blanca,Casada,T1,N1,IIA,Poco diferenciado,3,Regional,16,Positivo,Positivo,27,2,95,Vivo
@@ -1457,7 +1457,7 @@
 65,Blanca,Divorciada,T2,N1,IIB,Poco diferenciado,3,Regional,27,Positivo,Positivo,13,1,58,Vivo
 60,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,10,Positivo,Positivo,2,1,51,Vivo
 67,Blanca,Viuda,T1,N1,IIA,Moderadamente diferenciado,2,Regional,12,Positivo,Positivo,13,1,40,Fallecido
-39,Blanca,Soltera ,T3,N2,IIIA,Indiferenciado, Anaplásico; Grado IV,Regional,70,Positivo,Positivo,14,4,79,Fallecido
+39,Blanca,Soltera ,T3,N2,IIIA,Indiferenciado, Anapl�sico; Grado IV,Regional,70,Positivo,Positivo,14,4,79,Fallecido
 59,Blanca,Divorciada,T2,N3,IIIC,Poco diferenciado,3,Regional,44,Positivo,Positivo,36,16,41,Fallecido
 52,Blanca,Soltera ,T2,N3,IIIC,Moderadamente diferenciado,2,Regional,45,Positivo,Positivo,21,19,102,Vivo
 58,Blanca,Divorciada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,17,Positivo,Negativo,24,1,40,Vivo
@@ -1540,7 +1540,7 @@
 39,Blanca,Soltera ,T1,N2,IIIA,Poco diferenciado,3,Regional,18,Positivo,Positivo,16,6,56,Vivo
 68,Blanca,Viuda,T3,N3,IIIC,Poco diferenciado,3,Regional,55,Negativo,Negativo,31,14,72,Vivo
 51,Blanca,Casada,T4,N3,IIIC,Poco diferenciado,3,Regional,90,Positivo,Positivo,15,15,80,Vivo
-69,Blanca,Viuda,T2,N3,IIIC,Indiferenciado, Anaplásico; Grado IV,Regional,28,Positivo,Positivo,14,13,13,Fallecido
+69,Blanca,Viuda,T2,N3,IIIC,Indiferenciado, Anapl�sico; Grado IV,Regional,28,Positivo,Positivo,14,13,13,Fallecido
 39,Blanca,Soltera ,T3,N2,IIIA,Poco diferenciado,3,Regional,55,Positivo,Positivo,14,4,105,Vivo
 48,Blanca,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,21,Positivo,Positivo,16,2,59,Vivo
 30,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,9,Positivo,Positivo,16,1,69,Vivo
@@ -1559,7 +1559,7 @@
 41,Otro,Casada,T2,N2,IIIA,Poco diferenciado,3,Regional,25,Positivo,Positivo,17,8,84,Vivo
 58,Blanca,Casada,T3,N1,IIIA,Moderadamente diferenciado,2,Regional,60,Positivo,Positivo,6,1,91,Vivo
 49,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,12,Positivo,Positivo,11,2,61,Vivo
-58,Blanca,Soltera ,T1,N2,IIIA,Indiferenciado, Anaplásico; Grado IV,Regional,19,Negativo,Negativo,47,7,9,Fallecido
+58,Blanca,Soltera ,T1,N2,IIIA,Indiferenciado, Anapl�sico; Grado IV,Regional,19,Negativo,Negativo,47,7,9,Fallecido
 42,Otro,Divorciada,T2,N1,IIB,Poco diferenciado,3,Regional,40,Positivo,Positivo,24,2,56,Vivo
 68,Blanca,Viuda,T2,N3,IIIC,Poco diferenciado,3,Regional,50,Negativo,Negativo,15,14,10,Fallecido
 35,Blanca,Soltera ,T3,N1,IIIA,Moderadamente diferenciado,2,Regional,55,Negativo,Positivo,9,2,103,Vivo
@@ -1715,7 +1715,7 @@
 42,Blanca,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,45,Positivo,Negativo,19,3,55,Vivo
 46,Blanca,Casada,T2,N2,IIIA,Moderadamente diferenciado,2,Regional,35,Positivo,Positivo,11,5,15,Vivo
 51,Blanca,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,28,Positivo,Positivo,19,3,56,Vivo
-43,Blanca,Casada,T3,N2,IIIA,Indiferenciado, Anaplásico; Grado IV,Regional,75,Negativo,Negativo,10,5,59,Fallecido
+43,Blanca,Casada,T3,N2,IIIA,Indiferenciado, Anapl�sico; Grado IV,Regional,75,Negativo,Negativo,10,5,59,Fallecido
 49,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,20,Positivo,Positivo,6,1,56,Vivo
 45,Blanca,Casada,T1,N1,IIA,Poco diferenciado,3,Regional,15,Positivo,Positivo,24,1,80,Vivo
 46,Otro,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,15,Positivo,Positivo,13,1,30,Vivo
@@ -2171,12 +2171,12 @@
 58,Blanca,Separated,T2,N1,IIB,Bien diferenciado,1,Regional,22,Positivo,Negativo,3,3,67,Vivo
 45,Otro,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,32,Positivo,Positivo,21,2,64,Vivo
 66,Otro,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,28,Positivo,Positivo,1,1,81,Vivo
-62,Negra,Separated,T4,N3,IIIC,Indiferenciado, Anaplásico; Grado IV,Regional,70,Positivo,Positivo,10,10,34,Fallecido
+62,Negra,Separated,T4,N3,IIIC,Indiferenciado, Anapl�sico; Grado IV,Regional,70,Positivo,Positivo,10,10,34,Fallecido
 60,Otro,Viuda,T3,N1,IIIA,Poco diferenciado,3,Regional,65,Positivo,Negativo,13,2,78,Vivo
 54,Blanca,Casada,T1,N2,IIIA,Moderadamente diferenciado,2,Regional,16,Positivo,Positivo,7,4,95,Vivo
 63,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,10,Positivo,Positivo,11,1,88,Vivo
 57,Blanca,Casada,T3,N1,IIIA,Moderadamente diferenciado,2,Regional,110,Positivo,Positivo,11,2,79,Vivo
-63,Blanca,Casada,T2,N1,IIB,Indiferenciado, Anaplásico; Grado IV,Regional,25,Negativo,Positivo,10,2,27,Fallecido
+63,Blanca,Casada,T2,N1,IIB,Indiferenciado, Anapl�sico; Grado IV,Regional,25,Negativo,Positivo,10,2,27,Fallecido
 49,Blanca,Casada,T2,N1,IIB,Bien diferenciado,1,Regional,24,Positivo,Positivo,23,3,50,Vivo
 45,Blanca,Casada,T1,N1,IIA,Bien diferenciado,1,Regional,8,Positivo,Positivo,2,1,86,Vivo
 67,Blanca,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,25,Positivo,Positivo,24,1,92,Vivo
@@ -2245,7 +2245,7 @@
 49,Blanca,Casada,T4,N2,IIIB,Moderadamente diferenciado,2,Regional,11,Positivo,Positivo,45,5,80,Vivo
 61,Negra,Soltera ,T3,N3,IIIC,Moderadamente diferenciado,2,Regional,70,Positivo,Positivo,17,16,48,Fallecido
 43,Negra,Casada,T1,N2,IIIA,Moderadamente diferenciado,2,Regional,20,Positivo,Positivo,16,4,88,Vivo
-50,Blanca,Casada,T3,N1,IIIA,Indiferenciado, Anaplásico; Grado IV,Regional,55,Positivo,Positivo,12,1,89,Vivo
+50,Blanca,Casada,T3,N1,IIIA,Indiferenciado, Anapl�sico; Grado IV,Regional,55,Positivo,Positivo,12,1,89,Vivo
 54,Blanca,Casada,T1,N1,IIA,Bien diferenciado,1,Regional,19,Positivo,Positivo,9,1,63,Vivo
 42,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,17,Positivo,Positivo,36,3,57,Vivo
 68,Blanca,Viuda,T3,N2,IIIA,Moderadamente diferenciado,2,Regional,90,Positivo,Positivo,18,5,56,Vivo
@@ -2410,7 +2410,7 @@
 66,Otro,Viuda,T2,N1,IIB,Moderadamente diferenciado,2,Regional,30,Positivo,Positivo,9,1,6,Fallecido
 59,Blanca,Casada,T2,N2,IIIA,Moderadamente diferenciado,2,Regional,25,Positivo,Positivo,19,5,56,Vivo
 69,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,12,Positivo,Negativo,9,1,4,Fallecido
-57,Blanca,Casada,T1,N1,IIA,Indiferenciado, Anaplásico; Grado IV,Regional,18,Positivo,Positivo,5,1,98,Vivo
+57,Blanca,Casada,T1,N1,IIA,Indiferenciado, Anapl�sico; Grado IV,Regional,18,Positivo,Positivo,5,1,98,Vivo
 45,Blanca,Casada,T3,N1,IIIA,Moderadamente diferenciado,2,Regional,75,Positivo,Positivo,14,2,65,Vivo
 55,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,15,Positivo,Positivo,8,3,53,Vivo
 36,Otro,Casada,T2,N2,IIIA,Moderadamente diferenciado,2,Regional,24,Positivo,Positivo,21,5,64,Vivo
@@ -2716,7 +2716,7 @@
 38,Blanca,Casada,T4,N2,IIIB,Poco diferenciado,3,Distante,30,Negativo,Negativo,19,5,27,Fallecido
 56,Blanca,Casada,T3,N3,IIIC,Poco diferenciado,3,Regional,60,Positivo,Negativo,13,13,101,Vivo
 53,Blanca,Casada,T3,N2,IIIA,Moderadamente diferenciado,2,Regional,70,Positivo,Positivo,21,4,89,Vivo
-40,Blanca,Soltera ,T3,N1,IIIA,Indiferenciado, Anaplásico; Grado IV,Regional,52,Positivo,Positivo,11,9,88,Vivo
+40,Blanca,Soltera ,T3,N1,IIIA,Indiferenciado, Anapl�sico; Grado IV,Regional,52,Positivo,Positivo,11,9,88,Vivo
 43,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,15,Positivo,Positivo,4,1,53,Vivo
 67,Blanca,Casada,T1,N2,IIIA,Moderadamente diferenciado,2,Regional,17,Positivo,Positivo,21,8,63,Vivo
 43,Blanca,Casada,T1,N1,IIA,Poco diferenciado,3,Regional,13,Positivo,Positivo,11,1,59,Vivo
@@ -3072,7 +3072,7 @@
 53,Blanca,Casada,T2,N1,IIB,Poco diferenciado,3,Regional,33,Negativo,Negativo,19,2,36,Fallecido
 59,Blanca,Casada,T1,N2,IIIA,Moderadamente diferenciado,2,Regional,20,Positivo,Positivo,9,6,100,Vivo
 55,Blanca,Soltera ,T1,N1,IIA,Bien diferenciado,1,Regional,13,Negativo,Negativo,22,3,81,Vivo
-43,Blanca,Casada,T4,N3,IIIC,Indiferenciado, Anaplásico; Grado IV,Regional,59,Negativo,Positivo,16,10,55,Vivo
+43,Blanca,Casada,T4,N3,IIIC,Indiferenciado, Anapl�sico; Grado IV,Regional,59,Negativo,Positivo,16,10,55,Vivo
 69,Blanca,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,42,Positivo,Positivo,7,2,48,Vivo
 49,Blanca,Separated,T1,N1,IIA,Moderadamente diferenciado,2,Regional,3,Positivo,Positivo,11,1,54,Vivo
 57,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,16,Positivo,Positivo,4,1,55,Vivo
@@ -3211,7 +3211,7 @@
 48,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,12,Positivo,Positivo,13,1,48,Vivo
 47,Blanca,Casada,T1,N1,IIA,Poco diferenciado,3,Regional,15,Positivo,Positivo,16,1,51,Vivo
 43,Otro,Soltera ,T3,N1,IIIA,Moderadamente diferenciado,2,Regional,55,Positivo,Positivo,25,2,98,Vivo
-54,Blanca,Divorciada,T1,N1,IIA,Indiferenciado, Anaplásico; Grado IV,Regional,16,Positivo,Negativo,19,2,101,Vivo
+54,Blanca,Divorciada,T1,N1,IIA,Indiferenciado, Anapl�sico; Grado IV,Regional,16,Positivo,Negativo,19,2,101,Vivo
 46,Blanca,Casada,T1,N1,IIA,Poco diferenciado,3,Regional,14,Positivo,Positivo,16,3,68,Vivo
 68,Blanca,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,21,Positivo,Positivo,3,1,78,Vivo
 62,Negra,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,18,Positivo,Negativo,12,1,68,Vivo
@@ -3247,7 +3247,7 @@
 58,Otro,Viuda,T2,N3,IIIC,Poco diferenciado,3,Regional,48,Negativo,Negativo,22,21,22,Fallecido
 57,Blanca,Soltera ,T3,N1,IIIA,Poco diferenciado,3,Regional,70,Positivo,Positivo,5,3,66,Vivo
 65,Blanca,Casada,T3,N2,IIIA,Moderadamente diferenciado,2,Regional,55,Positivo,Positivo,14,8,106,Vivo
-45,Blanca,Casada,T1,N1,IIA,Indiferenciado, Anaplásico; Grado IV,Regional,13,Positivo,Positivo,5,1,93,Vivo
+45,Blanca,Casada,T1,N1,IIA,Indiferenciado, Anapl�sico; Grado IV,Regional,13,Positivo,Positivo,5,1,93,Vivo
 39,Blanca,Casada,T2,N1,IIB,Poco diferenciado,3,Regional,45,Negativo,Negativo,2,1,74,Fallecido
 56,Blanca,Divorciada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,9,Positivo,Negativo,17,3,100,Vivo
 51,Blanca,Casada,T2,N1,IIB,Poco diferenciado,3,Regional,25,Positivo,Positivo,18,1,58,Vivo
@@ -3525,7 +3525,7 @@
 43,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,18,Positivo,Positivo,6,1,73,Vivo
 40,Blanca,Divorciada,T3,N2,IIIA,Moderadamente diferenciado,2,Regional,58,Positivo,Positivo,14,7,93,Vivo
 62,Blanca,Divorciada,T2,N1,IIB,Bien diferenciado,1,Regional,37,Negativo,Positivo,11,1,86,Vivo
-49,Blanca,Casada,T2,N1,IIB,Indiferenciado, Anaplásico; Grado IV,Regional,28,Positivo,Positivo,12,3,71,Fallecido
+49,Blanca,Casada,T2,N1,IIB,Indiferenciado, Anapl�sico; Grado IV,Regional,28,Positivo,Positivo,12,3,71,Fallecido
 54,Blanca,Separated,T1,N2,IIIA,Bien diferenciado,1,Regional,18,Positivo,Positivo,14,4,74,Vivo
 66,Blanca,Viuda,T1,N1,IIA,Bien diferenciado,1,Regional,18,Positivo,Positivo,6,1,54,Vivo
 47,Blanca,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,32,Positivo,Positivo,19,1,68,Vivo
