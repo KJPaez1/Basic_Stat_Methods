@@ -1,132 +1,147 @@
 ---
-title: "Sistematización de Métodos Estadísticos"
-author: "Kevin J. Paez"
+title: "Visualización de datos"
+author: "Kevin J Paez"
 format: html
 editor: visual
 ---
 
-## Aspectos básicos sobre el uso de Quarto
-
-Ejecuta códigos de R en Quarto Markdown
-
-```{r}
-1+1
-```
-
-Asignando un valor a un objeto: \<- o =
-
-```{r}
-numero <- 8
-```
-
-```{r}
-numeros <- c(5,6,3,7,8,5)
-```
-
-Comentarios en R usando numeral: \#
-
-```{r}
-# Este objeto contiene solo un número
-numero = 8
-
-## Este objeto contiene varios números
-numeros = c(5,6,7,4,6)
-```
-
-## Objetos en R
-
-Numérico
-
-Caractéres
-
-Factores
-
-Matriz
-
-Array
-
-Listas
-
-Data frames
-
-```{r}
-
-```
-
-## Funciones en R
-
-## Paquetes en R
-
-Instalar un paquete usando la función library()
+# Paquetes para visualizar datos
 
 ```{r}
 library(tidyverse)
-library(tidyplots)
-library(ggpubr)
+library(rio)
+library(here)
 ```
 
-Cargar paquetes con la función library()
+# Cargando los datos
 
 ```{r}
-library(gtsummary)
-library(ggplot2)
-library(ggpubr)
-```
-
-## Importar datos
-
-```{r}
-
-```
-
-## Análsis descriptivo
-
-Calculando medidas de centralidad
-
-```{r}
-
-```
-
-Medidas de dispersión
-
-```{r}
-summary(trial$age)
-```
-
-## Visualización de datos
-
-### Histogramas
-
-```{r}
-gghistogram(data = trial,
-          x = "age")
-```
-
-### Boxplots
-
-Para la base de datos Trial, veamos la distribución de edad de los pacientes según el tipo de tratamiento asignado.
-
-```{r}
-ggplot(data = trial, aes(trt, age)) + 
-  geom_boxplot()
+data_mama_0 <- import(here("data", "s05_pac_cancer_mama.csv"))
 ```
 
 ```{r}
-ggboxplot(data = trial, 
-          x = "trt", 
-          y = "age",
-          add = "jitter")
-
+str(data_mama_0)
 ```
 
 ```{r}
-trial %>% 
-  tidyplot(x = trt, y = age, color = trt) %>% 
-  add(ggplot2::geom_point())
+data_mama <- data_mama_0 |> 
+  mutate_if(is.character, as.factor)
+str(data_mama)
 ```
 
-### Gráficos de dispersión
+# Visualizando datos categóricos
+
+Gráficos de barra Los gráficos de barra son adecuados para mostrar frecuencias de variables categóricas.
 
 ```{r}
-filter()
+data_mama |>  
+  ggplot(aes(x = Estado_marital)) +
+  geom_bar() +
+  labs(y = "Frequency", x = "Estado Marital")
 ```
+
+```{r}
+data_mama |>  
+  ggplot(aes(x = Estado_marital, y = ..count../sum(after_stat(count)))) +
+  geom_bar() +
+  labs(y = "Frequency", x = "Estado Marital")
+```
+
+# Visualizando Datos Continuos
+
+## Con histogramas
+
+Conteo
+
+```{r}
+data_mama_0 |>  
+  ggplot(aes(x = Hemoglobin)) +
+  geom_histogram() +
+  labs(y = "Frequency", x = "Hemoglobin")
+```
+
+```{r}
+data_mama_0 |>  
+  ggplot(aes(x = Hemoglobin)) +
+  geom_histogram(
+    binwidth = 0.5, ## Cambio de "Ancho de banda[rango]"
+    color = "white", ## Color de las barras
+    fill = "cornflowerblue" ## Color de las barras
+    ) + 
+  labs(y = "Frequency", 
+       x = "Hemoglobin")
+```
+
+Proporciones
+
+```{r}
+his_hemog_p <- data_mama_0 %>% 
+  ggplot(aes(x = Hemoglobin)) +
+  geom_histogram(aes(y = ..density..)) +
+  labs(y = "Density", x = "Hemoglobina (gl/dL)")
+```
+
+## Con Boxplots
+
+Con ggplot
+
+```{r}
+boxp_album <- data_mama %>% 
+  ggplot(aes(y = Albumin)) + ## Cambia y por x para invertir el gráfico
+  geom_boxplot() +
+  theme(axis.text.x  = element_blank(),
+        axis.ticks.x = element_blank()) +
+  labs(y = "Albumina")
+```
+
+Con la base de R (función nativa de R)
+
+```{r}
+box_album_base = boxplot(data_mama$Albumin,
+                         ylab = "Albumina",
+                         horizontal = TRUE, ## Cambia la dirección del gráfico
+                         col = "salmon") ## Añadimos color
+  
+```
+# Visualizando variables categóricas versus categóricas 
+
+¿Qué esta mal con esto?
+
+```{r}
+barplot(table(data_mama$Estado, data_mama$Estadio_N),
+        beside = T,
+        legend.text = T,
+        xlab = "Grade",
+        ylab = "Frequency",
+        main = "Desenlace por Estadio")
+box()
+```
+```{r}
+barplot(prop.table(table(data_mama$Estado, data_mama$Estadio_N), margin = 2),
+        beside = T,
+        legend.text = T,
+        xlab = "Estadio N",
+        ylab = "Proportion",
+        main = "Desenlace según Estadio N")
+box()
+```
+```{r}
+addmargins(
+  prop.table(
+    table(data_mama$Estado, data_mama$Estadio_N), margin = 2
+    ), 
+  1)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
