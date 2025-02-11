@@ -1,8 +1,5 @@
 ---
-title: "Sistematización de Métodos Estadísticos"
-author: "Kevin J. Paez"
+title: "Manejo de variables"
 format: html
 editor: visual
 ---
-
-
