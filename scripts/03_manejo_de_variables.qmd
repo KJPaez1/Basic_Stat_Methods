@@ -6,9 +6,5 @@ editor: visual
 ---
 
 ```{r}
-
-```
-
-```{r}
-
+#kakakak
 ```
