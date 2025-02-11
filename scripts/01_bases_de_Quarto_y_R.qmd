@@ -169,3 +169,7 @@ anemia = data.frame(anemia = c("Sí", "Sí", "No", "Sí"),
 ```{r}
 class(anemia)
 ```
+
+```{r}
+print(anemia)
+```

@@ -103,7 +103,8 @@ box_album_base = boxplot(data_mama$Albumin,
                          col = "salmon") ## Añadimos color
   
 ```
-# Visualizando variables categóricas versus categóricas 
+
+# Visualizando variables categóricas versus categóricas
 
 ¿Qué esta mal con esto?
 
@@ -116,6 +117,7 @@ barplot(table(data_mama$Estado, data_mama$Estadio_N),
         main = "Desenlace por Estadio")
 box()
 ```
+
 ```{r}
 barplot(prop.table(table(data_mama$Estado, data_mama$Estadio_N), margin = 2),
         beside = T,
@@ -125,6 +127,7 @@ barplot(prop.table(table(data_mama$Estado, data_mama$Estadio_N), margin = 2),
         main = "Desenlace según Estadio N")
 box()
 ```
+
 ```{r}
 addmargins(
   prop.table(
@@ -132,16 +135,3 @@ addmargins(
     ), 
   1)
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
