@@ -4,7 +4,3 @@ author: "Kevin J. Paez"
 format: html
 editor: visual
 ---
-
-```{r}
-#kakakak
-```
