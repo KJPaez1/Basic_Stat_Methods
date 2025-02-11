@@ -1,15 +1,65 @@
 ---
-title: "02_func_lib_paqu_e_import_datos"
+title: "Funciones, paquetes e importe de datos"
 author: "Kevin J. Paez"
 format: html
 editor: visual
 ---
 
-## Quarto
+# 1. Funciones en R
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+Las funciones en R son bloques de código que nos permiten automatizar tareas y 
+realizar diversas operaciones. La mayoría de las funciones en R requieren 
+argumentos, los cuales determinan cómo se ejecutará la función. A través de 
+estos argumentos, podemos especificar aspectos como los datos a utilizar, las 
+variables involucradas y otros parámetros que influyen en el resultado.
 
-## Running Code
+Las funciones en R son intuitivas, ya que sus nombres suelen ser abreviaturas o palabras descriptivas de su acción. Por ejemplo, la función mean() y sd() calculan el promedio y desviación estandard de un vector de datos numéricos, respectivamente.
+
+```{r}
+## Creando un vector de datos
+glucosa = c(150, 120, 101, 170)
+```
+```{r}
+mean(x = glucose) ## un argumento es el dato a utilizar
+```
+```{r}
+sd(x = glucosa) 
+```
+En la sección de uso, note que en algunos argumentos siguen un signo de igual.
+Esto significa que hay un valor por defecto para el argumento, y, por lo tanto,
+es opcional especificarlo.
+
+### Obteniendo ayuda sobre la función de la función
+La pestaña de ayuda en R (cuadrante inferior derecho) permite conocer, a detalles,
+el uso de las funciones. Para conocer sobre una función basta con ejecutar lo 
+siguiente ?mean
+
+### Los arguementos en las funciones
+Existen dos formas de proporcionar argumentos a una función en R: especificando su nombre o sin hacerlo. Si decides no especificar el nombre, respeta el orden en que los argumentos aparecen en la documentación de la función para evitar errores. Ejemplo con la
+función rnorm() la cual genera números aleatorios con distribución normal.
+
+```{r}
+rnorm(n = 10, mean = 50, sd = 15)
+```
+```{r}
+rnorm(10, 50, 15)
+```
+Dado que la generación de números es aleatoria, obtenemos diferentes resultados
+
+Observa ahora
+
+```{r}
+set.seed(100)
+rnorm(n = 10, mean = 50, sd = 15)
+```
+
+```{r}
+set.seed(100)
+rnorm(10, 50, 15)
+```
+
+
+# 2. Paquetes y Librerias en R
 
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
@@ -24,4 +74,8 @@ You can add options to executable code like this
 2 * 2
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+# 3. Importando datos en R
+
+
+
+
