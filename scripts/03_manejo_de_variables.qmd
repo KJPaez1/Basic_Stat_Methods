@@ -3,3 +3,7 @@ title: "Manejo de variables"
 format: html
 editor: visual
 ---
+
+```{r}
+
+```
