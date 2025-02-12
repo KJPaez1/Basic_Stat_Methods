@@ -1,6 +1,66 @@
 ---
-title: "Sistematización de Métodos Estadísticos"
+title: "Estadística descriptiva: resumen de datos"
 author: "Kevin J. Paez"
 format: html
 editor: visual
 ---
+
+# Paquetes para visualizar datos
+
+```{r}
+library(tidyverse)
+library(here)
+```
+
+# Cargando los datos
+
+```{r}
+data_diabetes_0 <- import(here("data", "s04_diabetes.csv"))
+```
+
+### La "estructura" de los datos
+
+```{r}
+str(data_diabetes_0)
+```
+
+```{r}
+data_diabetes <- data_diabetes_0 |> 
+  mutate_if(is.character, as.factor)
+```
+
+```{r}
+str(data_diabetes)
+```
+
+# Resumen de variables categóricas
+
+Para resumir variables categóricas usamos frecuencias simples y frecuencias porcentuales. Es importante resumir, también, los datos perdidos. Resumen con la función `table()` para la variable `Diabetes`.
+
+```{r}
+table(data_diabetes$Diabetes, useNA = "ifany")
+```
+
+```{r}
+table(data_diabetes_0$insulina_cat, useNA = "ifany")
+```
+
+Valores perdidos en proporciones
+
+```{r}
+prop.table(table(data_diabetes$insulina_cat, useNA = "ifany"))
+```
+
+# Resumen de variables numéricas
+
+Para resumir variables numéricas hay funciones en la base de R que permiten calcular los principales estadísticos. Por ejemplo, la función `mean()` y `sd()`, calcula el promedio y desviación estandard de un conjunto de datos.
+
+```{r}
+mean(data_diabetes$imc, na.rm = TRUE)
+```
+
+```{r}
+sd(data_diabetes$imc, na.rm = TRUE)
+```
+
+Ojo, en este ejemplo sólo será posible calcular el promedio y desviación estandard si el valor para el argumento na.rm es TRUE. Esto elimina los valores perdidos en el cálculo.
