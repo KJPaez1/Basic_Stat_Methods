@@ -10,12 +10,13 @@ editor: visual
 ```{r}
 library(tidyverse)
 library(here)
+library(rio)
 ```
 
 # Cargando los datos
 
 ```{r}
-data_diabetes_0 <- import(here("data", "s04_diabetes.csv"))
+data_diabetes_0 <- rio::import(here::here("data", "s04_diabetes.csv"))
 ```
 
 ### La "estructura" de los datos
@@ -51,7 +52,7 @@ Valores perdidos en proporciones
 prop.table(table(data_diabetes$insulina_cat, useNA = "ifany"))
 ```
 
-# Resumen de variables numéricas
+# Resumen de variables continuas
 
 Para resumir variables numéricas hay funciones en la base de R que permiten calcular los principales estadísticos. Por ejemplo, la función `mean()` y `sd()`, calcula el promedio y desviación estandard de un conjunto de datos.
 
@@ -63,4 +64,79 @@ mean(data_diabetes$imc, na.rm = TRUE)
 sd(data_diabetes$imc, na.rm = TRUE)
 ```
 
-Ojo, en este ejemplo sólo será posible calcular el promedio y desviación estandard si el valor para el argumento na.rm es TRUE. Esto elimina los valores perdidos en el cálculo.
+Ojo, en este ejemplo sólo será posible calcular el promedio y desviación 
+estandard si el valor para el argumento na.rm es TRUE. Esto elimina los valores 
+perdidos en el cálculo.
+
+Otras funciones que puedes encontrar útil son `min()`, `max()`, `median()` y `IQR()`
+
+```{r}
+min(data_diabetes$imc, na.rm = TRUE) # Proporciona el valor mínimo
+
+IQR(data_diabetes$imc, na.rm = TRUE) # Calcula el rango intercuartilico
+
+median(data_diabetes$imc, na.rm = TRUE) # Calcula la mediana
+```
+### La función `summary()` para calcular todas las medidas, a la vez.
+
+`summary()` es una función nativa de R que permite calcular todas las medidas 
+estadísticas a la vez. Abajo, un ejemplo con la variable Glucosa
+
+```{r}
+summary(data_diabetes$Glucosa)
+```
+## ¿Mediana o media?
+Una de las cosas que queremos saber al realizar un análisis descriptivo es la
+distribución de los datos. La media y mediana puede informarnos al respecto.
+Abajo, un ejemplo para la variable `imc`
+
+```{r}
+mean(data_diabetes$imc, na.rm = T)
+```
+```{r}
+median(data_diabetes$imc, na.rm = T)
+```
+La media y mediana de la variable `imc` son similares. Estos sugiere que los 
+datos tienen una distribución simétrica.
+
+Debajo otro ejemplo con la variable `insulina`
+
+```{r}
+mean(data_diabetes$insulina, na.rm = T)
+```
+```{r}
+median(data_diabetes$insulina, na.rm = T)
+```
+La media y mediana de la variable `insulina` son diferentes. Estos sugiere que los 
+datos tienen una distribución asimétrica.
+
+Comprobémoslo visualmente
+
+```{r}
+par(mfrow=c(1,2)) # Configuramos e número de elementos por Figura
+hist(data_diabetes$imc)
+hist(data_diabetes$insulina)
+```
+# Por otra variable
+
+Frecuentemente es importante realizar el resumen de datos por otra variable.
+Por ejemplo, la media de edad según estado de diabetes. En R, podemos calcular
+esto usando la función `group_by()` y `summarize()`
+
+```{r}
+data_diabetes |>  
+  group_by(Diabetes) |> 
+  summarize(mean = mean(Glucosa, na.rm = T))
+```
+Podemos hacer resumenes incluso más complejos. Por ejemplo, calcular la media
+de glucosa por estado de `diabetes` y categoría de `grupo_edad`. Para esto, 
+añade la variable edad_cat a la función `group_by()`
+
+```{r}
+data_diabetes |>  
+  group_by(Diabetes, grupo_edad) |> 
+  summarize(mean = mean(Glucosa, na.rm = T))
+```
+# "Tabla 1" con gtsummary
+
+
