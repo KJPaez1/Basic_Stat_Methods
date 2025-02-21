@@ -4,6 +4,57 @@ format: html
 editor: visual
 ---
 
-```{r}
+# creacion de variables
 
+una variable es un contenedor que almacena un valor o un conjunto de valores. Las variables se utilizan para guardar datos, como números, texto, vectores, matrices, listas, entre otros, y permiten manipular y operar con esos datos a lo largo de un script o programa.
+
+todas las variables tienen dos atributos principales: la clase y la estructura
+
+Clase (Class): Define el tipo de dato (e.g., numérico, carácter, lógico).
+
+Estructura (Structure): Define cómo están organizados los datos (e.g., vector, matriz, data frame).
+
+## valor numerico (numeric)
+
+```{r}
+x <- 10
+x
 ```
+
+```{r}
+class(x)
+```
+
+```{r}
+is.numeric(x)
+```
+
+## valor entero (Integer)
+
+```{r}
+y <- 13L
+y
+```
+
+```{r}
+class(y)
+```
+
+```{r}
+is.integer(y)
+```
+
+## valor caracter (character)
+
+```{r}
+profesion <- biologia
+```
+
+```{r}
+class(profesion)
+```
+
+```{r}
+is.character(profesion)
+```
+
