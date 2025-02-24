@@ -48,6 +48,8 @@ is.integer(y)
 
 ```{r}
 profesion <- biologia
+
+profesion
 ```
 
 ```{r}
@@ -56,5 +58,85 @@ class(profesion)
 
 ```{r}
 is.character(profesion)
+```
+
+## valor logico (logical)
+
+```{r}
+falso <- FALSE
+falso
+```
+
+```{r}
+class(falso)
+```
+
+```{r}
+is.logical(falso)
+```
+
+## factor
+
+```{r}
+nombres <- factor(c("jose", "carlos", "ricardo", "kathy", "tefa", "meylin"))
+nombres
+```
+
+```{r}
+class(nombres)
+```
+
+```{r}
+is.factor(nombres)
+```
+
+## lista (list)
+
+```{r}
+lista <- lista <- list(5, "jorge", c(3,9,5), "z")
+lista
+```
+
+```{r}
+class(lista)
+```
+
+```{r}
+is.list(lista)
+```
+
+# Estructura (structure)
+## matriz (matrix)
+En R, una matriz es una estructura de datos bidimensional que almacena elementos del mismo tipo (numéricos, caracteres, lógicos, etc.) organizados en filas y columnas.
+
+```{r}
+matrix(data, nrow, ncol, byrow = FALSE)
+```
+
+1.  data: Los datos que se almacenarán en la matriz (puede ser un vector).
+
+2.  nrow: Número de filas.
+
+3.  ncol: Número de columnas.
+
+4.  byrow: Si es TRUE, la matriz se llena por filas; si es FALSE (por defecto), se llena por columnas.
+
+```{r}
+# Crear una matriz de 2 filas y 3 columnas
+matriz <- matrix(c(1, 2, 3, 4, 5, 6), nrow = 2, ncol = 3)
+matriz
+```
+
+```{r}
+matriz1 <- matrix(c(156,9421,1531,14797, "rojo", "blanco", "franz", "esthefany"),nrow=4, ncol = 2)
+matriz1
+```
+
+```{r}
+class(matriz)
+```
+
+```{r}
+is.matrix(matriz)
 ```
 
