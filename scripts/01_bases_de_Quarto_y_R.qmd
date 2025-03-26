@@ -5,7 +5,7 @@ format: html
 editor: visual
 ---
 
-# 1 Aspectos básicos sobre el uso de Quarto
+# 1. Aspectos básicos sobre el uso de Quarto
 
 Los documentos Quarto permiten combinar texto y código de R. Es importante documentar detalladamente los procesos realizados durante el análisis de datos. Quarto es el documento perfecto para eso.
 
@@ -19,7 +19,7 @@ Ejecuta códigos de R en un documento Quarto en la zona sombreada llamada "Chunk
 1 + 1
 ```
 
-# 2 Aspectos básicos sobre el uso de R
+# 2. Aspectos básicos sobre el uso de R
 
 ### 2.1 Ejecutando códigos en R
 

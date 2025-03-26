@@ -17,7 +17,7 @@ glucosa = c(150, 120, 101, 170)
 ```
 
 ```{r}
-mean(x = glucose) ## un argumento es el dato a utilizar
+mean(x = glucosa) ## un argumento es el dato a utilizar
 ```
 
 ```{r}
@@ -111,7 +111,7 @@ nombre_del_dataset = import(here("nombrecarpeta", "nombre_archivo.extensión"))
 ### Importanto un archivo csv
 
 ```{r}
-data_artritis = import(here("data", "s02_treat_artritis.csv"))
+data_artritis = rio::import(here::here("data", "s02_treat_artritis.csv"))
 ```
 
 #### Importanto un archivo xlsx
@@ -123,11 +123,10 @@ data_artritis_1 = import(here("data", "s02_treat_artritis.xlsx"))
 Es importante incluir la extensión del archivo para que R la función pueda ejecutarse correctamente.
 
 # 5. `dataframes`
-Los dataframes son datos ordenados de una forma estandard, donde las columnas 
-(vectores) son variables y las filas son observaciones. 
 
-En r, podemos generar dataframes usando la función data.frame. Realizamos esto
-al combinar vectores.
+Los dataframes son datos ordenados de una forma estandard, donde las columnas (vectores) son variables y las filas son observaciones.
+
+En r, podemos generar dataframes usando la función data.frame. Realizamos esto al combinar vectores.
 
 Creando los vectores
 
@@ -137,7 +136,7 @@ sexo = c("mujer", "varon", "mujer", "mujer", "varon")
 hipertension = c("sí", "no", "sí", "no", "no")
 ```
 
-Creando un dataframe
+Creando un dataframe con la función `data.frame`
 
 ```{r}
 mis_datos = data.frame(edad, sexo, hipertension)
@@ -149,10 +148,12 @@ Visualizar el `dataframe`
 mis_datos
 ```
 
+En la mayoría de casos, los datos que importes a R serán dataframes.
 
+Podemos comprobar esto al evaluar el tipo de objeto del conjunto de datos importado usando la función
 
+\`class()\`.
 
-
-
-
-
+```{r}
+class(data_artritis)
+```
