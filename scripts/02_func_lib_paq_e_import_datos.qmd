@@ -69,7 +69,8 @@ Cuando se instala un paquete en R, toda su información se almacena en un direct
 Para instalar paquetes en R, se usa la función install.packages(). El nombre del paquete debe especificarse entre comillas:
 
 ```{r}
-install.packages("dplyr")
+install.packages("tidyverse")
+install.packages("survival")
 ```
 
 Después de ejecutar esta línea de código, la consola mostrará actividad. Una vez que reaparezca el símbolo \>, la instalación habrá finalizado.
@@ -77,7 +78,8 @@ Después de ejecutar esta línea de código, la consola mostrará actividad. Una
 La instalación solo se realiza una vez, pero cada vez que se abre RStudio es necesario cargar el paquete antes de usarlo. Para ello, utilizamos library():
 
 ```{r}
-library(dplyr)
+library(tidyverse)
+library(survival)
 ```
 
 # 4. Importando datos en R
@@ -102,22 +104,34 @@ library(here)
 library(rio)
 ```
 
-Estructura
+Estructura (no corra este chunk)
 
 ```{r}
 nombre_del_dataset = import(here("nombrecarpeta", "nombre_archivo.extensión"))
 ```
 
-### Importanto un archivo csv
+### Importanto un archivo .csv
 
 ```{r}
-data_artritis = rio::import(here::here("data", "s02_treat_artritis.csv"))
+data_artritis = import(here("data", "s02_treat_artritis.csv"))
 ```
 
-#### Importanto un archivo xlsx
+#### Importanto un archivo .xlsx
 
 ```{r}
 data_artritis_1 = import(here("data", "s02_treat_artritis.xlsx"))
+```
+
+#### Importanto un archivo SPSS, .sav
+
+```{r}
+data_artritis_2 = import(here("data", "s02_treat_artritis.sav"))
+```
+
+## Importanto un archivo .Rdata
+
+```{r}
+data_artritis_3 = import(here("data", "s02_treat_artritis.sav"))
 ```
 
 Es importante incluir la extensión del archivo para que R la función pueda ejecutarse correctamente.
@@ -157,3 +171,7 @@ Podemos comprobar esto al evaluar el tipo de objeto del conjunto de datos import
 ```{r}
 class(data_artritis)
 ```
+```{r}
+View(data_artritis)
+```
+
