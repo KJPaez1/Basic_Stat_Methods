@@ -34,6 +34,8 @@ data_artritis = import(here("data", "s03_treat_artritis.csv"))
 
 ### ¿Cuántas variables y observaciones hay?
 
+El primer número indica el número de filas, el segundo, el número de columnas
+
 ```{r}
 dim(data_artritis)
 ```
@@ -42,14 +44,18 @@ dim(data_artritis)
 ```{r}
 str(data_artritis)
 ```
+Una función similar
 
 ```{r}
 dplyr::glimpse(data_artritis)
 ```
+Estadísticos descriptivos y otros parámetros para exploración de datos
 
 ```{r}
 skimr::skim(data_artritis)
 ```
+
+Resumen por variable
 
 ```{r}
 base::summary(data_artritis)
@@ -90,9 +96,18 @@ data_artritis_2 = mutate_if(data_artritis_2, is.character, list(~na_if(.,"")))
 data_artritis_3 = remove_empty(data_artritis_2, which = c("rows", "cols"))
 ```
 
-Optimizando el código
+## Optimizando el código
 
 ### Corregir nombres, celdas vacías a NA y eliminar columnas o filas vacías.
+
+```{r}
+data_artritis |> 
+  clean_names() |> 
+  mutate_if(is.character, list(~na_if(.,""))) |> 
+  remove_empty(which = c("rows", "cols"))
+```
+
+¿Qué falta?
 
 ```{r}
 data_artritis_1 = data_artritis |> 
