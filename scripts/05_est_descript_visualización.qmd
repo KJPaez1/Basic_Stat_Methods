@@ -19,14 +19,34 @@ library(here)
 data_mama_0 <- import(here("data", "s05_pac_cancer_mama.csv"))
 ```
 
+## Examinamos los datos
+
 ```{r}
 str(data_mama_0)
 ```
+
+## De caracteres a factor (categóricos) usando la función `mutate_if()`
 
 ```{r}
 data_mama <- data_mama_0 |> 
   mutate_if(is.character, as.factor)
 str(data_mama)
+```
+
+# Visualizando datos: el molde
+
+<midata> \|\> ggplot(aes(x = <var1>, y = <var2>)) + geom\_<xxxx>()
+
+Para realizar visualizaciones con el paquete ggplot2, debemos reemplazar lo que esta encerrado en los signos. Este es el molde fundamental para crear gráficos más complejos.
+
+<midata> : el nombre del dataset a utilizar. \|\> : esto es llamado "pipe", la cual conecta los datos a la función ggplot + : usa + par conectar declaraciones de ggplot <var> : la variable, cuyos datos serán usados para crear el gráfico. geom\_<xxxx>: indica la función para crear el tipo de gráfico. Ej. geom_bar, para crear gráficos de barra.
+
+Ejemplo
+
+```{r}
+data_mama |> ## La data importada
+  ggplot(aes(x = Estado_marital)) + ## Solo una variable para un gráfico de barras
+  geom_bar() ## Para crear un gráfico de barras
 ```
 
 # Visualizando datos categóricos
@@ -37,8 +57,10 @@ Gráficos de barra Los gráficos de barra son adecuados para mostrar frecuencias
 data_mama |>  
   ggplot(aes(x = Estado_marital)) +
   geom_bar() +
-  labs(y = "Frequency", x = "Estado Marital")
+  labs(y = "Frecuencia", x = "Estado Marital") ## Nombres a los ejes
 ```
+
+Gráfico de barras que muestra proporciones
 
 ```{r}
 data_mama |>  
@@ -55,30 +77,34 @@ Conteo
 
 ```{r}
 data_mama_0 |>  
-  ggplot(aes(x = Hemoglobin)) +
+  ggplot(aes(x = hemoglobina_g_dL)) +
   geom_histogram() +
-  labs(y = "Frequency", x = "Hemoglobin")
+  labs(y = "Frequency", x = "Hemoglobina (mg/dL)")
 ```
+
+Añadiendo color
 
 ```{r}
 data_mama_0 |>  
-  ggplot(aes(x = Hemoglobin)) +
+  ggplot(aes(x = hemoglobina_g_dL)) +
   geom_histogram(
     binwidth = 0.5, ## Cambio de "Ancho de banda[rango]"
     color = "white", ## Color de las barras
     fill = "cornflowerblue" ## Color de las barras
     ) + 
-  labs(y = "Frequency", 
-       x = "Hemoglobin")
+  labs(y = "Frecuencia", 
+       x = "Hemoglobina (mg/dL)")
 ```
 
 Proporciones
 
 ```{r}
 his_hemog_p <- data_mama_0 %>% 
-  ggplot(aes(x = Hemoglobin)) +
+  ggplot(aes(x = hemoglobina_g_dL)) +
   geom_histogram(aes(y = ..density..)) +
   labs(y = "Density", x = "Hemoglobina (gl/dL)")
+
+print(his_hemog_p)
 ```
 
 ## Con Boxplots
@@ -87,7 +113,7 @@ Con ggplot
 
 ```{r}
 boxp_album <- data_mama %>% 
-  ggplot(aes(y = Albumin)) + ## Cambia y por x para invertir el gráfico
+  ggplot(aes(y = Albumina_g_dL)) + ## Cambia y por x para invertir el gráfico
   geom_boxplot() +
   theme(axis.text.x  = element_blank(),
         axis.ticks.x = element_blank()) +
@@ -97,41 +123,49 @@ boxp_album <- data_mama %>%
 Con la base de R (función nativa de R)
 
 ```{r}
-box_album_base = boxplot(data_mama$Albumin,
+box_album_base = boxplot(data_mama$Albumina_g_dL,
                          ylab = "Albumina",
                          horizontal = TRUE, ## Cambia la dirección del gráfico
                          col = "salmon") ## Añadimos color
   
 ```
 
-# Visualizando variables categóricas versus categóricas
-
-¿Qué esta mal con esto?
+# Visualizando variables categóricas *versus* categóricas
 
 ```{r}
-barplot(table(data_mama$Estado, data_mama$Estadio_N),
-        beside = T,
-        legend.text = T,
-        xlab = "Grade",
-        ylab = "Frequency",
-        main = "Desenlace por Estadio")
-box()
+data_mama |> 
+  ggplot(aes(x = Estadio_T, fill = Estado_des)) +
+  geom_bar(position = "dodge") + ## Sin este argumento, las barras estarán una sobre otras
+  labs(y = "Frecuencia",  
+       x = "Estadio T",
+       fill = "Desenlace")
+```
+
+Qué esta mal con esto?
+
+```{r}
+data_mama %>%  
+  group_by(Estadio_T, Estado_des) %>% 
+  count() %>%  
+  # Compute proportions within grade
+  # n is the default variable created by count()
+  group_by(Estadio_T) %>%  
+  mutate(Proportion = n/sum(n)) %>%
+  ggplot(aes(x = Estadio_T, y = Proportion, fill = Estado_des)) +
+  geom_bar(position = 'dodge', stat = 'identity') +
+  labs(y = "Proportion",
+       x = "Estadio T",
+       fill = "Desenlace")
 ```
 
 ```{r}
-barplot(prop.table(table(data_mama$Estado, data_mama$Estadio_N), margin = 2),
-        beside = T,
-        legend.text = T,
-        xlab = "Estadio N",
-        ylab = "Proportion",
-        main = "Desenlace según Estadio N")
-box()
+addmargins(prop.table(
+  table(data_mama$Estado_des, data_mama$Estadio_T), 
+  margin = 2), 1)
 ```
 
+# Visualizando variables continuas *versus* categóricas
+
 ```{r}
-addmargins(
-  prop.table(
-    table(data_mama$Estado, data_mama$Estadio_N), margin = 2
-    ), 
-  1)
+
 ```

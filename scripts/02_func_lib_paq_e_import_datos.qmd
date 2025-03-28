@@ -171,7 +171,7 @@ Podemos comprobar esto al evaluar el tipo de objeto del conjunto de datos import
 ```{r}
 class(data_artritis)
 ```
+
 ```{r}
 View(data_artritis)
 ```
-

@@ -4,6 +4,103 @@ format: html
 editor: visual
 ---
 
-```{r}
+# Instalar paquetes
 
+```{r}
+# install.packages("tidyverse")
+# install.packages("rio")
+# install.packages("here")
+# install.packages("janitor")
+# install.packages("skimr")
+# install.packages("visdat")
 ```
+
+# Cargar paquetes
+
+```{r}
+library(tidyverse)
+library(rio)
+library(here)
+library(janitor)
+```
+
+## Importando s02_treat_artritis.csv usando el paquete rio
+
+```{r}
+data_artritis = import(here("data", "s03_treat_artritis.csv"))
+```
+
+# Vistazo al contenido
+
+### ¿Cuántas variables y observaciones hay?
+
+```{r}
+dim(data_artritis)
+```
+### ¿Cuantas y qué tipos de variables hay?
+
+```{r}
+str(data_artritis)
+```
+
+```{r}
+dplyr::glimpse(data_artritis)
+```
+
+```{r}
+skimr::skim(data_artritis)
+```
+
+```{r}
+base::summary(data_artritis)
+```
+### Visualmente
+
+```{r}
+# visdat::vis_dat(data_artritis)
+```
+
+```{r}
+# DataExplorer::create_report(data_artritis)
+```
+
+## Conversión al formato correcto
+
+```{r}
+data_artritis_df = as.data.frame(data_artritis)
+```
+
+# Limpieza de datos
+
+### Paso uno: corregir los nombres de variables.
+
+```{r}
+data_artritis_1 = clean_names(data_artritis)
+```
+
+### Paso dos: convertir celdas vacías a NA
+
+```{r}
+data_artritis_2 = mutate_if(data_artritis_2, is.character, list(~na_if(.,"")))
+```
+
+### Paso tres: eliminar columnas o filas vacias.
+
+```{r}
+data_artritis_3 = remove_empty(data_artritis_2, which = c("rows", "cols"))
+```
+
+Optimizando el código
+
+### Corregir nombres, celdas vacías a NA y eliminar columnas o filas vacías.
+
+```{r}
+data_artritis_1 = data_artritis |> 
+  clean_names() |> 
+  mutate_if(is.character, list(~na_if(.,""))) |> 
+  remove_empty(which = c("rows", "cols"))
+```
+
+
+
+
