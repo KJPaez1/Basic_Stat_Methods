@@ -167,5 +167,5 @@ addmargins(prop.table(
 # Visualizando variables continuas *versus* categóricas
 
 ```{r}
-
+boxplot(asdfghjklñ)
 ```
