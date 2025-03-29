@@ -34,21 +34,24 @@ data_artritis = import(here("data", "s03_treat_artritis.csv"))
 
 ### ¿Cuántas variables y observaciones hay?
 
-El primer número indica el número de filas, el segundo, el número de columnas
+El primer número indica el número de filas, el segundo, el número de columnas.
 
 ```{r}
 dim(data_artritis)
 ```
+
 ### ¿Cuantas y qué tipos de variables hay?
 
 ```{r}
 str(data_artritis)
 ```
+
 Una función similar
 
 ```{r}
 dplyr::glimpse(data_artritis)
 ```
+
 Estadísticos descriptivos y otros parámetros para exploración de datos
 
 ```{r}
@@ -58,39 +61,50 @@ skimr::skim(data_artritis)
 Resumen por variable
 
 ```{r}
-base::summary(data_artritis)
+summary(data_artritis)
 ```
+
 ### Visualmente
 
 ```{r}
-# visdat::vis_dat(data_artritis)
+#View(data_artritis)
 ```
 
 ```{r}
-# DataExplorer::create_report(data_artritis)
+#visdat::vis_dat(data_artritis)
 ```
 
-## Conversión al formato correcto
-
 ```{r}
-data_artritis_df = as.data.frame(data_artritis)
+#DataExplorer::create_report(data_artritis)
 ```
 
 # Limpieza de datos
 
-### Paso uno: corregir los nombres de variables.
+## Paso uno: corregir los nombres de variables.
+
+Clean names es una función del paquete janitor
 
 ```{r}
 data_artritis_1 = clean_names(data_artritis)
 ```
 
-### Paso dos: convertir celdas vacías a NA
+Nota el constraste (la función `names()` imprime los nombres de columnas de un *dataset*)
 
 ```{r}
-data_artritis_2 = mutate_if(data_artritis_2, is.character, list(~na_if(.,"")))
+names(data_artritis)
 ```
 
-### Paso tres: eliminar columnas o filas vacias.
+```{r}
+names(data_artritis_1)
+```
+
+## Paso dos: convertir celdas vacías a NA
+
+```{r}
+data_artritis_2 = mutate_if(data_artritis_1, is.character, list(~na_if(.,"")))
+```
+
+## Paso tres: eliminar columnas o filas vacias.
 
 ```{r}
 data_artritis_3 = remove_empty(data_artritis_2, which = c("rows", "cols"))
@@ -101,19 +115,35 @@ data_artritis_3 = remove_empty(data_artritis_2, which = c("rows", "cols"))
 ### Corregir nombres, celdas vacías a NA y eliminar columnas o filas vacías.
 
 ```{r}
-data_artritis |> 
-  clean_names() |> 
-  mutate_if(is.character, list(~na_if(.,""))) |> 
+data_artritis_1 = data_artritis |>
+  clean_names() |>
+  mutate_if(is.character, list(~ na_if(., ""))) |>
   remove_empty(which = c("rows", "cols"))
 ```
 
-¿Qué falta?
+## Inspección tabular
 
 ```{r}
-data_artritis_1 = data_artritis |> 
-  clean_names() |> 
-  mutate_if(is.character, list(~na_if(.,""))) |> 
-  remove_empty(which = c("rows", "cols"))
+data_artritis_1 |> 
+  count(biologicos)
+```
+### Paso 4: corregir errores ortográficos o valores inválidos
+
+Transformando de data.frame a as tibble
+
+```{r}
+data_tibble = as_tibble(data_artritis_1)
+```
+
+Corregir errores ortográficos usando `mutate()` y `case_when()`
+
+```{r}
+data_tibble_1 = data_tibble |> 
+  mutate(sexo = case_when(sexo == "f" ~ "Femenino",
+                          sexo == "Maculino" ~ "Masculino",
+                          sexo == "Masculin" ~ "Masculino",
+                          sexo == "masculino" ~ "Masculino",
+                          TRUE ~ sexo))
 ```
 
 
