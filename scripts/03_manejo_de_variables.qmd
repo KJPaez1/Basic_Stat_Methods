@@ -125,20 +125,21 @@ data_artritis_1 = data_artritis |>
 
 ```{r}
 data_artritis_1 |> 
-  count(biologicos)
+  count(categorias_de_edad) # Cambia de variable categórica
 ```
+
 ### Paso 4: corregir errores ortográficos o valores inválidos
 
 Transformando de data.frame a as tibble
 
 ```{r}
-data_tibble = as_tibble(data_artritis_1)
+data_artritis_2 = as_tibble(data_artritis_1)
 ```
 
 Corregir errores ortográficos usando `mutate()` y `case_when()`
 
 ```{r}
-data_tibble_1 = data_tibble |> 
+data_artritis_3 = data_artritis_2 |> 
   mutate(sexo = case_when(sexo == "f" ~ "Femenino",
                           sexo == "Maculino" ~ "Masculino",
                           sexo == "Masculin" ~ "Masculino",
@@ -146,6 +147,96 @@ data_tibble_1 = data_tibble |>
                           TRUE ~ sexo))
 ```
 
+```{r}
+data_artritis_3 = data_artritis_2 |> 
+  mutate(sexo = case_when(
+    sexo == "f" ~ "Femenino",
+    sexo %in% c("Maculino", "Masculin", "masculino") ~ "Masculino",
+    TRUE ~ sexo)
+    )
+```
 
+### Paso 5: Colapsar una variable categórica en menos niveles
 
+Un vistazo a la variable de interés
 
+```{r}
+data_artritis_3 |> count(categorias_de_edad)
+```
+
+Colapsar a dos categorías
+
+```{r}
+data_artritis_4 = data_artritis_3 |> 
+  mutate(categorias_de_edad_2 = case_when(
+    categorias_de_edad %in% c("42-49 años", "50-59 años") ~ "42-59",
+    categorias_de_edad %in% c("60-69 años", "70+ años") ~ "> 60",
+    TRUE ~ categorias_de_edad)
+    )
+```
+
+Comprobando el cambio
+
+```{r}
+data_artritis_4 |> count(categorias_de_edad_2)
+```
+
+### Paso 6: Transformar una variable
+
+```{r}
+summary(data_artritis_4$timepo_desde_diagnostico_a)
+```
+
+```{r}
+hist(data_artritis_4$timepo_desde_diagnostico_a)
+```
+
+```{r}
+data_artritis_5 <- data_artritis_4 |>  
+  mutate(log_años_desde_dx = (log(timepo_desde_diagnostico_a + 1)))
+
+```
+
+```{r}
+data_artritis_5 |>  
+  ggplot(aes(x = log_años_desde_dx)) +
+  geom_histogram(bins = 10) +
+  labs(y = "Frecuencia", x = "log(años desde el diagnóstico + 1)")
+```
+
+### paso 6: Transformando valores a valores perdidos
+
+```{r}
+# Use na_if() to set a single value to missing mydat_tibble <- mydat_tibble %>%    mutate(CDAI = na_if(CDAI, 999))  # Use case_when() to set multiple values to missing mydat_tibble <- mydat_tibble %>%    mutate(CDAI = case_when(CDAI %in% c(777, 888, 999) ~ as.double(NA),                           TRUE                       ~ CDAI))
+```
+
+dfg
+
+### Paso 7: Renombrar una variable
+
+Imprimir los nombres. ¿Cuáles necesitann cambio?
+
+```{r}
+names(data_artritis_5)
+```
+
+Cambiando un nombre de variables
+
+```{r}
+data_artritis_6 <- data_artritis_5 %>% 
+  rename(tiempo_desde_dx = timepo_desde_diagnostico_a)
+```
+
+Varios a la vez
+
+```{r}
+data_artritis_6 <- data_artritis_5 %>% 
+  rename(tiempo_desde_dx = timepo_desde_diagnostico_a,
+         indice_de_activ_enf_clin = valor_cdai)
+```
+
+Comprobando
+
+```{r}
+names(data_artritis_6)
+```
