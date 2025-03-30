@@ -1,0 +1,15 @@
+Position | Variable | Variable Label | Unidades | Código| Datos perdidos
+1 | ID | ID de sujeto único | Ninguna | Ninguna | Ninguna
+2 | Edad | Edad en años | Años | 90 = 90+ por propósitos de HIPAA | Ninguna
+3 | Grupo_Edad | Grupo de edad | Ninguna | 1 = 40 a 70 años (“control”), 2 = 75 y más (“mayores”) | Ninguna
+4 | Sexo | Sexo del paciente | Ninguna | 0 = Femenino, 1 = Masculino | Ninguna
+5 | Anios_Dx | Años desde el diagnóstico al momento del estudio | Años | Blancos | 11 entre mayores, 4 entre controles
+6 | CDAI | Valor del Indicador de Actividad de la Enfermedad Clínica (CDAI) | Arbitrario | Rango 0-76. Remisión ≤ 2.8, Baja actividad > 2.8 y ≤ 10, Moderada > 10 y ≤ 22, Alta > 22 | Blancos. Nota: Blancos son informativos, indican pruebas no realizadas en lugar de datos desconocidos. 58 entre mayores, 266 entre controles
+7 | CDAI_Medido | ¿Se midió el CDAI? | Ninguna | 1 = No, 2 = Sí | Ninguna
+8 | DAS_28 | Valor del DAS_28 (puntuación de actividad de la enfermedad para 28 articulaciones) | Arbitrario | Remisión < 2.6, Baja actividad > 2.6 y < 3.2, Moderada > 3.2 y ≤ 5.1, Alta > 5.1 | Blancos. Nota: Blancos son informativos, indican pruebas no realizadas en lugar de datos desconocidos. 67 entre mayores, 397 entre controles
+9 | DAS28_Medido | ¿Se midió el DAS_28? | Ninguna | 1 = No, 2 = Sí | Ninguna
+10 | Esteroides_GT_5 | ¿El paciente tomaba esteroides a más de 5 mg diarios? | Ninguna | 0 = No, 1 = Sí | Blancos. 1 entre mayores (Mismo sujeto para las siguientes variables)
+11 | DMARDs | ¿El paciente recibía fármacos antirreumáticos modificadores de la enfermedad (DMARDs)? | Ninguna | 0 = No, 1 = Sí | Blancos. 1 entre mayores
+12 | Biologicos | ¿El paciente recibía agentes biológicos? | Ninguna | 0 = No, 1 = Sí | Blancos. 1 entre mayores
+13 | DMARDS_Sinteticos | ¿El paciente recibía DMARDs sintéticos? | Ninguna | 0 = No, 1 = Sí | Blancos. 1 entre mayores
+14 | OsteopScreen | ¿El paciente fue evaluado para osteoporosis? | Ninguna | 0 = No, 1 = Sí | Blancos. 4 entre mayores, 4 entre controles

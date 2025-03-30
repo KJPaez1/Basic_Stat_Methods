@@ -1,0 +1,63 @@
+DICCIONARIO DE DATOS - DIABETES
+================================
+
+Variables y descripciones:
+
+1. num_embarazos
+   - Descripción: Número de embarazos
+   - Tipo: Numérica
+   - Unidad: número
+   - Rango: 1-17
+
+2. glucosa_2h
+   - Descripción: Concentración de glucosa en plasma 2 horas después de prueba de tolerancia oral a la glucosa
+   - Tipo: Numérica
+   - Unidad: mg/dL
+
+3. presion_sanguinea
+   - Descripción: Presión arterial diastólica
+   - Tipo: Numérica
+   - Unidad: mm Hg
+
+4. pliegue_triceps
+   - Descripción: Espesor del pliegue cutáneo del tríceps, medida de grasa subcutánea
+   - Tipo: Numérica
+   - Unidad: mm
+
+5. insulina_2h
+   - Descripción: Insulina sérica 2 horas después de prueba de tolerancia oral a la glucosa
+   - Tipo: Numérica
+   - Unidad: microUI/mL
+
+6. imc
+   - Descripción: Índice de masa corporal
+   - Tipo: Numérica
+   - Unidad: kg/m²
+   - Rango: 18.2-67.1
+
+7. historial_diabetes
+   - Descripción: Puntuación de historial familiar de diabetes (ponderado por relación genética)
+   - Tipo: Numérica
+   - Unidad: puntos
+   - Rango: 0.78-2.42
+
+8. edad
+   - Descripción: Edad del paciente
+   - Tipo: Numérica
+   - Unidad: años
+   - Rango: 21-81
+
+9. diabetes_5a
+   - Descripción: Diagnóstico de diabetes en los siguientes 5 años
+   - Tipo: Categórica
+   - Valores:
+     * negativo
+     * positivo
+
+Notas:
+- Todas las variables numéricas mantienen sus valores originales
+- Las unidades se muestran según el sistema métrico internacional
+- La variable diabetes_5a fue convertida a categórica (factor)
+- Los términos médicos siguen las convenciones en español
+- imc = Índice de Masa Corporal
+- microUI/mL = microUnidades Internacionales por mililitro

@@ -1,0 +1,123 @@
+DICCIONARIO DE DATOS - MENINGITIS BACTERIANA AGUDA
+===================================================
+
+Este conjunto de datos es un subconjunto de los datos de un estudio sobre meningitis aguda realizado por la Universidad de Duke, proporcionado por Frank Harrell. Los pacientes presentaban síntomas clínicos de meningitis, que incluyen rigidez dolorosa en el cuello con un rango de movimiento limitado, dolor de cabeza, sensibilidad a la luz, fiebre alta, confusión y letargo. Esta condición puede progresar rápidamente y ser fatal.
+
+Variables y descripciones:
+
+1. numero_caso
+   - Descripción: Número de identificación del caso
+   - Tipo: Numérica
+   - Rango: 1-581
+
+2. año
+   - Descripción: Año de registro (dos dígitos)
+   - Tipo: Numérica
+   - Rango: 68-80 (1968-1980)
+
+3. mes
+   - Descripción: Mes de registro
+   - Tipo: Categórica
+   - Valores: Enero, Febrero, Marzo, Abril, Mayo, Junio, Julio, Agosto, Septiembre, Octubre, Noviembre, Diciembre
+
+4. edad
+   - Descripción: Edad del paciente
+   - Tipo: Numérica
+   - Unidad: años
+
+5. raza
+   - Descripción: Grupo racial del paciente
+   - Tipo: Categórica
+   - Valores: Negro, Blanco
+
+6. sexo
+   - Descripción: Sexo del paciente
+   - Tipo: Categórica
+   - Valores: Masculino, Femenino
+
+7. leucocitos_sangre
+   - Descripción: Recuento de glóbulos blancos en sangre
+   - Tipo: Numérica
+   - Unidad: miles de células por mm³
+
+8. neutrofilos_sangre_pct
+   - Descripción: Porcentaje de neutrófilos en sangre (indicador de infección bacteriana)
+   - Tipo: Numérica
+   - Unidad: porcentaje
+
+9. células_banda_sangre_pct
+   - Descripción: Porcentaje de células banda (neutrófilos inmaduros) en sangre
+   - Tipo: Numérica
+   - Unidad: porcentaje
+
+10. glucosa_sangre
+    - Descripción: Nivel de glucosa en sangre
+    - Tipo: Numérica
+    - Unidad: mg/dL
+
+11. glucosa_lcr
+    - Descripción: Nivel de glucosa en líquido cefalorraquídeo (LCR)
+    - Tipo: Numérica
+    - Unidad: mg/dL
+
+12. proteina_lcr
+    - Descripción: Nivel de proteínas en LCR
+    - Tipo: Numérica
+    - Unidad: mg/dL
+
+13. hematies_lcr
+    - Descripción: Recuento de glóbulos rojos en LCR (indicador de contaminación)
+    - Tipo: Numérica
+    - Unidad: miles de células por mm³
+
+14. leucocitos_lcr
+    - Descripción: Recuento de glóbulos blancos en LCR
+    - Tipo: Numérica
+    - Unidad: miles de células por mm³
+
+15. neutrofilos_lcr_pct
+    - Descripción: Porcentaje de neutrófilos en LCR
+    - Tipo: Numérica
+    - Unidad: porcentaje
+
+16. monocitos_lcr_pct
+    - Descripción: Porcentaje de monocitos en LCR
+    - Tipo: Numérica
+    - Unidad: porcentaje
+
+17. linfocitos_lcr_pct
+    - Descripción: Porcentaje de linfocitos en LCR
+    - Tipo: Numérica
+    - Unidad: porcentaje
+
+18. tinción_gram
+    - Descripción: Resultado de la tinción de Gram
+    - Tipo: Numérica
+    - Rango: 0-6
+
+19. cultivo_lcr
+    - Descripción: Resultado del cultivo de LCR
+    - Tipo: Numérica
+    - Rango: 0-6
+
+20. cultivo_sangre
+    - Descripción: Resultado del cultivo de sangre
+    - Tipo: Numérica
+    - Rango: 0-6
+
+21. conjunto
+    - Descripción: Asignación a conjunto de datos
+    - Tipo: Categórica
+    - Valores: Entrenamiento, Prueba
+
+22. meningitis_bacteriana_aguda
+    - Descripción: Diagnóstico de meningitis bacteriana aguda
+    - Tipo: Categórica
+    - Valores: Ausente, Presente
+
+Notas:
+- LCR = Líquido Cefalorraquídeo
+- Las variables categóricas fueron convertidas de códigos numéricos a etiquetas descriptivas
+- Todas las variables numéricas conservan sus valores originales
+- Los porcentajes representan proporciones del total de células blancas
+- Los cultivos y tinciones con valores 0-6 representan diferentes resultados microbiológicos

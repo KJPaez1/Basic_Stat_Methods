@@ -1,0 +1,158 @@
+DICCIONARIO DE DATOS - ESTUDIO DE CIRROSIS
+=========================================
+
+VARIABLES DEMOGRÁFICAS Y CLÍNICAS
+----------------------------------
+
+1. ID
+   - Descripción: Identificador único del paciente
+   - Tipo: Identificador
+   - Valores: Números únicos
+
+2. Dias_Seguimiento
+   - Descripción: Número de días entre registro y el primer evento (muerte, trasplante o fin del estudio)
+   - Tipo: Numérica continua
+   - Unidad: días
+   - Rango: Desde 41 hasta 4795 días
+
+3. Estado
+   - Descripción: Situación final del paciente
+   - Tipo: Categórica
+   - Valores:
+     * Censurado (C)
+     * Censurado por trasplante hepático (CL)
+     * Fallecido (D)
+
+4. Medicamento
+   - Descripción: Tipo de tratamiento asignado
+   - Tipo: Categórica
+   - Valores:
+     * D-penicilamina
+     * Placebo
+
+5. Edad
+   - Descripción: Edad del paciente al inicio del estudio
+   - Tipo: Numérica continua
+   - Unidad: días
+   - Rango: Desde 12446 hasta 45994 días (34-126 años)
+
+6. Sexo
+   - Descripción: Sexo biológico del paciente
+   - Tipo: Categórica
+   - Valores:
+     * Hombre (M)
+     * Mujer (F)
+
+VARIABLES DE EXAMEN FÍSICO
+--------------------------
+
+7. Ascitis
+   - Descripción: Presencia de líquido en cavidad abdominal
+   - Tipo: Categórica
+   - Valores:
+     * No (N)
+     * Sí (Y)
+
+8. Hepatomegalia
+   - Descripción: Agrandamiento del hígado detectable al examen físico
+   - Tipo: Categórica
+   - Valores:
+     * No (N)
+     * Sí (Y)
+
+9. Aracnoides
+   - Descripción: Presencia de arañas vasculares (telangiectasias)
+   - Tipo: Categórica
+   - Valores:
+     * No (N)
+     * Sí (Y)
+
+10. Edema
+    - Descripción: Presencia y severidad de retención de líquidos
+    - Tipo: Categórica
+    - Valores:
+      * Ausente (N) - Sin edema y sin terapia diurética
+      * Leve (S) - Edema sin diuréticos o controlado con diuréticos
+      * Severo (Y) - Edema persistente a pesar de diuréticos
+
+PRUEBAS DE LABORATORIO
+-----------------------
+
+11. Bilirrubina
+    - Descripción: Nivel de bilirrubina sérica (indicador de función hepática)
+    - Tipo: Numérica continua
+    - Unidad: mg/dl
+    - Rango: 0.3-28.0 mg/dl
+
+12. Colesterol
+    - Descripción: Nivel de colesterol sérico
+    - Tipo: Numérica continua
+    - Unidad: mg/dl
+    - Rango: 120-1775 mg/dl
+
+13. Albumina
+    - Descripción: Nivel de albúmina sérica (proteína hepática)
+    - Tipo: Numérica continua
+    - Unidad: gm/dl
+    - Rango: 1.96-4.64 gm/dl
+
+14. Cobre
+    - Descripción: Excreción de cobre en orina (indicador de metabolismo mineral)
+    - Tipo: Numérica continua
+    - Unidad: μg/día
+    - Rango: 4-588 μg/día
+
+15. Fosfatasa_Alcalina
+    - Descripción: Nivel de enzima fosfatasa alcalina (indicador de colestasis)
+    - Tipo: Numérica continua
+    - Unidad: U/litro
+    - Rango: 289-2076 U/litro
+
+16. SGOT
+    - Descripción: Transaminasa glutámico-oxalacética sérica (enzima hepática)
+    - Tipo: Numérica continua
+    - Unidad: U/ml
+    - Rango: 26.35-457.75 U/ml
+
+17. Trigliceridos
+    - Descripción: Nivel de triglicéridos en sangre
+    - Tipo: Numérica continua
+    - Unidad: mg/dl
+    - Rango: 33-598 mg/dl
+
+18. Plaquetas
+    - Descripción: Recuento de plaquetas (indicador de función esplénica)
+    - Tipo: Numérica continua
+    - Unidad: mil/mm³
+    - Rango: 62-721 mil/mm³
+
+19. Tiempo_Protrombina
+    - Descripción: Tiempo de coagulación (indicador de síntesis hepática)
+    - Tipo: Numérica continua
+    - Unidad: segundos
+    - Rango: 9.0-18.0 segundos
+
+VARIABLE HISTOLÓGICA
+--------------------
+
+20. Etapa
+    - Descripción: Estadio histológico de la cirrosis
+    - Tipo: Categórica ordinal
+    - Valores:
+      * Etapa 1 (leve)
+      * Etapa 2 (moderada)
+      * Etapa 3 (avanzada)
+      * Etapa 4 (terminal)
+
+CODIFICACIÓN DE ESTADO (VARIABLE OBJETIVO)
+------------------------------------------
+Status: Estado codificado numéricamente para análisis:
+  0 = Fallecido (D)
+  1 = Censurado (C)
+  2 = Censurado por trasplante hepático (CL)
+
+NOTAS TÉCNICAS:
+- Todas las variables numéricas representan valores de laboratorio reales
+- Las abreviaturas médicas (SGOT) se mantienen por convención internacional
+- Los rangos mostrados corresponden a los valores observados en el estudio
+- Los tiempos se midieron desde la inclusión en el estudio hasta el evento

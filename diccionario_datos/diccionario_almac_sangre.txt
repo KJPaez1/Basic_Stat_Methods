@@ -1,0 +1,145 @@
+DICCIONARIO DE DATOS - ALMACENAMIENTO DE SANGRE
+===============================================
+
+Este conjunto de datos contiene 316 hombres que se sometieron a una prostatectomía radical, recibieron una transfusión durante o dentro de los 30 días posteriores al procedimiento quirúrgico y tenían datos de seguimiento de PSA disponibles. La principal exposición de interés fue el grupo de duración del almacenamiento de los glóbulos rojos (RBC). También se recopilaron varios factores demográficos, basales y pronósticos. El desenlace fue el tiempo hasta la recurrencia bioquímica del cáncer. El conjunto de datos está limpio y completo, sin valores atípicos ni problemas de datos.
+Variables y descripciones:
+
+Study Design
+Retrospective Cohort Study
+
+1. Grupo_edad_GR
+   - Descripción: Grupo de duración de almacenamiento de glóbulos rojos
+   - Tipo: Categórica
+   - Valores:
+     * "Joven" (≤13 días)
+     * "Intermedio" (13-18 días)
+     * "Mayor" (≥18 días)
+
+2. Edad_mediana_GR
+   - Descripción: Edad mediana de las unidades de GR transfundidas
+   - Tipo: Numérica
+   - Unidad: días
+
+3. Edad
+   - Descripción: Edad del paciente
+   - Tipo: Numérica
+   - Unidad: años
+
+4. Raza_afroamericana
+   - Descripción: Indica si el paciente es de raza afroamericana
+   - Tipo: Categórica
+   - Valores:
+     * "No"
+     * "Sí"
+
+5. Historia_familiar
+   - Descripción: Historia familiar de la enfermedad
+   - Tipo: Categórica
+   - Valores:
+     * "No"
+     * "Sí"
+
+6. Volumen_prostata
+   - Descripción: Volumen de la próstata
+   - Tipo: Numérica
+   - Unidad: gramos (g)
+
+7. Volumen_tumoral
+   - Descripción: Volumen del tumor
+   - Tipo: Categórica
+   - Valores:
+     * "Bajo"
+     * "Medio"
+     * "Alto"
+
+8. Estadio_T
+   - Descripción: Estadio clínico T del tumor
+   - Tipo: Categórica
+   - Valores:
+     * "T1-T2a"
+     * "T2b-T3"
+
+9. Gleason_biopsia
+   - Descripción: Puntuación Gleason de la biopsia
+   - Tipo: Categórica
+   - Valores:
+     * "Gleason 0-6"
+     * "Gleason 7"
+     * "Gleason 8-10"
+
+10. BN_positivo
+    - Descripción: Cuello vesical positivo
+    - Tipo: Categórica
+    - Valores:
+      * "No"
+      * "Sí"
+
+11. Confinamiento_organo
+    - Descripción: Tumor confinado al órgano
+    - Tipo: Categórica
+    - Valores:
+      * "No"
+      * "Sí"
+
+12. PSA_preoperatorio
+    - Descripción: Antígeno prostático específico preoperatorio
+    - Tipo: Numérica
+    - Unidad: ng/mL
+
+13. Terapia_previa
+    - Descripción: Terapia preoperatoria recibida
+    - Tipo: Categórica
+    - Valores:
+      * "No"
+      * "Sí"
+
+14. Unidades_transfundidas
+    - Descripción: Número de unidades alogénicas transfundidas
+    - Tipo: Numérica
+
+15. Gleason_quirurgico
+    - Descripción: Puntuación Gleason quirúrgica
+    - Tipo: Categórica
+    - Valores:
+      * "No asignado"
+      * "Gleason 0-6"
+      * "Gleason 7"
+      * "Gleason 8-10"
+
+16. Terapia_adyuvante
+    - Descripción: Recibió terapia adyuvante
+    - Tipo: Categórica
+    - Valores:
+      * "No"
+      * "Sí"
+
+17. Radioterapia_adyuvante
+    - Descripción: Recibió radioterapia adyuvante
+    - Tipo: Categórica
+    - Valores:
+      * "No"
+      * "Sí"
+
+18. Recurrencia_bioquimica
+    - Descripción: Recurrencia bioquímica del cáncer de próstata
+    - Tipo: Categórica
+    - Valores:
+      * "No"
+      * "Sí"
+
+19. Censura
+    - Descripción: Indicador de censura
+    - Tipo: Categórica
+    - Valores:
+      * "No"
+      * "Sí"
+
+20. Tiempo_hasta_recurrencia
+    - Descripción: Tiempo hasta la recurrencia bioquímica
+    - Tipo: Numérica
+    - Unidad: meses
+
+Notas:
+- Todas las variables categóricas están codificadas como factores
+- Los términos médicos (Gleason, PSA) se mantienen en su forma estándar
+- "Sí"/"No" se utilizan consistentemente para variables binarias

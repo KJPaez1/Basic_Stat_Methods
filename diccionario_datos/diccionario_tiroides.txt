@@ -1,0 +1,143 @@
+DICCIONARIO DE DATOS - CÁNCER DIFERENCIADO DE TIROIDES
+=====================================================
+
+VARIABLES DEMOGRÁFICAS
+----------------------
+
+1. Edad
+   - Descripción: Edad del paciente en años al momento del diagnóstico
+   - Tipo: Numérica
+   - Rango: 15-82 años
+
+2. Genero
+   - Descripción: Sexo del paciente
+   - Tipo: Categórica
+   - Valores: 
+     * Femenino
+     * Masculino
+
+3. Fumador
+   - Descripción: Consumo actual de tabaco
+   - Tipo: Categórica
+   - Valores:
+     * No
+     * Sí
+
+4. Historia_Fumador
+   - Descripción: Historia previa de tabaquismo
+   - Tipo: Categórica
+   - Valores:
+     * No
+     * Sí
+
+5. Historia_Radioterapia
+   - Descripción: Exposición previa a radioterapia en región cervical
+   - Tipo: Categórica
+   - Valores:
+     * No
+     * Sí
+
+VARIABLES CLÍNICAS
+------------------
+
+6. Funcion_Tiroidea
+   - Descripción: Estado funcional de la glándula tiroides
+   - Tipo: Categórica
+   - Valores:
+     * Eutiroideo
+     * Hipertiroidismo clínico
+     * Hipertiroidismo subclínico
+     * Hipotiroidismo clínico
+     * Hipotiroidismo subclínico
+
+7. Examen_Fisico
+   - Descripción: Hallazgos en la exploración física tiroidea
+   - Tipo: Categórica
+   - Valores:
+     * Bocio nodular único-izquierdo
+     * Bocio nodular único-derecho
+     * Bocio multinodular
+     * Bocio difuso
+     * Normal
+
+8. Adenopatias
+   - Descripción: Presencia y localización de adenopatías cervicales
+   - Tipo: Categórica
+   - Valores:
+     * No
+     * Sí
+     * Derecha
+     * Izquierda
+     * Bilateral
+     * Extenso
+
+VARIABLES PATOLÓGICAS
+---------------------
+
+9. Patologia
+   - Descripción: Tipo histológico del carcinoma
+   - Tipo: Categórica
+   - Valores:
+     * Microcarcinoma papilar
+     * Carcinoma papilar
+     * Carcinoma folicular
+     * Carcinoma de células Hürthle
+
+10. Focalidad
+    - Descripción: Número de focos tumorales
+    - Tipo: Categórica
+    - Valores:
+      * Unifocal
+      * Multifocal
+
+11. Riesgo
+    - Descripción: Estratificación de riesgo según criterios ATA
+    - Tipo: Categórica
+    - Valores:
+      * Bajo
+      * Intermedio
+      * Alto
+
+CLASIFICACIÓN TNM
+----------------
+
+12. T
+    - Descripción: Extensión del tumor primario (T1a, T1b, T2, T3a, T3b, T4a, T4b)
+    - Tipo: Categórica
+
+13. N
+    - Descripción: Afectación ganglionar regional (N0, N1a, N1b)
+    - Tipo: Categórica
+
+14. M
+    - Descripción: Presencia de metástasis a distancia (M0, M1)
+    - Tipo: Categórica
+
+15. Etapa
+    - Descripción: Estadificación según sistema AJCC (I, II, III, IVA, IVB)
+    - Tipo: Categórica
+
+VARIABLES DE SEGUIMIENTO
+------------------------
+
+16. Respuesta
+    - Descripción: Respuesta al tratamiento inicial
+    - Tipo: Categórica
+    - Valores:
+      * Excelente
+      * Indeterminado
+      * Incompleto bioquímico
+      * Incompleto estructural
+
+17. Recurrencia
+    - Descripción: Recurrencia de la enfermedad
+    - Tipo: Categórica
+    - Valores:
+      * No
+      * Sí
+
+NOTAS TÉCNICAS:
+- La clasificación TNM se mantiene en formato original por convención internacional
+- Los términos histológicos siguen la nomenclatura de la OMS
+- Las categorías de riesgo siguen los criterios de la American Thyroid Association (ATA)
+- Los valores de "Examen_Fisico" describen los hallazgos clínicos al diagnóstico
