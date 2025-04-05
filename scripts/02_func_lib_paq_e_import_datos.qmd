@@ -17,11 +17,11 @@ glucosa = c(150, 120, 101, 170)
 ```
 
 ```{r}
-mean(x = glucosa) ## un argumento es el dato a utilizar
+mean(glucosa) ## un argumento es el dato a utilizar
 ```
 
 ```{r}
-sd(x = glucosa) 
+sd(glucosa) 
 ```
 
 En algunos casos, los argumentos incluyen un signo de igual (=), lo que indica que tienen un valor por defecto y, por lo tanto, su especificación es opcional.
@@ -69,6 +69,7 @@ Cuando se instala un paquete en R, toda su información se almacena en un direct
 Para instalar paquetes en R, se usa la función install.packages(). El nombre del paquete debe especificarse entre comillas:
 
 ```{r}
+install.packages("here")
 install.packages("tidyverse")
 install.packages("survival")
 ```
@@ -93,8 +94,8 @@ rio: Su función import() selecciona automáticamente la mejor opción para impo
 Primero instalamos los paquetes
 
 ```{r}
-install.packages("here")
-install.packages("rio")
+#install.packages("here")
+#install.packages("rio") # Selección automatica de funciones
 ```
 
 Cargamos los paquetes
@@ -116,22 +117,22 @@ nombre_del_dataset = import(here("nombrecarpeta", "nombre_archivo.extensión"))
 data_artritis = import(here("data", "s02_treat_artritis.csv"))
 ```
 
-#### Importanto un archivo .xlsx
+### Importanto un archivo .xlsx
 
 ```{r}
 data_artritis_1 = import(here("data", "s02_treat_artritis.xlsx"))
 ```
 
-#### Importanto un archivo SPSS, .sav
+### Importanto un archivo SPSS, .sav
 
 ```{r}
 data_artritis_2 = import(here("data", "s02_treat_artritis.sav"))
 ```
 
-## Importanto un archivo .Rdata
+### Importanto un archivo .Rdata
 
 ```{r}
-data_artritis_3 = import(here("data", "s02_treat_artritis.sav"))
+data_artritis_3 = import(here("data", "s02_treat_artritis.Rdata"))
 ```
 
 Es importante incluir la extensión del archivo para que R la función pueda ejecutarse correctamente.
