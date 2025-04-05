@@ -4,7 +4,7 @@ format: html
 editor: visual
 ---
 
-# Instalar paquetes
+## Instalar paquetes
 
 ```{r}
 # install.packages("tidyverse")
@@ -15,7 +15,7 @@ editor: visual
 # install.packages("visdat")
 ```
 
-# Cargar paquetes
+## Cargar paquetes
 
 ```{r}
 library(tidyverse)
@@ -30,7 +30,7 @@ library(janitor)
 data_artritis = import(here("data", "s03_treat_artritis.csv"))
 ```
 
-# Vistazo al contenido
+## Vistazo al contenido
 
 ### ¿Cuántas variables y observaciones hay?
 
@@ -115,20 +115,19 @@ data_artritis_3 = remove_empty(data_artritis_2, which = c("rows", "cols"))
 ### Corregir nombres, celdas vacías a NA y eliminar columnas o filas vacías.
 
 ```{r}
-data_artritis_1 = data_artritis |>
-  clean_names() |>
-  mutate_if(is.character, list(~ na_if(., ""))) |>
+data_artritis_1 = data_artritis |> 
+  clean_names() |> 
+  mutate_if(is.character, list(~ na_if(., ""))) |> 
   remove_empty(which = c("rows", "cols"))
 ```
 
-## Inspección tabular
+## Paso 4: corregir errores ortográficos o valores inválidos
+
+### Inspección tabular
 
 ```{r}
-data_artritis_1 |> 
-  count(categorias_de_edad) # Cambia de variable categórica
+data_artritis_1 |> count(categorias_de_edad) # Cambia de variable categórica
 ```
-
-### Paso 4: corregir errores ortográficos o valores inválidos
 
 Transformando de data.frame a as tibble
 
@@ -140,11 +139,12 @@ Corregir errores ortográficos usando `mutate()` y `case_when()`
 
 ```{r}
 data_artritis_3 = data_artritis_2 |> 
-  mutate(sexo = case_when(sexo == "f" ~ "Femenino",
-                          sexo == "Maculino" ~ "Masculino",
-                          sexo == "Masculin" ~ "Masculino",
-                          sexo == "masculino" ~ "Masculino",
-                          TRUE ~ sexo))
+  mutate(sexo = case_when(
+    sexo == "f" ~ "Femenino", 
+    sexo == "Maculino" ~ "Masculino", 
+    sexo == "Masculin" ~ "Masculino",
+    sexo == "masculino" ~ "Masculino",
+    TRUE ~ sexo))
 ```
 
 ```{r}
@@ -156,7 +156,7 @@ data_artritis_3 = data_artritis_2 |>
     )
 ```
 
-### Paso 5: Colapsar una variable categórica en menos niveles
+## Paso 5: Colapsar una variable categórica en menos niveles
 
 Un vistazo a la variable de interés
 
@@ -181,7 +181,9 @@ Comprobando el cambio
 data_artritis_4 |> count(categorias_de_edad_2)
 ```
 
-### Paso 6: Transformar una variable
+## Paso 6: Transformar una variable
+
+Transformación a logaritmo
 
 ```{r}
 summary(data_artritis_4$timepo_desde_diagnostico_a)
@@ -204,33 +206,53 @@ data_artritis_5 |>
   labs(y = "Frecuencia", x = "log(años desde el diagnóstico + 1)")
 ```
 
-### paso 6: Transformando valores a valores perdidos
+Transformación a binario
 
 ```{r}
-# Use na_if() to set a single value to missing mydat_tibble <- mydat_tibble %>%    mutate(CDAI = na_if(CDAI, 999))  # Use case_when() to set multiple values to missing mydat_tibble <- mydat_tibble %>%    mutate(CDAI = case_when(CDAI %in% c(777, 888, 999) ~ as.double(NA),                           TRUE                       ~ CDAI))
+data_artritis_6 = data_artritis_5 |>
+  mutate(
+    tiempo_desde_dx_c = case_when(
+      timepo_desde_diagnostico_a <  10 ~ "< 10",
+      timepo_desde_diagnostico_a >= 10 ~ ">= 10"
+    )
+  ) |>
+  mutate(tiempo_desde_dx_c = factor(tiempo_desde_dx_c, levels = "< 10", ">= 10"))
 ```
 
-dfg
+Transformando valores a valores perdidos usando la función `na_if()`
 
-### Paso 7: Renombrar una variable
+```{r}
+data_artritis_7 = data_artritis_6 |> 
+  mutate(timepo_desde_diagnostico_a = na_if(timepo_desde_diagnostico_a, -7))
+```
+
+Transformando valores a valores perdidos usando la función `case_when()`
+
+```{r}
+data_artritis_7 = data_artritis_6 |> 
+  mutate(edad_a = case_when(edad_a %in% c(3, 999) ~ NA,
+                            TRUE ~ edad_a))
+```
+
+## Paso 7: Renombrar una variable
 
 Imprimir los nombres. ¿Cuáles necesitann cambio?
 
 ```{r}
-names(data_artritis_5)
+names(data_artritis_7)
 ```
 
 Cambiando un nombre de variables
 
 ```{r}
-data_artritis_6 <- data_artritis_5 %>% 
+data_artritis_8 <- data_artritis_7 |>  
   rename(tiempo_desde_dx = timepo_desde_diagnostico_a)
 ```
 
 Varios a la vez
 
 ```{r}
-data_artritis_6 <- data_artritis_5 %>% 
+data_artritis_8 <- data_artritis_7 |>  
   rename(tiempo_desde_dx = timepo_desde_diagnostico_a,
          indice_de_activ_enf_clin = valor_cdai)
 ```
@@ -238,5 +260,5 @@ data_artritis_6 <- data_artritis_5 %>%
 Comprobando
 
 ```{r}
-names(data_artritis_6)
+names(data_artritis_8)
 ```
