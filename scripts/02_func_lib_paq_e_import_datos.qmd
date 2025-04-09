@@ -24,11 +24,19 @@ mean(glucosa) ## un argumento es el dato a utilizar
 sd(glucosa) 
 ```
 
+```{r}
+median(glucosa)
+```
+
 En algunos casos, los argumentos incluyen un signo de igual (=), lo que indica que tienen un valor por defecto y, por lo tanto, su especificación es opcional.
 
 ### Obteniendo ayuda sobre la función de la función
 
 La pestaña de ayuda en RStudio (cuadrante inferior derecho) permite conocer en detalle el uso de las funciones. Para obtener información sobre una función, basta con ejecutar:
+
+```{r}
+?mean
+```
 
 ### Los argumentos en las funciones
 
@@ -81,6 +89,7 @@ La instalación solo se realiza una vez, pero cada vez que se abre RStudio es ne
 ```{r}
 library(tidyverse)
 library(survival)
+library(here)
 ```
 
 # 4. Importando datos en R
@@ -95,7 +104,7 @@ Primero instalamos los paquetes
 
 ```{r}
 #install.packages("here")
-#install.packages("rio") # Selección automatica de funciones
+install.packages("rio") # Selección automatica de funciones
 ```
 
 Cargamos los paquetes
@@ -137,7 +146,21 @@ data_artritis_3 = import(here("data", "s02_treat_artritis.Rdata"))
 
 Es importante incluir la extensión del archivo para que R la función pueda ejecutarse correctamente.
 
-# 5. `dataframes`
+# 5. Exportando datos
+
+```{r}
+write_excel_csv(nombre_del_objeto, "nombredecarpeta/nombre_archivo.csv")
+```
+
+Ejemplo
+
+```{r}
+write_excel_csv(data_diabetes, "data_diabetes.csv")
+```
+
+El archivo se guardará en el proyecto
+
+# 6. `dataframes`
 
 Los dataframes son datos ordenados de una forma estandard, donde las columnas (vectores) son variables y las filas son observaciones.
 
