@@ -5,7 +5,7 @@ format: html
 editor: visual
 ---
 
-# Paquetes para visualizar datos
+# Paquetes para resumir datos
 
 ```{r}
 library(tidyverse)
@@ -16,25 +16,22 @@ library(rio)
 # Cargando los datos
 
 ```{r}
-data_diabetes_0 <- rio::import(here::here("data", "s04_diabetes.csv"))
+data_diabetes <- import(here("data", "s04_diabetes.csv"))
 ```
+
+## Recuerda
+
+Antes de iniciar el análisis descriptivo de tus datos, estos deben ser inspeccionados para la eliminación de errores en la codificación o transformación de valores perdidos o anómalos.
+
+La transformación de variable (por ejemplo, para obtener una distribución similar a la normal) puede ocurrir en etapas avanzadas del análisis.
 
 ### La "estructura" de los datos
-
-```{r}
-str(data_diabetes_0)
-```
-
-```{r}
-data_diabetes <- data_diabetes_0 |> 
-  mutate_if(is.character, as.factor)
-```
 
 ```{r}
 str(data_diabetes)
 ```
 
-# Resumen de variables categóricas
+# 1. Resumen de variables categóricas
 
 Para resumir variables categóricas usamos frecuencias simples y frecuencias porcentuales. Es importante resumir, también, los datos perdidos. Resumen con la función `table()` para la variable `Diabetes`.
 
@@ -43,7 +40,7 @@ table(data_diabetes$Diabetes, useNA = "ifany")
 ```
 
 ```{r}
-table(data_diabetes_0$insulina_cat, useNA = "ifany")
+table(data_diabetes$insulina_cat, useNA = "ifany")
 ```
 
 Con tidyverse
@@ -58,8 +55,7 @@ Valores perdidos en proporciones
 ```{r}
 prop.table(table(data_diabetes$insulina_cat, useNA = "ifany"))
 ```
-
-# Resumen de variables continuas
+# 2. Resumen de variables continuas
 
 Para resumir variables numéricas hay funciones en la base de R que permiten calcular los principales estadísticos. Por ejemplo, la función `mean()` y `sd()`, calcula el promedio y desviación estandard de un conjunto de datos.
 
@@ -125,9 +121,16 @@ hist(data_diabetes$imc)
 hist(data_diabetes$insulina)
 ```
 
-# Por otra variable
+# \[resumen\] Por otra variable
 
-Frecuentemente es importante realizar el resumen de datos por otra variable. Por ejemplo, la media de edad según estado de diabetes. En R, podemos calcular esto usando la función `group_by()` y `summarize()`
+Frecuentemente es importante realizar el resumen de datos por otra variable. Por ejemplo, la media de edad según estado de diabetes o el número de individuos por grupo de edad. En R, podemos calcular esto usando la función `group_by()` y `summarize()`
+
+```{r}
+data_diabetes |> 
+  group_by(grupo_edad) |> 
+  summarise(n_observ = n(),
+            porcentaje = (n_observ / nrow(data_diabetes)*100))
+```
 
 ```{r}
 data_diabetes |>  
@@ -143,17 +146,167 @@ data_diabetes |>
   summarize(mean = mean(Glucosa, na.rm = T))
 ```
 
-# "Tabla 1" con gtsummary
+Otros estadísticos
 
 ```{r}
-library(gtsummary)
+data_diabetes |>  
+  group_by(Diabetes, grupo_edad) |> 
+  summarize(promedio = mean(Glucosa, na.rm = TRUE),
+            DE = sd(Glucosa, na.rm = TRUE),
+            max_valor_glucosa = max(insulina, na.rm = TRUE))
+```
+Estadística descriptiva condicional
+
+```{r}
+data_diabetes |>  
+  group_by(grupo_edad) |> 
+  summarize(max_imc_diab = max(imc[Diabetes == "Si"], na.rm = TRUE),
+            max_imc_no_diab = max(imc[Diabetes == "No"], na.rm = TRUE),
+            prom_imc_diab = max(imc[Diabetes == "Si"], na.rm = TRUE),
+            prom_imc_no_diab = max(imc[Diabetes == "No"], na.rm = TRUE))
+```
+Percentiles del nivel de glucosa por grupo de edad solo en participantes con 
+diabetes usando la función `filter()`
+
+```{r}
+data_diabetes |> 
+  filter(Diabetes == "Si") |> 
+  group_by(grupo_edad) |> 
+  summarize(p25 = quantile(Glucosa, probs = 0.25, na.rm=T),
+            p50 = quantile(Glucosa, probs = 0.50, na.rm=T),
+            p75 = quantile(Glucosa, probs = 0.75, na.rm=T))
+```
+
+Usando `across()` para multiples estadísticos descriptivos para multiples 
+variables
+
+```{r}
+data_diabetes |> 
+  group_by(Diabetes) |> 
+  summarize(across(.cols = c(Glucosa, grosor_pliegue_cut_triceps, 
+                             insulina, Edad, imc),
+                   .fns = list("promedio" = mean, "DE" = sd, 
+                               "máximo" = max),
+                   na.rm = TRUE))
 ```
 
 ```{r}
 data_diabetes |> 
-  select(Edad, Embarazos, Glucosa, pres_sangu, 
-         grosor_pliegue_cut_triceps, insulina, Diabetes) |> 
-  tbl_summary(by = Diabetes) |> 
-  add_overall() |> 
-  add_p()
+  group_by(Diabetes) |> 
+  summarize(across(.cols = where(is.numeric),
+                   .fns = list("promedio" = mean, "DE" = sd, 
+                               "máximo" = max),
+                   na.rm = TRUE))
 ```
+
+
+# La "Tabla 1" con gtsummary
+
+```{r}
+#install.packages("finalfit")
+```
+
+```{r}
+library(gtsummary)
+library(finalfit)
+```
+
+Tabla 1 básico
+
+```{r}
+data_diabetes |> 
+  select(Edad, grupo_edad, imc, Embarazos, Glucosa, 
+         insulina, grosor_pliegue_cut_triceps, Diabetes) |> 
+  tbl_summary()
+```
+
+```{r}
+data_diabetes |> 
+  select(Edad, grupo_edad, imc, Embarazos, Glucosa, 
+         insulina, grosor_pliegue_cut_triceps, Diabetes) |> 
+  tbl_summary(
+    by = Diabetes
+  )
+```
+Pero las tablas deben ser autoexplicativas...
+
+## Configurando el estilo e idioma
+
+```{r}
+theme_gtsummary_language(language = "es") # idioma es = español
+theme_gtsummary_journal(journal = "jama")
+```
+```{r}
+data_diabetes |> 
+  select(Edad, grupo_edad, imc, Embarazos, Glucosa, 
+         insulina, grosor_pliegue_cut_triceps, Diabetes) |> 
+  tbl_summary(
+    by = Diabetes
+  )
+```
+Necesitaremos el paquete finalfit para recodificar variables categóricas
+```{r}
+library(finalfit)
+```
+
+```{r}
+data_diabetes_0 = data_diabetes |>
+  mutate(
+    Edad = ff_label(Edad, "Edad (años)"),
+    
+    grupo_edad = as.factor(grupo_edad) |>
+      fct_relevel("≤25", "26-35", "36-50", ">50") |> 
+      ff_label("Grupo etario"),
+    
+    imc = ff_label(imc, "Índice de masa corporal"),
+    
+    Embarazos = ff_label(Embarazos,"Número de embarazos"),
+    
+    Diabetes = as.factor(Diabetes) |>
+      fct_recode("Sí" = "Si",
+                 "No" = "No") |>
+      fct_relevel("Sí", "No") |> 
+      ff_label("Diabetes mellitus"),
+    
+    insulina_cat = as_factor(insulina_cat) |> 
+      fct_relevel("Baja (<30)", "Normal (30-150)", "Alta (>150)") |>
+      ff_label("Niveles de insulina (mIU/L)"),
+    
+    Glucosa = ff_label(Glucosa, "Glucosa (mg/dL)")
+    )
+```
+
+```{r}
+tabla_1.v1 = data_diabetes_0 |> 
+  select(Edad, grupo_edad, imc, Embarazos, insulina_cat, Diabetes, Glucosa) |> 
+  tbl_summary(by = Diabetes) 
+```
+
+Añadiendo nombre a la variable dependiente
+
+```{r}
+tabla_1.v2 = data_diabetes_0 |> 
+  select(Edad, grupo_edad, imc, Embarazos, insulina_cat, Diabetes, Glucosa) |> 
+  tbl_summary(by = Diabetes) |> 
+  modify_spanning_header(all_stat_cols() ~ "**Diabetes mellitus**") |>
+  add_overall() 
+```
+
+```{r}
+tabla_1 = data_diabetes_0 |> 
+  select(Edad, grupo_edad, imc, Embarazos, insulina_cat, Diabetes, Glucosa) |> 
+  tbl_summary(by = Diabetes) |> 
+  modify_spanning_header(all_stat_cols() ~ "**Diabetes mellitus**") |>
+  add_overall() |> 
+  modify_caption("**Tabla 1**. Características de los pacientes del departamento de medicina interna del Hospital Regional de Ica")
+```
+
+```{r}
+library(flextable)
+```
+
+```{r}
+tabla_1_flex = as_flex_table(tabla_1)
+save_as_docx(tabla_1_flex, path = "tabla_1_flex.docx")
+```
+
