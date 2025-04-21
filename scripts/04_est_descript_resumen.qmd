@@ -7,10 +7,23 @@ editor: visual
 
 # Paquetes para resumir datos
 
+Instalar paquetes
+
+```{r}
+#install.packages("gtsummary")
+#install.packages("finalfit")
+#install.packages("flextable")
+```
+
+Cargar paquetes
+
 ```{r}
 library(tidyverse)
 library(here)
 library(rio)
+library(gtsummary) ## Para la "Tabla 1"
+library(finalfit)
+library(flextable)
 ```
 
 # Cargando los datos
@@ -47,7 +60,7 @@ Con tidyverse
 
 ```{r}
 data_diabetes |> 
-  dplyr::count(insulina_cat, sort = T)
+  dplyr::count(insulina_cat, sort = TRUE)
 ```
 
 Valores perdidos en proporciones
@@ -55,6 +68,7 @@ Valores perdidos en proporciones
 ```{r}
 prop.table(table(data_diabetes$insulina_cat, useNA = "ifany"))
 ```
+
 # 2. Resumen de variables continuas
 
 Para resumir variables numéricas hay funciones en la base de R que permiten calcular los principales estadísticos. Por ejemplo, la función `mean()` y `sd()`, calcula el promedio y desviación estandard de un conjunto de datos.
@@ -135,7 +149,7 @@ data_diabetes |>
 ```{r}
 data_diabetes |>  
   group_by(Diabetes) |> 
-  summarize(mean = mean(Glucosa, na.rm = T))
+  summarize(promedio = mean(Glucosa, na.rm = T))
 ```
 
 Podemos hacer resumenes incluso más complejos. Por ejemplo, calcular la media de glucosa por estado de `diabetes` y categoría de `grupo_edad`. Para esto, añade la variable edad_cat a la función `group_by()`
@@ -143,7 +157,7 @@ Podemos hacer resumenes incluso más complejos. Por ejemplo, calcular la media d
 ```{r}
 data_diabetes |>  
   group_by(Diabetes, grupo_edad) |> 
-  summarize(mean = mean(Glucosa, na.rm = T))
+  summarize(promedio = mean(Glucosa, na.rm = T))
 ```
 
 Otros estadísticos
@@ -151,22 +165,23 @@ Otros estadísticos
 ```{r}
 data_diabetes |>  
   group_by(Diabetes, grupo_edad) |> 
-  summarize(promedio = mean(Glucosa, na.rm = TRUE),
+  summarize(promedio_glucosa = mean(Glucosa, na.rm = TRUE),
             DE = sd(Glucosa, na.rm = TRUE),
-            max_valor_glucosa = max(insulina, na.rm = TRUE))
+            max_valor_glucosa = max(Glucosa, na.rm = TRUE))
 ```
-Estadística descriptiva condicional
+
+Estadística descriptiva condicional: resumen por grupo de estado de diabetes
 
 ```{r}
 data_diabetes |>  
   group_by(grupo_edad) |> 
   summarize(max_imc_diab = max(imc[Diabetes == "Si"], na.rm = TRUE),
             max_imc_no_diab = max(imc[Diabetes == "No"], na.rm = TRUE),
-            prom_imc_diab = max(imc[Diabetes == "Si"], na.rm = TRUE),
-            prom_imc_no_diab = max(imc[Diabetes == "No"], na.rm = TRUE))
+            prom_imc_diab = mean(imc[Diabetes == "Si"], na.rm = TRUE),
+            prom_imc_no_diab = mean(imc[Diabetes == "No"], na.rm = TRUE))
 ```
-Percentiles del nivel de glucosa por grupo de edad solo en participantes con 
-diabetes usando la función `filter()`
+
+Percentiles del nivel de glucosa por grupo de edad solo en participantes con diabetes usando la función `filter()`
 
 ```{r}
 data_diabetes |> 
@@ -177,8 +192,7 @@ data_diabetes |>
             p75 = quantile(Glucosa, probs = 0.75, na.rm=T))
 ```
 
-Usando `across()` para multiples estadísticos descriptivos para multiples 
-variables
+Usando `across()` para multiples estadísticos descriptivos para multiples variables
 
 ```{r}
 data_diabetes |> 
@@ -199,16 +213,15 @@ data_diabetes |>
                    na.rm = TRUE))
 ```
 
-
 # La "Tabla 1" con gtsummary
 
 ```{r}
 #install.packages("finalfit")
+#install.packages("gtsummary")
 ```
 
 ```{r}
 library(gtsummary)
-library(finalfit)
 ```
 
 Tabla 1 básico
@@ -228,6 +241,7 @@ data_diabetes |>
     by = Diabetes
   )
 ```
+
 Pero las tablas deben ser autoexplicativas...
 
 ## Configurando el estilo e idioma
@@ -236,6 +250,7 @@ Pero las tablas deben ser autoexplicativas...
 theme_gtsummary_language(language = "es") # idioma es = español
 theme_gtsummary_journal(journal = "jama")
 ```
+
 ```{r}
 data_diabetes |> 
   select(Edad, grupo_edad, imc, Embarazos, Glucosa, 
@@ -244,7 +259,9 @@ data_diabetes |>
     by = Diabetes
   )
 ```
+
 Necesitaremos el paquete finalfit para recodificar variables categóricas
+
 ```{r}
 library(finalfit)
 ```
@@ -302,11 +319,11 @@ tabla_1 = data_diabetes_0 |>
 ```
 
 ```{r}
+install.packages("flextable")
 library(flextable)
 ```
 
 ```{r}
-tabla_1_flex = as_flex_table(tabla_1)
-save_as_docx(tabla_1_flex, path = "tabla_1_flex.docx")
+tabla_1_flex = as_flex_table(tabla_1) # Convertir a flex table
+save_as_docx(tabla_1_flex, path = "tabla_1_flex.docx") # Guardar tabla
 ```
-
