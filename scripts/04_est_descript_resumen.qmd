@@ -260,11 +260,7 @@ data_diabetes |>
   )
 ```
 
-Necesitaremos el paquete finalfit para recodificar variables categóricas
-
-```{r}
-library(finalfit)
-```
+## Recodificación de variables y adición de nombres correctos a variables
 
 ```{r}
 data_diabetes_0 = data_diabetes |>
