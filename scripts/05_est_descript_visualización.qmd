@@ -151,6 +151,7 @@ data_mama |>
   labs(y = "Frecuencia", 
        x = "Hemoglobina (mg/dL)")
 ```
+
 Modificando color en gráficos de barras
 
 ```{r}
@@ -159,6 +160,7 @@ data_mama |>
   geom_bar() +
   labs(y = "Frecuencia", x = "Estado Marital")
 ```
+
 ## 2.2. Con Boxplots
 
 Con ggplot
@@ -219,6 +221,7 @@ addmargins(prop.table(
 # 4. Visualizando distribución de variables continuas *versus* categóricas
 
 ## 4.1. Gráficos de barras
+
 ```{r}
 data_mama |> 
   filter(!is.na(Recep_estrogeno) & !is.na(Estadio_T)) |> 
@@ -232,6 +235,7 @@ data_mama |>
                 width = 0.5, size = 0.75, position = position_dodge(0.9)) +
   labs(y = "Expresión de KI67", fill = "Estadio_T", x = "Recep_estrogeno")
 ```
+
 ## 4.1. Boxplots lado a lado
 
 ```{r}
@@ -241,6 +245,7 @@ data_mama %>%
   geom_boxplot() +
   labs(y = "Tamaño", x = "Estadio T")
 ```
+
 ```{r}
 data_mama %>% 
   filter(!is.na(Tam_tumor)& !is.na(Estadio_T) & !is.na(Recep_estrogeno))  |> 
@@ -248,6 +253,7 @@ data_mama %>%
   geom_boxplot() +
   labs(y = "Tamaño", x = "Estadio T")
 ```
+
 ```{r}
 data_mama %>% 
   filter(!is.na(Tam_tumor)& !is.na(Estadio_T) & !is.na(Recep_estrogeno))  |> 
@@ -255,6 +261,7 @@ data_mama %>%
   geom_boxplot() +
   labs(y = "Tamaño", x = "Receptor")
 ```
+
 ## 4.3. Filas de histogramas
 
 ```{r}
@@ -268,7 +275,8 @@ data_mama %>%
   facet_wrap(~Estadio_N, nrow = 4) +
   ggtitle("Hemoglobina por Estadio N")
 ```
-5. Contínuo versus contínuo
+
+5.  Contínuo versus contínuo
 
 ```{r}
 data_mama %>% 
@@ -278,6 +286,7 @@ data_mama %>%
   geom_smooth(method = "lm", se = TRUE) +
   labs(x = "Albumina (mg/dL)", y = "Hemoglobina (mg/dL)")
 ```
+
 ```{r}
 data_mama %>% 
   ggplot(aes(x = Albumina_g_dL, y = hemoglobina_g_dL)) +
@@ -298,4 +307,3 @@ data_mama %>%
 ```{r}
 ggsave()
 ```
-
