@@ -11,6 +11,8 @@ editor: visual
 library(tidyverse)
 library(rio)
 library(here)
+library(gridExtra)
+library(GGally) ## Para gráficos de correlación
 ```
 
 # Cargando los datos
@@ -44,20 +46,40 @@ Para realizar visualizaciones con el paquete ggplot2, debemos reemplazar lo que 
 Ejemplo
 
 ```{r}
-data_mama |> ## La data importada
-  ggplot(aes(x = Estado_marital)) + ## Solo una variable para un gráfico de barras
-  geom_bar() ## Para crear un gráfico de barras
+# xxxx |> ## La data importada
+#   ggplot(aes(x = variable)) + ## Solo una variable para un gráfico de barras
+#   geom_bar() ## Ejemplo, para crear un gráfico de barras
 ```
 
-# Visualizando datos categóricos
+# Visualizando distribución de datos
+
+# 1. Visualizando datos categóricos
 
 Gráficos de barra Los gráficos de barra son adecuados para mostrar frecuencias de variables categóricas.
 
 ```{r}
 data_mama |>  
   ggplot(aes(x = Estado_marital)) +
+  geom_bar()
+```
+
+```{r}
+data_mama |>  
+  ggplot(aes(x = fct_infreq(Estado_marital))) +
+  geom_bar()
+```
+
+```{r}
+data_mama |>  
+  ggplot(aes(x = fct_infreq(Estado_marital))) +
+  geom_bar()
+```
+
+```{r}
+data_mama |>  
+  ggplot(aes(x = fct_infreq(Estado_marital))) +
   geom_bar() +
-  labs(y = "Frecuencia", x = "Estado Marital") ## Nombres a los ejes
+  labs(y = "Frecuencia", x = "Estado Marital")
 ```
 
 Gráfico de barras que muestra proporciones
@@ -66,53 +88,83 @@ Gráfico de barras que muestra proporciones
 data_mama |>  
   ggplot(aes(x = Estado_marital, y = ..count../sum(after_stat(count)))) +
   geom_bar() +
-  labs(y = "Frequency", x = "Estado Marital")
+  labs(y = "Frecuencia", x = "Estado Marital")
 ```
 
-# Visualizando Datos Continuos
+# 2. Visualizando Datos Continuos
 
-## Con histogramas
+## 2.1. Con histogramas
 
 Conteo
 
 ```{r}
-data_mama_0 |>  
+data_mama |>  
   ggplot(aes(x = hemoglobina_g_dL)) +
   geom_histogram() +
-  labs(y = "Frequency", x = "Hemoglobina (mg/dL)")
+  labs(y = "Frecuencia", x = "Hemoglobina (mg/dL)")
 ```
 
-Añadiendo color
+Proporciones
 
 ```{r}
-data_mama_0 |>  
+data_mama  |>  
+  ggplot(aes(x = hemoglobina_g_dL)) +
+  geom_histogram(aes(y = ..density..)) +
+  labs(y = "Density", x = "Hemoglobina (gl/dL)")
+```
+
+Gráficos lado a lado
+
+```{r}
+hist_1 = data_mama |> ggplot(aes(x = hemoglobina_g_dL)) +
+  geom_histogram() +
+  labs(y = "Frecuencia", x = "Hemoglobina (mg/dL)")
+
+hist_2 = data_mama  |>  
+  ggplot(aes(x = hemoglobina_g_dL)) +
+  geom_histogram(aes(y = ..density..)) +
+  labs(y = "Density", x = "Hemoglobina (gl/dL)")
+```
+
+```{r}
+grid.arrange(hist_1, hist_2, ncol = 2)
+```
+
+Conteo con un número de barras distinto
+
+```{r}
+data_mama |>  
+  ggplot(aes(x = hemoglobina_g_dL)) +
+  geom_histogram(bins = 10) +
+  labs(y = "Frecuencia", x = "Hemoglobina (mg/dL)")
+```
+
+Modificando color
+
+```{r}
+data_mama |>  
   ggplot(aes(x = hemoglobina_g_dL)) +
   geom_histogram(
-    binwidth = 0.5, ## Cambio de "Ancho de banda[rango]"
     color = "white", ## Color de las barras
     fill = "cornflowerblue" ## Color de las barras
     ) + 
   labs(y = "Frecuencia", 
        x = "Hemoglobina (mg/dL)")
 ```
-
-Proporciones
+Modificando color en gráficos de barras
 
 ```{r}
-his_hemog_p <- data_mama_0 %>% 
-  ggplot(aes(x = hemoglobina_g_dL)) +
-  geom_histogram(aes(y = ..density..)) +
-  labs(y = "Density", x = "Hemoglobina (gl/dL)")
-
-print(his_hemog_p)
+data_mama |>  
+  ggplot(aes(x = fct_infreq(Estado_marital), fill = Estado_marital)) +
+  geom_bar() +
+  labs(y = "Frecuencia", x = "Estado Marital")
 ```
-
-## Con Boxplots
+## 2.2. Con Boxplots
 
 Con ggplot
 
 ```{r}
-boxp_album <- data_mama %>% 
+data_mama %>% 
   ggplot(aes(y = Albumina_g_dL)) + ## Cambia y por x para invertir el gráfico
   geom_boxplot() +
   theme(axis.text.x  = element_blank(),
@@ -130,7 +182,7 @@ box_album_base = boxplot(data_mama$Albumina_g_dL,
   
 ```
 
-# Visualizando variables categóricas *versus* categóricas
+# 3. Visualizando variables categóricas *versus* categóricas
 
 ```{r}
 data_mama |> 
@@ -164,8 +216,86 @@ addmargins(prop.table(
   margin = 2), 1)
 ```
 
-# Visualizando variables continuas *versus* categóricas
+# 4. Visualizando distribución de variables continuas *versus* categóricas
+
+## 4.1. Gráficos de barras
+```{r}
+data_mama |> 
+  filter(!is.na(Recep_estrogeno) & !is.na(Estadio_T)) |> 
+  group_by(Recep_estrogeno, Estadio_T) |> 
+  summarise(n = n(),
+            promedio = mean(Ki67_express, na.rm = T),
+            de = sd(Ki67_express, na.rm = T)) |> 
+  ggplot(aes(x = Recep_estrogeno, y = promedio, fill = Estadio_T)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  geom_errorbar(aes(ymin = promedio - de, ymax = promedio + de),
+                width = 0.5, size = 0.75, position = position_dodge(0.9)) +
+  labs(y = "Expresión de KI67", fill = "Estadio_T", x = "Recep_estrogeno")
+```
+## 4.1. Boxplots lado a lado
 
 ```{r}
-boxplot(asdfghjklñ)
+data_mama %>% 
+  filter(!is.na(Tam_tumor)& !is.na(Estadio_T))  |> 
+  ggplot(aes(y = Tam_tumor, x = Estadio_T)) +
+  geom_boxplot() +
+  labs(y = "Tamaño", x = "Estadio T")
 ```
+```{r}
+data_mama %>% 
+  filter(!is.na(Tam_tumor)& !is.na(Estadio_T) & !is.na(Recep_estrogeno))  |> 
+  ggplot(aes(y = Tam_tumor, x = Estadio_T, fill = Recep_estrogeno)) +
+  geom_boxplot() +
+  labs(y = "Tamaño", x = "Estadio T")
+```
+```{r}
+data_mama %>% 
+  filter(!is.na(Tam_tumor)& !is.na(Estadio_T) & !is.na(Recep_estrogeno))  |> 
+  ggplot(aes(y = Tam_tumor, x = Recep_estrogeno, fill = Estadio_T)) +
+  geom_boxplot() +
+  labs(y = "Tamaño", x = "Receptor")
+```
+## 4.3. Filas de histogramas
+
+```{r}
+data_mama %>% 
+  filter(!is.na(Estadio_T) & !is.na(Estado_des) & !is.na(hemoglobina_g_dL)) |>
+  group_by(Estadio_N) %>% 
+  ggplot(aes(x = hemoglobina_g_dL)) +
+  geom_histogram(aes(y = ..density..), bins = 20,
+                 color = "black", fill = "white") +
+  labs(x = "Hemoglobina (mg/dL)", y = "Proporción") +
+  facet_wrap(~Estadio_N, nrow = 4) +
+  ggtitle("Hemoglobina por Estadio N")
+```
+5. Contínuo versus contínuo
+
+```{r}
+data_mama %>% 
+  ggplot(aes(x = Albumina_g_dL, y = hemoglobina_g_dL)) +
+  geom_point() +
+  # method = "lm" assumes the formula is y ~ x
+  geom_smooth(method = "lm", se = TRUE) +
+  labs(x = "Albumina (mg/dL)", y = "Hemoglobina (mg/dL)")
+```
+```{r}
+data_mama %>% 
+  ggplot(aes(x = Albumina_g_dL, y = hemoglobina_g_dL)) +
+  geom_point() +
+  # method = "lm" assumes the formula is y ~ x
+  geom_smooth(stat = "smooth", se = TRUE) +
+  labs(x = "Albumina (mg/dL)", y = "Hemoglobina (mg/dL)")
+```
+
+```{r}
+data_mama %>% 
+  select(hemoglobina_g_dL, Albumina_g_dL, Supervivencia_meses) %>% 
+  ggpairs(columnLabels = c("Hemoglobina", "Albumin", "Supervivencia meses"))
+```
+
+# 5. Exportando figuras
+
+```{r}
+ggsave()
+```
+

@@ -138,7 +138,7 @@ Edad,Raza,Estado_marital,Estadio_T,Estadio_N,Estadio_6th,Diferenciacion,Grado,Es
 63,Otro,Soltera,T1,N1,IIA,Moderadamente diferenciado,2,Regional,15,Positivo,Negativo,23,1,91,Vivo,25.37,10.60116791,4.368612417
 64,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,11,Positivo,Positivo,16,1,72,Vivo,25.37,13.46193176,3.865075076
 61,Blanca,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,50,Positivo,Positivo,20,2,60,Vivo,25.37,14.98183464,4.748559137
-45,Blanca,Casada,T1,N1,IIA,Indiferenciado,Anapl<e1>sico; Grado IV,Regional,13,Positivo,Positivo,5,1,93,Vivo,25.37,10.62293889,4.338177405
+45,Blanca,Casada,T1,N1,IIA,Indiferenciado,4,Regional,13,Positivo,Positivo,5,1,93,Vivo,25.37,10.62293889,4.338177405
 59,Blanca,Casada,T3,N1,IIIA,Moderadamente diferenciado,2,Regional,60,Positivo,Positivo,2,1,49,Vivo,25.37,13.41231964,3.989698916
 53,Blanca,Casada,T2,N1,IIB,Bien diferenciado,1,Regional,40,Positivo,Positivo,26,2,65,Vivo,NA,12.15914326,4.27231378
 55,Blanca,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,21,Positivo,Positivo,6,1,78,Vivo,25.37,10.45621259,4.09426404
@@ -149,7 +149,7 @@ Edad,Raza,Estado_marital,Estadio_T,Estadio_N,Estadio_6th,Diferenciacion,Grado,Es
 55,Blanca,Divorciada,T2,N2,IIIA,Poco diferenciado,3,Regional,22,Positivo,Positivo,8,4,96,Vivo,42.68,12.96308348,3.919837474
 37,Blanca,Soltera,T2,N1,IIB,Moderadamente diferenciado,2,Regional,50,Positivo,Positivo,15,2,49,Vivo,25.37,15.23014162,4.691715573
 60,Blanca,Casada,T1,N2,IIIA,Moderadamente diferenciado,2,Regional,12,Positivo,Positivo,18,7,55,Vivo,25.37,10.19815733,4.233846803
-38,Blanca,Casada,T3,N1,IIIA,Indiferenciado,Anapl<e1>sico; Grado IV,Regional,70,Positivo,Positivo,10,1,102,Vivo,42.68,13.5240605,4.012629758
+38,Blanca,Casada,T3,N1,IIIA,Indiferenciado,4,Regional,70,Positivo,Positivo,10,1,102,Vivo,42.68,13.5240605,4.012629758
 64,Blanca,Casada,T3,N3,IIIC,Moderadamente diferenciado,2,Distante,107,Positivo,Positivo,17,12,91,Vivo,25.37,12.65356336,3.830369161
 51,Blanca,Soltera,T1,N1,IIA,Moderadamente diferenciado,2,Regional,2,Positivo,Positivo,19,2,50,Vivo,25.37,12.93186335,4.185429494
 62,Blanca,Casada,T1,N3,IIIC,Poco diferenciado,3,Regional,20,Positivo,Positivo,26,22,98,Vivo,42.68,9.987435088,3.620525461
@@ -389,9 +389,9 @@ Edad,Raza,Estado_marital,Estadio_T,Estadio_N,Estadio_6th,Diferenciacion,Grado,Es
 46,Blanca,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,35,Positivo,Positivo,19,3,102,Vivo,25.37,11.02373499,4.220770943
 61,Otro,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,50,Positivo,Positivo,4,1,106,Vivo,25.37,11.93366089,4.22907127
 63,Blanca,Casada,T2,N2,IIIA,Moderadamente diferenciado,2,Regional,30,Positivo,Positivo,25,8,98,Vivo,25.37,12.48454507,3.916013755
-58,Blanca,Soltera,T1,N2,IIIA,Indiferenciado,Anapl<e1>sico; Grado IV,Regional,19,Negativo,Negativo,47,7,9,Fallecido,42.68,11.09413612,3.501328424
+58,Blanca,Soltera,T1,N2,IIIA,Indiferenciado,4,Regional,19,Negativo,Negativo,47,7,9,Fallecido,42.68,11.09413612,3.501328424
 51,Blanca,Divorciada,T1,N2,IIIA,Moderadamente diferenciado,2,Regional,20,Positivo,Positivo,21,9,81,Vivo,25.37,8.979295131,3.461241444
-69,Blanca,Viuda,T2,N3,IIIC,Indiferenciado,Anapl<e1>sico; Grado IV,Regional,28,Positivo,Positivo,14,13,13,Fallecido,42.68,12.82637623,3.978831065
+69,Blanca,Viuda,T2,N3,IIIC,Indiferenciado,4,Regional,28,Positivo,Positivo,14,13,13,Fallecido,42.68,12.82637623,3.978831065
 64,Negra,Soltera,T1,N1,IIA,Poco diferenciado,3,Regional,9,Negativo,Negativo,18,1,103,Vivo,25.37,11.4216791,4.035411792
 55,Blanca,Soltera,T2,N2,IIIA,Poco diferenciado,3,Regional,45,Positivo,Negativo,8,7,41,Fallecido,42.68,11.19701562,3.921218278
 48,Blanca,Casada,T1,N1,IIA,Bien diferenciado,1,Regional,10,Positivo,Positivo,15,1,52,Vivo,25.37,14.45507079,4.18290884
@@ -586,7 +586,7 @@ Edad,Raza,Estado_marital,Estadio_T,Estadio_N,Estadio_6th,Diferenciacion,Grado,Es
 48,Blanca,Casada,T2,N2,IIIA,Moderadamente diferenciado,2,Regional,35,Positivo,Positivo,12,6,63,Vivo,25.37,10.54546098,3.624574615
 42,Blanca,Casada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,30,Positivo,Positivo,26,1,107,Vivo,25.37,12.20591142,4.134421855
 57,Blanca,Casada,T3,N1,IIIA,Moderadamente diferenciado,2,Regional,51,Positivo,Positivo,19,2,68,Vivo,25.37,12.99585358,4.637989783
-67,Blanca,Casada,T2,N3,IIIC,Indiferenciado,Anapl<e1>sico; Grado IV,Regional,21,Positivo,Positivo,25,17,75,Vivo,42.68,10.32472632,3.267176033
+67,Blanca,Casada,T2,N3,IIIC,Indiferenciado,4,Regional,21,Positivo,Positivo,25,17,75,Vivo,42.68,10.32472632,3.267176033
 60,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,12,Positivo,Positivo,11,1,93,Vivo,25.37,13.25788883,3.965070721
 59,Blanca,Casada,T2,N3,IIIC,Poco diferenciado,3,Regional,25,Positivo,Positivo,19,16,84,Fallecido,42.68,9.525234398,2.892138402
 55,Blanca,Divorciada,T2,N1,IIB,Moderadamente diferenciado,2,Regional,30,Positivo,Positivo,10,3,66,Vivo,25.37,8.847292917,3.958290576
@@ -632,10 +632,10 @@ Edad,Raza,Estado_marital,Estadio_T,Estadio_N,Estadio_6th,Diferenciacion,Grado,Es
 56,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,20,Positivo,Positivo,18,2,52,Vivo,25.37,11.61794591,3.609401533
 62,Blanca,Divorciada,T2,N3,IIIC,Moderadamente diferenciado,2,Regional,35,Positivo,Positivo,16,14,64,Vivo,25.37,8.716642519,3.440473455
 52,Blanca,Casada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,16,Positivo,Positivo,9,2,50,Vivo,25.37,13.19323717,4.233739144
-39,Blanca,Soltera,T3,N2,IIIA,Indiferenciado,Anapl<e1>sico; Grado IV,Regional,70,Positivo,Positivo,14,4,79,Fallecido,42.68,12.43432236,4.089870481
+39,Blanca,Soltera,T3,N2,IIIA,Indiferenciado,4,Regional,70,Positivo,Positivo,14,4,79,Fallecido,42.68,12.43432236,4.089870481
 57,Otro,Casada,T1,N2,IIIA,Poco diferenciado,3,Regional,13,Positivo,Positivo,7,5,106,Vivo,42.68,10.10463193,3.32500557
 53,Blanca,Casada,T1,N2,IIIA,Poco diferenciado,3,Regional,9,Negativo,Negativo,13,5,107,Vivo,42.68,9.279861021,3.600159924
-40,Blanca,Soltera,T3,N1,IIIA,Indiferenciado,Anapl<e1>sico; Grado IV,Regional,52,Positivo,Positivo,11,9,88,Vivo,42.68,12.34880673,3.877907103
+40,Blanca,Soltera,T3,N1,IIIA,Indiferenciado,4,Regional,52,Positivo,Positivo,11,9,88,Vivo,42.68,12.34880673,3.877907103
 64,Blanca,Casada,T2,N2,IIIA,Moderadamente diferenciado,2,Regional,42,Positivo,Positivo,5,4,93,Vivo,25.37,13.59515481,4.222896085
 55,Otro,Divorciada,T1,N1,IIA,Moderadamente diferenciado,2,Regional,11,Positivo,Positivo,9,1,100,Vivo,25.37,13.32696125,4.583721775
 44,Otro,Separada,T2,N2,IIIA,Moderadamente diferenciado,2,Regional,43,Positivo,Positivo,16,4,73,Vivo,25.37,11.30988761,4.11507069
