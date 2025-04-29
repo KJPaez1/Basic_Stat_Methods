@@ -8,14 +8,21 @@ editor: visual
 # Paquetes para visualizar datos
 
 ```{r}
+#install.packages("gridExtra")
+```
+
+```{r}
 library(tidyverse)
 library(rio)
 library(here)
-library(gridExtra)
+library(gridExtra) ## Para múltiple gráficos en una sola página
 library(GGally) ## Para gráficos de correlación
+library(forcats)
 ```
 
 # Cargando los datos
+
+El *dataset* contiene datos de 755 pacientes con cáncer de mama. El *dataset* incluye 19 variables entre demográficas, clínicas y variables patológicas.
 
 ```{r}
 data_mama_0 <- import(here("data", "s05_pac_cancer_mama.csv"))
@@ -23,11 +30,15 @@ data_mama_0 <- import(here("data", "s05_pac_cancer_mama.csv"))
 
 ## Examinamos los datos
 
+`str()` es la función para ver la estructura de los datos.
+
 ```{r}
 str(data_mama_0)
 ```
 
-## De caracteres a factor (categóricos) usando la función `mutate_if()`
+## Conversión de caracteres a factor (categóricos) usando la función `mutate_if()`
+
+Las variables categóricas (ej. Estadio T) han sido importadas como caracteres. Necesitamos transformalo a factores. En RStudio, factores es el tipo de dato para trabajar con variables categóricas.
 
 ```{r}
 data_mama <- data_mama_0 |> 
@@ -37,19 +48,15 @@ str(data_mama)
 
 # Visualizando datos: el molde
 
-<midata> \|\> ggplot(aes(x = <var1>, y = <var2>)) + geom\_<xxxx>()
-
 Para realizar visualizaciones con el paquete ggplot2, debemos reemplazar lo que esta encerrado en los signos. Este es el molde fundamental para crear gráficos más complejos.
 
-<midata> : el nombre del dataset a utilizar. \|\> : esto es llamado "pipe", la cual conecta los datos a la función ggplot + : usa + par conectar declaraciones de ggplot <var> : la variable, cuyos datos serán usados para crear el gráfico. geom\_<xxxx>: indica la función para crear el tipo de gráfico. Ej. geom_bar, para crear gráficos de barra.
+`<midata> |> ggplot(aes(x = <var1>, y = <var2>)) + geom_<xxxx>()`
 
-Ejemplo
-
-```{r}
-# xxxx |> ## La data importada
-#   ggplot(aes(x = variable)) + ## Solo una variable para un gráfico de barras
-#   geom_bar() ## Ejemplo, para crear un gráfico de barras
-```
+-   <midata> : el nombre del dataset a utilizar.
+-   \|\> : esto es llamado "pipe", la cual conecta los datos a la función ggplot
+-   \+ : usa + par conectar declaraciones de ggplot
+-   <var> : la variable, cuyos datos serán usados para crear el gráfico.
+-   geom\_<xxxx>: indica la función para crear el tipo de gráfico. Ej. geom_bar, para crear gráficos de barra.
 
 # Visualizando distribución de datos
 
@@ -63,17 +70,15 @@ data_mama |>
   geom_bar()
 ```
 
-```{r}
-data_mama |>  
-  ggplot(aes(x = fct_infreq(Estado_marital))) +
-  geom_bar()
-```
+Aquí, añadimos la función `fct_infreq()` de paquete forcats para ordenar (en orden decreciente) las barras del conteo, por estado marital.
 
 ```{r}
 data_mama |>  
   ggplot(aes(x = fct_infreq(Estado_marital))) +
   geom_bar()
 ```
+
+Con la función `labs()` podemos añadir nombres a los ejes del gráficos.
 
 ```{r}
 data_mama |>  
@@ -82,7 +87,7 @@ data_mama |>
   labs(y = "Frecuencia", x = "Estado Marital")
 ```
 
-Gráfico de barras que muestra proporciones
+Para el gráfico de barra podemos usar frecuencias relativas. Por ejemplo, un gráfico de barras que muestre proporciones. Aquí es necesario calcular las proporciones. Nota que seguida a `y =` se muestra el cálculo para convertir los conteos a proporciones.
 
 ```{r}
 data_mama |>  
@@ -91,11 +96,11 @@ data_mama |>
   labs(y = "Frecuencia", x = "Estado Marital")
 ```
 
-# 2. Visualizando Datos Continuos
+# 2. Visualizando Datos Numéricos
 
 ## 2.1. Con histogramas
 
-Conteo
+Para visualizar conteos. Nota que aquí, la variable `hemoglobina_g_dL` es numérica y la función para producir un histograma es `geom_histogram()`
 
 ```{r}
 data_mama |>  
@@ -104,7 +109,7 @@ data_mama |>
   labs(y = "Frecuencia", x = "Hemoglobina (mg/dL)")
 ```
 
-Proporciones
+Un histograma de proporciones. Aquí `..density..` es la estimación de densidad que reemplaza al conteo crudo. Toda el area del gráfico de densidad suma 1.
 
 ```{r}
 data_mama  |>  
@@ -113,7 +118,7 @@ data_mama  |>
   labs(y = "Density", x = "Hemoglobina (gl/dL)")
 ```
 
-Gráficos lado a lado
+A veces, puede ser util visualizar gráficos de lado a lado. Aquí dos histogramas lado a lado usando la función `grid.arrange()`
 
 ```{r}
 hist_1 = data_mama |> ggplot(aes(x = hemoglobina_g_dL)) +
@@ -132,6 +137,8 @@ grid.arrange(hist_1, hist_2, ncol = 2)
 
 Conteo con un número de barras distinto
 
+Podemos cambiar los intervalos para la generación del histograma usando el argumento bins dentro de la función `geom_histogram()`
+
 ```{r}
 data_mama |>  
   ggplot(aes(x = hemoglobina_g_dL)) +
@@ -139,7 +146,7 @@ data_mama |>
   labs(y = "Frecuencia", x = "Hemoglobina (mg/dL)")
 ```
 
-Modificando color
+Modificando los colores de las barras del histograma.
 
 ```{r}
 data_mama |>  
@@ -152,7 +159,7 @@ data_mama |>
        x = "Hemoglobina (mg/dL)")
 ```
 
-Modificando color en gráficos de barras
+Modificando color en gráficos de barras. Nota que aquí, usamos el argumento fill para colorear las barras pertenecientes a las categorías.
 
 ```{r}
 data_mama |>  
@@ -161,12 +168,12 @@ data_mama |>
   labs(y = "Frecuencia", x = "Estado Marital")
 ```
 
-## 2.2. Con Boxplots
+## 2.2. Con Boxplots (gráfico de cajas y bigotes)
 
-Con ggplot
+Para mostrar datos de una variable en un gráfico de cajas y bigotes usamos la función `geom_boxplot()`
 
 ```{r}
-data_mama %>% 
+data_mama |> 
   ggplot(aes(y = Albumina_g_dL)) + ## Cambia y por x para invertir el gráfico
   geom_boxplot() +
   theme(axis.text.x  = element_blank(),
@@ -174,7 +181,7 @@ data_mama %>%
   labs(y = "Albumina")
 ```
 
-Con la base de R (función nativa de R)
+La función nativa de R, `boxplot()`, permite realizar el mismo gráfico.
 
 ```{r}
 box_album_base = boxplot(data_mama$Albumina_g_dL,
@@ -198,13 +205,13 @@ data_mama |>
 Qué esta mal con esto?
 
 ```{r}
-data_mama %>%  
-  group_by(Estadio_T, Estado_des) %>% 
-  count() %>%  
+data_mama |>   
+  group_by(Estadio_T, Estado_des)  |>  
+  count() |>   
   # Compute proportions within grade
   # n is the default variable created by count()
-  group_by(Estadio_T) %>%  
-  mutate(Proportion = n/sum(n)) %>%
+  group_by(Estadio_T) |>   
+  mutate(Proportion = n/sum(n))  |> 
   ggplot(aes(x = Estadio_T, y = Proportion, fill = Estado_des)) +
   geom_bar(position = 'dodge', stat = 'identity') +
   labs(y = "Proportion",
@@ -239,7 +246,7 @@ data_mama |>
 ## 4.1. Boxplots lado a lado
 
 ```{r}
-data_mama %>% 
+data_mama |>  
   filter(!is.na(Tam_tumor)& !is.na(Estadio_T))  |> 
   ggplot(aes(y = Tam_tumor, x = Estadio_T)) +
   geom_boxplot() +
@@ -247,7 +254,7 @@ data_mama %>%
 ```
 
 ```{r}
-data_mama %>% 
+data_mama |>  
   filter(!is.na(Tam_tumor)& !is.na(Estadio_T) & !is.na(Recep_estrogeno))  |> 
   ggplot(aes(y = Tam_tumor, x = Estadio_T, fill = Recep_estrogeno)) +
   geom_boxplot() +
@@ -255,7 +262,7 @@ data_mama %>%
 ```
 
 ```{r}
-data_mama %>% 
+data_mama |>  
   filter(!is.na(Tam_tumor)& !is.na(Estadio_T) & !is.na(Recep_estrogeno))  |> 
   ggplot(aes(y = Tam_tumor, x = Recep_estrogeno, fill = Estadio_T)) +
   geom_boxplot() +
@@ -265,9 +272,9 @@ data_mama %>%
 ## 4.3. Filas de histogramas
 
 ```{r}
-data_mama %>% 
+data_mama  |>  
   filter(!is.na(Estadio_T) & !is.na(Estado_des) & !is.na(hemoglobina_g_dL)) |>
-  group_by(Estadio_N) %>% 
+  group_by(Estadio_N) |>  
   ggplot(aes(x = hemoglobina_g_dL)) +
   geom_histogram(aes(y = ..density..), bins = 20,
                  color = "black", fill = "white") +
@@ -276,34 +283,52 @@ data_mama %>%
   ggtitle("Hemoglobina por Estadio N")
 ```
 
-5.  Contínuo versus contínuo
+# 5. Visualización para variables continuas versus continuas
+
+Usamos la función geom_point para generar gráficos de dispersión y visualizar la relación de dos varaibles numéricas
 
 ```{r}
-data_mama %>% 
+data_mama |> 
   ggplot(aes(x = Albumina_g_dL, y = hemoglobina_g_dL)) +
   geom_point() +
-  # method = "lm" assumes the formula is y ~ x
+  labs(x = "Albumina (mg/dL)", y = "Hemoglobina (mg/dL)")
+```
+
+La función geom_smoth añade una línea de regresión al gráfico. "lm" es para linear model
+
+```{r}
+data_mama |> 
+  ggplot(aes(x = Albumina_g_dL, y = hemoglobina_g_dL)) +
+  geom_point() +
   geom_smooth(method = "lm", se = TRUE) +
   labs(x = "Albumina (mg/dL)", y = "Hemoglobina (mg/dL)")
 ```
 
+Aquí, función geom_smooth() añade una línea de tendencia suavizada al gráfico.
+
 ```{r}
-data_mama %>% 
+data_mama |> 
   ggplot(aes(x = Albumina_g_dL, y = hemoglobina_g_dL)) +
   geom_point() +
-  # method = "lm" assumes the formula is y ~ x
   geom_smooth(stat = "smooth", se = TRUE) +
   labs(x = "Albumina (mg/dL)", y = "Hemoglobina (mg/dL)")
 ```
 
+Finalmente, la función `ggpairs()` permite visualizar multiple variables numerica a la vez. Aquí, combinamos la funciónm select() (para seleccionar las variables numéricas) y ggpairs, para generar el gráfico y los coeficientes de correlación.
+
 ```{r}
-data_mama %>% 
+data_mama |>  
   select(hemoglobina_g_dL, Albumina_g_dL, Supervivencia_meses) %>% 
   ggpairs(columnLabels = c("Hemoglobina", "Albumin", "Supervivencia meses"))
 ```
 
-# 5. Exportando figuras
+# 6. Exportando figuras
 
 ```{r}
-ggsave()
+ggsave(
+  "nombre_de_objeto.png",
+  width = 7, # Ancho
+  height = 4, # Alto
+  dpi = 300 # resolución
+) 
 ```
