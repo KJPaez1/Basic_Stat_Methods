@@ -44,15 +44,15 @@ Aquí, usamos la función `epi.sscc()`: Sample size, power or minimum detectable
 
 ```{r}
 epi.sscc(OR = 1.85, p1 = NA, 
-         p0 = 0.22, n = NA, 
+         p0 = 0.224, n = NA, 
          power = 0.80, r = 1, 
          phi.coef = 0, design = 1, 
          sided.test = 2, conf.level = 0.95, 
          method = "unmatched", nfractional = FALSE, 
-         fleiss = FALSE)$n.total
+         fleiss = FALSE)
 ```
 
-Es necesario 210 casos y 210 controles.
+Es necesario 207 casos y 207 controles.
 
 # 3. Cálculo de muestra para un estudio de cohorte
 
@@ -65,10 +65,10 @@ Para responder, utilizamos la función `epi.sscohortt()`: *Sample size, power or
 ```{r}
 epi.sscohortt(irexp1 = 58/317, irexp0 = 60/621, FT = 4, n = NA, 
               power = 0.80, r = 1, design = 1, sided.test = 2, 
-              nfractional = FALSE, conf.level = 0.95)$n.total
+              nfractional = FALSE, conf.level = 0.95)
 ```
 
-Es necesario 210 de expuestos y 210 no expuestos.
+Es necesario 177 de expuestos y 177 no expuestos.
 
 # 4. Cálculo de poder estadístico
 
@@ -81,7 +81,7 @@ Para responder, utilizamos la función `epi.sscohortt()`: *Sample size, power or
 ```{r}
 epi.sscohortt(irexp1 = 58/317, irexp0 = 60/621, FT = 4, n = 300, 
               power = NA, r = 1, design = 1, sided.test = 2, 
-              nfractional = FALSE, conf.level = 0.95)$power
+              nfractional = FALSE, conf.level = 0.95)
 ```
 
 Tendremos un poder estadístico de 73% para recharazar correctamente la hipótesis nula.
