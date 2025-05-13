@@ -86,24 +86,7 @@ library(here)
 # Cargar los datos
 
 ```{r}
-data_glucosa_circun <- import(here("data", "s07_glucosa_circunf_cintura.csv"))
-```
-
-```{r}
-set.seed(123)  # Para reproducibilidad
-
-# Base normal con media 100 y desviación estándar 15
-glucosa <- rnorm(200, mean = 100, sd = 15)
-
-# Agregar una pequeña cantidad de ruido (ligera imperfección)
-glucosa <- glucosa + rnorm(200, mean = 0, sd = 3)
-
-# Agregar unos pocos valores ligeramente desviados para simular imperfección
-glucosa[sample(1:200, 3)] <- glucosa[sample(1:200, 3)] + runif(3, 10, 20)
-
-# Asignar al dataset
-data_glucosa_circun$glucosa <- glucosa
-
+data_glucosa_circun <- import(here("data", "s07_glucosa_circun.csv"))
 ```
 
 # 1. Para datos continuos
@@ -141,7 +124,7 @@ Esta variable corresponde a medidas de glucosa en mg/dL
 shapiro.test(data_glucosa_circun$glucosa)
 ```
 
-## Respecto a la interpretación
+## Respecto a la interpretación de los dos resultados
 
 Las hipótesis de la prueba de Shapiro-Wilk
 
