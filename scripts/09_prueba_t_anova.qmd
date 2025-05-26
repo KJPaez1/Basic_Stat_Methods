@@ -1,6 +1,0 @@
----
-title: "Sistematización de Métodos Estadísticos"
-author: "Kevin J. Paez"
-format: html
-editor: visual
----
