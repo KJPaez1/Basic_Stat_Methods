@@ -5,13 +5,18 @@ format: html
 editor: visual
 ---
 
-# Cargar paquetes
+# Cargar e instalar paquetes
+
+```{r}
+install.packages("car") # Para la prueba de Levene
+```
 
 ```{r}
 library(tidyverse)
 library(here)
 library(rio)
 library(gtsummary)
+library(car)
 ```
 
 # Cargando los datos
@@ -154,9 +159,9 @@ Imagina que, ahora, luego de haber tomado las mediciones de medidas de glucosa e
 
 -   Cuando los dos grupos de muestras a comparar han sido muestreadas de una distribución normal. Aquí podemos usar la prueba de Shapiro-Wilk.
 
--   Cuando las varianzas de los dos grupos son iguales. Esto puede ser evaluado con la prueba de Levene o la prueba F.
+-   Cuando las varianzas de los dos grupos son iguales. Esto puede ser evaluado con la prueba F.
 
-2.2 Usualmente, la hipótesis de la prueba t de Student son:
+Usualmente, la hipótesis de la prueba t de Student son:
 
 -   Hipótesis nula (H₀): No hay diferencia entre las medias de los dos grupos. $$
     H_0: \mu_1 = \mu_2
@@ -231,3 +236,108 @@ t.test(circunf_brazo_cm ~ sexo, data = circun_glucosa, var.equal = TRUE)
 **Interpretando los resultados**
 
 El valor p de la prueba es 0.003615, lo cual es menor que el nivel de significancia α = 0.05. Por lo tanto, podemos concluir que la circunferencia promedio del brazo en hombres es significativamente diferente de la circunferencia promedio en mujeres.
+
+# 3 Análisis de Varianza (ANOVA)
+
+El análisis de varianza (ANOVA), especificamente el ANOVA de una vía, es una extensión de la prueba t para muestras independientes cuando se comparan medias entre más de dos grupos. En el ANOVA de una vía, los datos se organizan en varios grupos basados en una única variable de agrupación (también llamada variable de factor). En este ejecicio, evaluamos si el peso corporal (kg) es significativamente distinto segun estado de tabaquismo.
+
+## 3.1 ¿Cuándo usar el ANOVA de una vía?
+
+-   Las observaciones se obtienen de forma independiente y aleatoria de la población definida por los niveles del factor.
+
+-   Los datos de cada nivel del factor se distribuyen normalmente.
+
+-   Hipótesis nula (H₀): No hay diferencia entre las medias de los dos grupos.
+
+-   Estas poblaciones normales tienen una varianza común. (Se puede usar la prueba de Levene para verificar esto.)
+
+## 3.2 Sobre los datos para esta práctica
+
+El dataset circun_glucosa, de 1000 personas adultas (\>=20 años de edad), contiene datos de peso corpotal (kg), la variable tabaquismo y otros datos demográficos.
+
+## 3.3 Resumen y visualización
+
+Resumen
+
+Antes de realizar la prueba de ANOVA es importante conocer la distribución de los datos e identificar si hay atípicos. Empecemos por el resumen:
+
+```{r}
+group_by(circun_glucosa, tabaquismo) |> 
+  summarise(
+    count = n(),
+    mean = mean(peso_corp_kg, na.rm = TRUE),
+    sd = sd(peso_corp_kg, na.rm = TRUE),
+    min = min(peso_corp_kg, na.rm = TRUE),
+    max = max(peso_corp_kg, na.rm = TRUE)
+  )
+```
+
+Visualización
+
+```{r}
+circun_glucosa |>  
+  filter(!is.na(tabaquismo)& !is.na(peso_corp_kg))  |> 
+  ggplot(aes(y = peso_corp_kg, x = tabaquismo)) +
+  geom_boxplot() +
+  labs(y = "Peso corporal (kg)", x = "Sexo")
+```
+
+## 3.4 Pruebas preliminares para evaluar los supuestos del ANOVA
+
+```{r}
+circun_glucosa <- circun_glucosa |>
+    mutate(tabaquismo = as.factor(tabaquismo))
+```
+
+Supuesto 1: los datos deben haber sido muestreados de una distribución normal.
+
+Para esto, usamos la prueba de Shapiro-wilk.
+
+```{r}
+circun_glucosa |> 
+  filter(tabaquismo == "actual") |> 
+  summarise(shapiro = list(shapiro.test(peso_corp_kg))) |> 
+  pull(shapiro)
+```
+
+```{r}
+circun_glucosa |> 
+  filter(tabaquismo == "exfumador") |> 
+  summarise(shapiro = list(shapiro.test(peso_corp_kg))) |> 
+  pull(shapiro)
+```
+
+```{r}
+circun_glucosa |> 
+  filter(tabaquismo == "nunca") |> 
+  summarise(shapiro = list(shapiro.test(peso_corp_kg))) |> 
+  pull(shapiro)
+```
+
+Supuesto 2: Las varianzas de los dos grupos son iguales Para esto podemos usar la prueba de Levene para evaluar la homogeneidad de varianzas. Esto esta implementado en la función var.test()
+
+```{r}
+leveneTest(peso_corp_kg ~ tabaquismo, data = circun_glucosa)
+```
+
+El valor p de la prueba F es p = 0.3143. Es mayor que el nivel de significancia α = 0.05. En conclusión, no hay una diferencia significativa entre las varianzas de los dos conjuntos (femenino y masculino) de datos. Por lo tanto, podemos usar la prueba t clásica que asume igualdad de varianzas.
+
+## 3.5 Realizamos la prueba de ANOVA de una vía para nuestros datos.
+
+```{r}
+res_anova = aov(peso_corp_kg ~ tabaquismo, data = circun_glucosa)
+```
+
+```{r}
+summary(res_anova)
+```
+
+**Interpretando los resultados**
+
+Dado que el valor p es mayor que el nivel de significancia 0.05, podemos concluir que no existen diferencias significativas entre los grupos.
+
+Aunque para este ejecicio no hemos encontrado una diferencia estadísticamente significativa, cuando sí lo hay, es importante realizar una prueba de comparación por pares para saber dónde se encuentra la diferencia. Para esto, se puede utilizar la prueba Tukey HSD (Tukey Honest Significant Differences)
+
+```{r}
+TukeyHSD(res_aov)
+```
