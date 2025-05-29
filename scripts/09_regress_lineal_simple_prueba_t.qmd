@@ -222,7 +222,7 @@ circun_glucosa |>
 Supuesto 2: Las varianzas de los dos grupos son iguales Para esto podemos usar la prueba F para evaluar la homogeneidad de varianzas. Esto esta implementado en la función var.test()
 
 ```{r}
-var.test(circunf_brazo_cm_sim ~ sexo, data = data_mod)
+var.test(circunf_brazo_cm_sim ~ sexo, data = circun_glucosa)
 ```
 
 El valor p de la prueba F es p = 0.3143. Es mayor que el nivel de significancia α = 0.05. En conclusión, no hay una diferencia significativa entre las varianzas de los dos conjuntos (femenino y masculino) de datos. Por lo tanto, podemos usar la prueba t clásica que asume igualdad de varianzas.
