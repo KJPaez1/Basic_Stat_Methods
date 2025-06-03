@@ -1,5 +1,5 @@
 ---
-title: "Regresión Lineal Simple y prueba t de Student"
+title: "Regresión Logistica y Regresión de Poisson"
 author: "Kevin J. Paez"
 format: html
 editor: visual
