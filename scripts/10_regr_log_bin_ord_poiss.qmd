@@ -1,5 +1,267 @@
 ---
-title: "10_regr_log_bin_ord_poiss"
+title: "Regresión Lineal Simple y prueba t de Student"
+author: "Kevin J. Paez"
 format: html
+editor: visual
 ---
 
+# Cargar e instalar paquetes
+
+```{r}
+library(tidyverse)
+library(here)
+library(rio)
+library(gtsummary)
+library(car)
+```
+
+## Cargando los datos
+
+```{r}
+hipert_covid <- import(here("data", "s10_hipert_covid.csv"))
+```
+
+```{r}
+asma <- import(here("data", "s10_asma.csv"))
+```
+
+## Sobre los datos para esta práctica
+
+El dataset *hipert_covid* incluye información de 287 personas adultas diagnosticadas con COVID-19 y diabetes mellitus. Contiene datos sobre el desenlace al alta hospitalaria (vivo o fallecido), así como otras variables relevantes como edad, sexo, presencia de hipertensión, entre otras.
+
+## Importante, antes de iniciar
+
+La estimación de asociación entre variables para esta sesión es un análisis univariado o no ajustado. En un estudio formal, tesis o artículo científico, que haga empleo de un análisis de regresión logística o regresión de Poisson es necesario procedimientos adicionales, incluyendo la evaluación del ajuste del modelo y el análisis multivariado o ajustado. Lo último, lo veremos en una sesión posterior.
+
+# 1 Regresión logística binaria
+
+La regresión logística binaria es similar a la regresión lineal en el sentido de que modela un desenlace (variable dependiente) en función de uno o más predictores. Sin embargo, la principal diferencia es que en la regresión logística el desenlace debe ser dicotómico: es decir, una variable que solo toma dos posibles valores. La regresión logística nos permite responder preguntas como:
+
+-   ¿Cuál es la asociación entre el estado de dengue hemorrágico (dengue hemorrágico vs. dengue no hemorrágico) y la edad?
+
+-   ¿Existe relación entre el estado de mortalidad (vivo vs. fallecido) y la hipertensión en pacientes con COVID-19 y diabetes mellitus?
+
+Al igual que en la regresión lineal, la regresión logística permite comprobar la hipótesis nula (no hay asociación), estimar la magnitud de la asociación (usando Odds Ratio) y calcular su intervalo de confianza al 95%.
+
+## 1.1 Aspectos básicos para la interpretación la regresión logística
+
+¿Qué son los odds (posibilidades)?
+
+Si 𝑝 es la probabilidad de que ocurra un evento (por ejemplo, muerte), entonces los odds (posibilidades) son el cociente 𝑝/1−𝑝, es decir, la razón entre la probabilidad de que ocurra el evento y la probabilidad de que no ocurra. En medicina, comúnmente se trabaja con el logaritmo natural de los odds, conocido como log-odds o logit. Por ejemplo, si un evento tiene una probabilidad del 75%, sus odds son 0.75/0.25=3, lo que se lee como "3 a 1".
+
+Otro ejemplo: en una reunión de cinco personas (incluyéndote), cada una escribe su nombre para un sorteo. Tu probabilidad de ganar es 1/5 = 0.20, pero los odds de ganar son 1 a 4 (0.25), porque hay un papel con tu nombre y cuatro sin él; una oportunidad de ganar y cuatro de perder.
+
+Entonces, existe una relación directa entre odds y probabilidad, pero expresan lo mismo en diferentes escalas. Los odds son mayores que 1 si, y solo si, la probabilidad es mayor que 0.5; son menores que 1 si la probabilidad es menor que 0.5; y son exactamente 1 cuando la probabilidad es 0.5.
+
+En estudios con modelos de regresión logística para analizar asociaciones, reportamos los odds ratios (OR), que comparan los odds entre grupos.
+
+¿Qué son los Odds Ratio (OR)?
+
+Un *odds ratio* (OR) compara las *odds* (posibilidades) de que ocurra un evento entre dos grupos diferentes. Por ejemplo, supongamos que la probabilidad de enfermedad es 0.35 en hombres y 0.25 en mujeres. Entonces, el OR sería:
+
+$$
+\frac{0.35}{1 - 0.35} \div \frac{0.25}{1 - 0.25} = \frac{0.35}{0.65} \div \frac{0.25}{0.75} = 0.538 \div 0.333 = 1.62
+$$
+
+Un OR mayor que 1 (o menor que 1) implica una asociación positiva (o negativa) entre un predictor continuo y el desenlace. Un OR de 1 implica que no hay asociación. Finalmente, como lo mostrado aquí, la medida de OR tiene dirección e intensidad. A esto lo conocemos como una medida de efecto. OR es una de las varias que son usadas para reportar estudios en epidemiología.
+
+## 1.1 El problema en este ejercicio
+
+El desenlace de interés para este ejercicio es la variable muerte (en el dataset, *desenlace*). Evaluaremos la relación entre el estado de mortalidad e hipertensión entre pacientes que fueron diagnosticados con COVID-19 y diabetes mellitus.
+
+## 1.2 Estimando OR usando regresión logística para un predictor categórico
+
+Antes de estimar el OR usando regresión logística, debemos convertir la variable hipertensión a factor (variable categórica en R). Además, establecemos el nivel "no" como referencia, para así estimar el OR comparando pacientes con COVID-19 y diabetes mellitus que tienen hipertensión frente a aquellos sin hipertensión. Hacemos lo mismo con la variable desenlace, de modo que "vivo" sea la categoría de referencia y "fallecido" sea considerado el evento.
+
+```{r}
+hipert_covid_1 <- hipert_covid |> 
+  mutate(hipert = relevel(as.factor(hipert), ref = "no"),
+         desenlace = relevel(as.factor(desenlace), ref = "vivo"))
+```
+
+A continuación, usamos la función `glm()`, general linear model, con el argumento family = binomial para ajustar una regresión logística y `summary()` para ver los resultados.
+
+```{r}
+regre_log <- glm(desenlace ~ hipert,
+                 family = binomial, 
+                 data = hipert_covid_1)
+
+summary(regre_log)
+```
+
+El coeficiente de regresión para *hipertSi* (0.7444) representa el logaritmo del OR para fallecer, comparando pacientes hipertensos con pacientes no hipertensos.
+
+Para obtener el OR en sí (como usualmente se reporta en los estudios), exponenciamos el coeficiente usando la función exp()
+
+```{r}
+exp(coef(regre_log)[-1]) # [-1] elimina la primera fila, al intercepto.
+```
+
+Usamos la función `confint()` para calcular los intervalos de confianza (IC) al 95% para el coeficientes de regresión, y exponenciamos estos valores para obtener los IC del 95% para los OR.
+
+```{r}
+exp(confint(regre_log))[-1, , drop=F]
+```
+
+En este ejemplo, el predictor categórico tenía solo dos niveles (Si y No), por lo que se obtiene el valor p que prueba su asociación con el desenlace (fallecido) a partir de la tabla de coeficientes de la regresión (0.00298).
+
+## 1.3 Interpretando los resultados
+
+Los pacientes con COVID-19 y diabetes mellitus con hipertensión tienen significativamente mayores odds de fallecer en comparación a paciente con COVID-19 y diabetes mellitus sin hipertensión (OR = 2.10; IC 95% = 1.2918, 3.4561; p = 0.00298). Específicamente, tienen aproximadamente 110% más odds de presentar el desenlace.
+
+## 1.4 Estimando OR usando regresión logística para un predictor numérico
+
+Usando el mismo dataset, la siguiente pregunta que intentaremos responder usando regresión logística es ¿cuál es la asociación entre la mortalidad y la edad en pacientes diagnosticados con COVID-19 y diabetes mellitus?
+
+## 1.6 Ajustamos el modelo
+
+```{r}
+regre_log_1 <- glm(desenlace ~ edad, family = binomial, data = hipert_covid_1)
+
+summary(regre_log_1)$coef
+```
+
+El coeficiente de regresión para la edad (0.0583) indica cuánto cambia el logaritmo de las odds del desenlace por cada aumento de un año en la edad. Si convertimos esto a un OR exponenciandolos, obtenemos:
+
+```{r}
+exp(coef(regre_log_1)[-1])
+```
+
+Finalmente, calcula un intervalo de confianza del 95% para el OR usando `confint()` y exponenciando los resultados.
+
+```{r}
+exp(confint(regre_log_1)[-1,])
+```
+
+## 1.7 Interpretando el resultado
+
+Entre los pacientes con COVID-19 y diabetes mellitus, la edad está significativamente asociada de forma positiva con el desenlace muerte (OR = 1.06; IC 95% = 1.04, 1.08; p\<0.05). Esto significa que por cada año adicional de edad, las odds de muerte aumentan aproximadamente un 6%. Por ejemplo, una persona de 60 años tiene un 6% más de odds (posibilidaes) de morir que una persona de 59 años.
+
+## 1.8 Cómo reportar los resultados de una regresión logística para un reporte científico.
+
+Aquí usamos funciones que ya hemos empleado en sesiones anteriores. tbl_uvregression() es la función que permite producir tablas con resultados de la regresión logística. Como argumento incluye el tipo de regresión, variables y otras especificaciones.
+
+```{r}
+theme_gtsummary_language(language = "es")
+```
+
+```{r}
+tabla_reg_logi <- hipert_covid_1 |>
+  tbl_uvregression(
+    include = c(edad, sexo, hipert),
+    y = desenlace,
+    method = glm,
+    method.args = list(family = binomial),
+    exponentiate = TRUE,
+    conf.int = TRUE,
+    hide_n = TRUE,
+    add_estimate_to_reference_rows = FALSE,
+    pvalue_fun = ~ style_pvalue(.x, digits = 3),
+    estimate_fun = ~ style_number(.x, digits = 2),
+    label = list(
+      edad ~ "Edad (años)",
+      sexo ~ "Sexo",
+      hipert ~ "Hipertensión"
+    )
+  ) |>
+  bold_labels() |>
+  bold_p(t = 0.05) |>
+  modify_header(estimate = "**OR no ajustado**", p.value = "**Valor P**")
+```
+
+Imprime la tabla
+
+```{r}
+tabla_reg_logi
+```
+
+## 2 Regresión de Poisson
+
+La regresión de Poisson es un modelo de regresión para datos de conteo y de tasas. Al igual que el modelo de regresión logística, este es un tipo de modelo lineal generalizado que se usa cuando el desenlace (variable dependiente) es un conteo. Aunque los datos de conteo y tasas son muy comunes en medicina y ciencias de la salud, la regresión de Poisson está subutilizada en la investigación médica.
+
+Básicamente, la regresión de Poisson modela la relación lineal entre:
+
+Desenlace: variable de conteo (por ejemplo, número de hospitalizaciones, paridad, lesiones cancerosas, ataques asmáticos). Esta variable se transforma a escala de logaritmo natural.
+
+Predictores/variables independientes: variables numéricas (por ejemplo, edad, presión arterial) y variables categóricas (por ejemplo, raza, género, nivel educativo).
+
+Usando la regresión de poisson, podemos evaluar: La relación entre el número de ataques asmáticos en el último año y los factores sociodemográficos.
+
+En la sección anterior, reportamos como medida de efecto OR para la regresión logística. Para la regresión de Poisson, al tomar el exponente del coeficiente, obtenemos la razón de tasas (rate ratio, RR), también conocida como razón de tasas de incidencia (incidence rate ratio, IRR).
+
+## 2.1 Sobre los datos para esta práctica
+
+El dataset asma incluye información de un grupo de 120 individuos. El dataset incluye 4 variables: - Sexo: Sexo de los sujetos (categórica) (hombre, mujer). - infec_resp_recu: Infección respiratoria recurrente (categórica) (no, sí). - ghq12: Puntaje del Cuestionario General de Salud 12 (GHQ-12) sobre bienestar psicológico (numérica) (0 a 36). - episod_asma: Número de ataques asmáticos por año (conteo).
+
+## 2.2 El problema en este ejercicio
+
+Usando regresión de Poisson evaluaremos la relación entre el número de ataques asmáticos (variable episod_asma) en el último año y los factores sociodemográficos.
+
+## 2.3 Ajustamos modelos de regresión de Poisson
+
+Ahora, ajustamos modelos de regresión de Poisson para las 3 variables predictoras usando la función glm(). Seguido a esto, usamos summary() para ver los resultados.
+
+Para la variable sexo
+
+```{r}
+reg_poisson1 = glm(episod_asma ~ sexo, data = asma, family = "poisson")
+summary(reg_poisson1)
+```
+
+Para la variable infec_resp_recur
+
+```{r}
+reg_poisson2 = glm(episod_asma ~ infec_resp_recur, data = asma, family = "poisson")
+summary(reg_poisson2)
+```
+
+Para la variable ghq12
+
+```{r}
+reg_poisson2 = glm(episod_asma ~ ghq12, data = asma, family = "poisson")
+summary(reg_poisson2)
+```
+
+A partir de los resultados que se muestran en la sección de Coefficients, todas las variables son importantes (estan relacionados con el número de ataques de asma) con un P \< 0.05.
+
+## 2.4 Cómo interpretar y reportar los resultados de una regresión de Poisson
+
+Como en la sección anterior, usamos tbl_regression() para generar una tabla con los resultados. Aquí, para la interpretación, exponenciamos los coeficientes para obtener la razón de tasas de incidencia (IRR).
+
+```{r}
+tabla_reg_poisson <- asma |>
+  tbl_uvregression(
+    include = c(sexo, infec_resp_recur, ghq12),
+    y = episod_asma,
+    method = glm,
+    method.args = list(family = poisson),
+    exponentiate = TRUE,
+    conf.int = TRUE,
+    hide_n = TRUE,
+    add_estimate_to_reference_rows = FALSE,
+    pvalue_fun = ~ style_pvalue(.x, digits = 3),
+    estimate_fun = ~ style_number(.x, digits = 2),
+    label = list(
+      sexo ~ "Sexo",
+      infec_resp_recur ~ "Infección respiratoria recurrente",
+      ghq12 ~ "Bienestar psicológico"
+    )
+  ) |>
+  bold_labels() |>
+  bold_p(t = 0.05) |>
+  modify_header(estimate = "**IRR no ajustado**", p.value = "**Valor P**")
+```
+
+Imprime la tabla
+
+```{r}
+tabla_reg_poisson
+```
+
+Basándonos en esta tabla, podemos interpretar los resultados de la siguiente manera:
+
+Ser del sexo femenino esta asociado a un menor riesgo de sufrir un ataque asmático, con un IRR de 0.74 (IC 95%: 0.58, 0.94).
+
+Aquellos con infección respiratoria recurrente tienen un mayor riesgo de sufrir un ataque asmático, con un IRR de 2.47 (IC 95%: 1.84, 3.26).
+
+Un aumento de un punto en la puntuación GHQ-12 (que evalua el bienestar psicológico) incrementa el riesgo de tener un ataque asmático en 1.06 (IC 95%: 1.05, 1.06).
