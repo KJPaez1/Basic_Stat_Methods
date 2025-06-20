@@ -7,12 +7,17 @@ format: html
 ## Cargar los paquetes
 
 ```{r}
+install.packages("performance")
+```
+
+```{r}
 library(tidyverse)
 library(here)
 library(rio)
 library(gtsummary)
 library(car)
 library(survival)
+library(performance)
 ```
 
 ## 1 Modelos univariados (no ajustados) vs. multivariados (ajustados)
@@ -312,7 +317,7 @@ tabla_final <-
 tabla_final
 ```
 
-### **3.1 ¿Cómo interpretar?** 
+### **3.1 ¿Cómo interpretar?**
 
 En el modelo de regresión logística ajustado, la edad y la frecuencia cardíaca se asociaron de manera significativa con la mortalidad hospitalaria. Por cada año adicional de edad, las odds de fallecer aumentan en un 6% (OR = 1.06; IC95%: 1.04–1.09; p \< 0.001). De igual forma, un incremento de un latido por minuto en la frecuencia cardíaca eleva las odds de muerte en un 3% (OR = 1.03; IC95%: 1.01–1.05; p \< 0.001).
 
