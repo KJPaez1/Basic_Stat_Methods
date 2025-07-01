@@ -45,7 +45,7 @@ data_sm <- import(here("data", "s14_glucosa_circun.csv"))
 Un vistazo a los datos
 
 ```{r}
-head(data)
+head(data_sm)
 ```
 
 ## 4 Realizando la imputación de datos
@@ -61,7 +61,7 @@ colSums(is.na(data_sm))
 Incluso mejor, podemos visualizar los datos perdidos en un mapa de calor usando la función `plot_pattern()` de **ggmice**.
 
 ```{r}
-data |>
+data_sm |>
   select(
       edad,
       sexo,
@@ -75,9 +75,7 @@ data |>
     ) |>
   ggmice::plot_pattern(
     square = TRUE,
-    rotate = TRUE,
-    #npat = 3,
-    #cluster = "reg"
+    rotate = TRUE
   )
 ```
 
@@ -158,11 +156,11 @@ Nota que el promedio y desviación estandard, para algunas variables, varían en
 
 ### 4.3 ¿Qué variables debo incluir en el proceso de imputación?
 
-Debemos incluir todas las variables que se utilizarán en los análisis posteriores, incluso aquellas que no presentan valores perdidos. La razón es que el modelo de imputación debe ser *tan complejo como el análisis que se realizará posteriormente*. De lo contrario, se perderá información relevante de las demás variables. Además, aunque algunas variables no tengan valores faltantes, su inclusión en el modelo de imputación es útil porque aportan información que mejora la estimación de los valores imputados.
+Debemos incluir todas las variables que se utilizarán en los análisis posteriores, incluso aquellas que no presentan valores perdidos. La razón es que el modelo de imputación debe ser *tan complejo como el análisis que se realizará posteriormente*. De lo contrario, se perderá información relevante de las demás variables. Además, aunque algunas variables no tengan valores faltantes, su inclusión en el modelo de imputación es útil porque aportan información que mejora la estimación de los valores imputados. Recuerda además que las variables categóricas deben ser de tipo factor. El código de abajo selecciona las variables y transforma la variable `sindrom_metabolico` a factor.
 
 ```{r}
 input_data =
-  data |>
+  data_sm |>
     dplyr::select(
       edad,
       sexo,
@@ -221,10 +219,6 @@ data_imputada
 ```
 
 El resultado de la imputación se ha guardado en el objeto data_imputada y muestra que es un objeto de clase mids (multiply imputed dataset), el número de imputaciones (20), el método de imputación para todas las variables, y en una matriz, cuales variables han sido usadas para predecir otras.
-
-```{r}
-data_imputated_l <- complete(data_imputada, action = "long")
-```
 
 ## 5 Analizando los datos imputados
 
@@ -298,4 +292,8 @@ tabla_multi <-
                    trigliceridos ~ "Triglicéridos (mg/dL)")) |>
   bold_p(t = 0.05) |>
   modify_header(estimate = "**OR ajustado**", p.value = "**p valor** ")
+```
+
+```{r}
+tabla_multi
 ```
