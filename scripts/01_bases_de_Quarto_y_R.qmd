@@ -1,175 +1,104 @@
 ---
-title: "Aspectos básicos de r y documentos Quarto"
+title: "Aspectos básicos de R y Quarto"
 author: "Kevin J. Paez"
 format: html
 editor: visual
 ---
 
-# 1. Aspectos básicos sobre el uso de Quarto
+# 1 Aspectos básicos sobre el uso de R
 
-Los documentos Quarto permiten combinar texto y código de R. Es importante documentar detalladamente los procesos realizados durante el análisis de datos. Quarto es el documento perfecto para eso.
+## 1.1. La interfaz de RStudio
 
-Ejecuta códigos de R en un documento Quarto en la zona sombreada llamada "Chunk", traducido, "bloque \[de código\]"
+Para realizar algo en R, es necesario comunicarnos con la computadora. La instalación de R nos da el lenguaje y RStudio permite la comunicación. Al abrir RStudio, entre otras cosas, podrás ver la consola, "donde todo sucede". Para realizar algo en R debemos escribir código de R en el prompt (la cual se encuentra en la parte inferior derecha) y "correrlo", presionando la tecla Enter.
+
+## 1.2 Corriendo códigos en R
+
+Cuando escribas código de R en el prompt y presiones la tecla Enter, la consola te dará una respuesta. Por ejemplo, en el prompt podemos hacer una operación aritmética:
 
 ```{r}
-
+1 + 3
 ```
+
+Al correr la línea de código, R nos muestra el resultado de la operación: 3. Nota que el resultado viene precedido por la notación \[1\]. Esta notación indica que el número que aparece a su derecha es el primer elemento del resultado. Para otros comandos (línea de código) R nos mostrará muchos valores en el resultado, por ejemplo, al generar números que se encuentren entre 100 y 150
+
+```{r}
+100:150
+```
+
+En general, esta notación no es importante.
+
+## 1.3 Scripts
+
+Una ventaja importante al usar RStudio en comparación a otros softwares estadísticos es que podemos llevar registro del código de R (llamado tambienb scripts) que corramos. Este archivo, puede ser guardado y editado tal como cualquier otro editor de texto (por ejemplo, un archivo Word de Office). Existen varios tipos de editores en RStudio, cada uno con características propias y similares entre sí.
+
+## 1.4 La interfaz de RStudio, en detalle.
+
+Al crear el R Script, notarás que la interfaz de R se divide en 4 paneles. Cada panel incluye características propias que en conjunto facilitan el análisis de datos.
+
+## 1.5 Quarto
+
+Como mencioné, RStudio permite guardar los códigos de R en un archivo. Quarto es un tipo de documento disponible en RStudio que permite combinar código, resultados y texto (como este) en un mismo documento. Los archivos Quarto permite hacer el analisis de datos reproducible, es decir, permite registrar lo que obtuviste, pero tambien captura cómo lo hiciste.
+
+Una consideración importante: manten los nombres de tus archivos tan simple como puedas. Cuando nombres a tus archivos de Quarto asegúrate de que el nombre sea corto, no tenga espacios ni caracteres especiales (como tíldes o comillas). El archivo de Quarto mostrado arriba tiene de nombre *semana_01*.
+
+### 1.5.1 Anatomía de Quarto
+
+Un archivo Quarto tiene 3 partes: **1) la sección de Metadata**, **2)** **secciones de Código** y **3)** **secciones de texto**. La sección de Metadata (una sección opcional) para este documento esta al inicio. En esta sección puedes añadir datos generales del documento, datos del autor del documento, o el tipo de archivo a producir, entre otras. Las secciones de código o chunk son estas secciones sombreadas delimitados por caracteres especiales. Las secciones de texto son todo lo que esta fuera de las secciones de metadata y los chunks, incluyendo estas líneas de texto.
+
+Para añadir un chunk a tu documento puedes usar el atajo en el teclado: ctrl + alt + i o hacer click en el ícono superior derecho de este documento:
+
+A continuación, el ejemplo de un chunk:
+
+```{r}
+# Este es un chunk
+```
+
+### 1.5.2 Dos formas de visualizar Quarto
+
+El documento de Quarto puede ser visualizado de dos formas: **a)** **Visual** (izquierda) y **b) Source** (derecha). El modo visual es similiar a un procesador de texto (como Microsoft Office) por lo que es amigable para usuarios nuevos. Cuando te encuentres en el modo visual, podrás usar la barra superior para cambiar a **negrita** el texto, hacer *cursiva* texto o añadir otros elementos (como imágenes). El modo Source (código fuente) muestra lo que hay "detrás" del telón. Usa el modo Source cuando intentes solucionar un problema de sintaxis en tu documento de Quarto o cuando estés iniciando tu documentación de análisis de datos.
+
+### 1.5.3 formas de correr código de R en un documento Quarto.
+
+1.  Usando la opción Run (superior derecha de este cuadrante)
+2.  Usando la opción "play" (el símbolo de play de la esquina superior derecha del chunck)
+3.  Con el atajo: Ctrl + Enter (recomendable)
+
+Para correr código usando la tercera forma, localiza tu cursor al inicio de la línea de código en el chunk de abajo y presiona la combinación de las teclas Ctrl + Enter
 
 ```{r}
 1 + 1
 ```
 
-# 2. Aspectos básicos sobre el uso de R
+## 1.6 Objetos en R
 
-### 2.1 Ejecutando códigos en R
+R permite guardar valores dentro de un objeto para ser usados cuando lo necesitemos. por ejemplo podemos guardar las edades de 5 estudiantes en un objeto para, luego, calcular el promedio de la edad. La acción de asignar valores a un objeto es algo que usaremos de forma recurrente.
 
-Hay al menos 3 formas de correr código en R
+## 1.7 Asignando valores a un objeto
 
-```{r}
-1 + 1
-```
-
-### 2.2. Asignando valores a un objeto
-
-Para asignar un valor a un objeto usa el operador \<- o =. De este modo guardará información en un objeto.
-
-Un valor a un objeto nombrado "x"
+Para guardar información en un objeto debemos usar el operador de asignación `<-` o `=` entre el nombre del objeto y los valores a guardar. Abajo, asigno chunk asigno el valor 5 a un objeto nombrado "x"
 
 ```{r}
 x <- 5
 ```
 
-¿Qué hay en el objeto "x"?
+Para ver el valor guardado en el objeto, simplemente corremos el objeto.
 
 ```{r}
 x
 ```
 
-```{r}
-y = 5
-```
+Nota que cuando creas un objeto, este se guarda en tu ambiente de trabajo (cuadrante superior derecho)
 
-Tres valores a un objeto llamado "y"
+El nombre del objeto es arbitrario, no obstante, es importante que consideres las siguientes recomendaciones: el nombre del objeto a) no debe iniciar con un número, b) no debe tener caracteres especiales (por ejemplo \@, ´, \~, o !), c) no debe ser, y d) evita espacios. Al nombrar objetos, considera que estos sean cortos, descriptivos de lo que contiene y asigna diferentes nombres a diferentes objetos.
 
-```{r}
-z <- c(3, 7, 2)
-```
+## 1.8 Comentando códigos en R
 
-Los objetos en R pueden ser vizualizados, referenciados y manipulados
+Al escribir código en R, dentro de chunks, es importante documentar algunos pasos que podrían no ser fáciles de intepretar. En R, puedes añadir comentarios dentro de un chunk a partir de anteponer el numeral "\#".
 
 ```{r}
-s = x + y
-```
-
-### Comentando códigos en R
-
-Al escribir código en R, es importante documentar los pasos. Puedes añadir comentarios a partir de anteponer el numeral "\#" a su comentario.
-
-```{r}
-# Un valor a un objeto nombrado "x"
-x <- 5
-# ¿Qué hay en el objeto x?
-x
-# Tres valores en un objeto
-z <- c(3, 7, 2)
-```
-
-### Tipos (o clases) de objetos en R
-
-#### Numérico (Valor único numérico)
-
-```{r}
-a = 8
+# ¡R no correrá esta línea!
 ```
 
 ```{r}
-class(a)
-```
-
-```{r}
-is.vector(a)
-```
-
-#### Caracter (Valor único de carácter)
-
-```{r}
-b = "Hipertenso"
-c = "> 65 años"
-d = "este es un caracter"
-```
-
-#### Vector
-
-Los vectores son objetos donde podemos guardar más de un valor numérico o más de un caracter. En un vector no podemos combinar valores numéricos y caracteres. Para crear un vector necesitamos usar la función c().
-
-```{r}
-e = c(4, 3, 7)
-```
-
-```{r}
-f = c("Leve", "Moderado", "Grave")
-```
-
-```{r}
-g = c(6, "Alto")
-```
-
-#### Factor
-
-Un factor es un tipo de vector junto con un conjunto de valores permitidos. Para crear un factor, debemos usar la función factor() y c().
-
-```{r}
-gr = factor(c("Grado I", "Grado II", "Grado III"))
-```
-
-```{r}
-gs = factor(c("O", "A", "AB", "B"))
-```
-
-Ahora un vector, pero no factor
-
-```{r}
-gsc = c("O", "A", "AB", "B")
-```
-
-Nota la diferencia
-
-```{r}
-gsc
-```
-
-```{r}
-gs
-```
-
-Los vectores del tipo factor son importantes porque, en general, las variables categóricas deben ser de este tipo para analizarlos en R.
-
-#### Lista (list)
-
-Una lista es una colección de objetos: un objeto que contiene varios objetos. Una lista, entonces, puede contener objetos de varios tipos (o clases). Para crear una lista, usamos la función list()
-
-```{r}
-mi_lista <- list("5", c(1,2,3))
-```
-
-```{r}
-x <- list(a = "5", c(1,2,3), gs)
-```
-
-#### Data frame
-
-un data.frame es un tipo de lista que podría resultarte familiar. La estructura de un data.frame es similar a cómo solemos guardar información. Por ejemplo, en una hoja de excel la información es ordenada de modo que cada columna es una variable y cada fila es una observación. Para crear un data.frame usamos la función data.frame
-
-```{r}
-anemia = data.frame(anemia = c("Sí", "Sí", "No", "Sí"),
-                    sexo = c("f", "m", "f", "f"),
-                    edad = c(8, 7, 5, 7))
-```
-
-```{r}
-class(anemia)
-```
-
-```{r}
-print(anemia)
+x <- 5 # Un valor a un objeto nombrado "x". 
 ```
