@@ -1,4 +1,4 @@
-# Metodos Estadísticos
+# Sistematización y Métodos Estadísticos
 
 Este repositorio contiene recursos para la aplicación de  métodos estadísticos usando en **R**. Este repositorio incluye scripts para el análisis exploratorio, modelos de regresión, imputación de datos y más.
 
