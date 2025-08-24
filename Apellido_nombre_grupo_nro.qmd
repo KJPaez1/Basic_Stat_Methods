@@ -1,0 +1,42 @@
+---
+title: "Análisis de datos en RStudio"
+author: 
+  - name: Apellidos y Nombres
+  - name: Grupo #
+format: html
+---
+
+## Práctica Calificada 1
+
+### Entrega 1 de 3
+
+1.  Escriba un código de R que muestre el uso de 3 funciones de R. Estas deben ser distintas a las ya usadas en clase.
+
+2.  Escriba un código de R que instale y cargue 3 paquetes. Estas deben ser distintas a las ya usadas en clase.
+
+### Entrega 2 de 3
+
+1.  Escriba un código de R que permita subir el dataset asignado a su grupo al ambiente de RStudio.
+
+2.  Escriba un código de R que permita exportar un dataframe en formato csv
+
+3.  Escriba un código de R que muestre el proceso de limpieza de el dataset asignado a su grupo.
+
+### Entrega 3 de 3
+
+1.  Documente el análisis de resumen de datos aplicado al dataset asignado a su grupo.
+
+Nota: El resumen de datos debe ser aplicado a sus variables numéricas y categóricas. Adicionalmente, los resultados deben estar acompañados de una interpretación.
+
+2.  Escriba el código de R para crear la "tabla 1" usando el dataset asignado a su grupo.
+
+Nota: Añada también la interpretación de la tabla.
+
+## Práctica Calificada 2
+
+### Entrega 1 de 3
+
+1.  Documente el análisis descriptivo empleando gráficos usando el dataset asignado a su grupo.
+
+Nota: Los gráficos mostrados como entrega para la práctica, deben ser aquellos que crea pertienentes para sus variables. Los gráficos deben estar acompañados de la interpretación (25 a 50 palabras por gráfico).
+
