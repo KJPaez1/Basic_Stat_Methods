@@ -1,46 +1,41 @@
 ---
-title: "Funciones, paquetes e importe de datos"
+title: "Tipos de objetos, funciones, paquetes e importación de datos"
 author: "Kevin J. Paez"
 format: html
 editor: visual
 ---
 
-# 1. Funciones en R
+# 1 Funciones en R
 
-Las funciones en R son bloques de código que permiten automatizar tareas y realizar diversas operaciones. La mayoría requieren argumentos que determinan cómo se ejecutarán, especificando aspectos como los datos a utilizar, las variables involucradas y otros parámetros que influyen en el resultado.
+Si deseas realizar "algo" en R, en la mayoría de casos tendrás que usar funciones. Las funciones en R permiten desde generar números aleatorios hasta estimar estadísticos. La mayoría de las funciones requieren argumentos, las cuales determinan cómo se realizará la acción, por ejemplo, sobre qué datos se realizará la función, las variables involucradas y otros parámetros.
 
-Las funciones en R suelen ser intuitivas, ya que sus nombres describen su acción. Por ejemplo, `mean()` y `sd()` calculan el promedio y la desviación estándar de un vector numérico, respectivamente.
+Las funciones en R suelen ser intuitivas, ya que sus nombres describen su acción. Por ejemplo, las funciones `mean()` y `sd()` calculan el promedio y la desviación estándar de un vector numérico (la sección 2.3 muestra más información sobre vectores), respectivamente.
 
 ```{r}
-## Creando un vector de datos
-glucosa = c(150, 120, 101, 170)
+glucosa = c(150, 120, 101, 170) ## Creando un vector numérico
 ```
 
 ```{r}
-mean(glucosa) ## un argumento es el dato a utilizar
+mean(x = glucosa) ## El arguemto "x" toma al vector glucosa para realizar el cálculo. 
+```
+
+## 1.1 ¿Qué hace una función?: Obteniendo ayuda
+
+Es facil inferir lo que hace la función `mean()`, para otras funciones, no será tan facil intuir. R proporciona información sobre lo que una función hace y cómo usarlo. Para esto, usa la función `help()` o antepon el signo de interrogación de cierre, `?`, seguida la función.
+
+```{r}
+help(sd)
 ```
 
 ```{r}
-sd(glucosa) 
+?sd
 ```
 
-```{r}
-median(glucosa)
-```
+La pestaña de ayuda que se muestra en la región inferior derecha de tu pantalla permite conocer varios aspectos de la función consultada. La sección de **Description**, describe para qué sirve; la sección de **Usage** muestra los argumentos posibles y los argumentos que vienen con valores por defecto, y que por lo tanto no estamos obligados a especificar. Por ejemplo, para la función `sd()`, la cual, según la descripción calcula la desviación estandard de valores en un objeto `x`, hay dos argumentos: `x` y `rm.na`. El argumento `x` toma un vector numérico y este arguemento debe ser especificado obligatoriamente porque no hay un valor por defecto. En contraste, el argumento `na.rm` toma el valor "TRUE" por defecto, por lo tanto, al utilizar la función podemos obviar el argumento o cambiar el valor que tome (a `TRUE`) si deseamos incluir valores perdidos en el cálculo de la desviación estandard. En secciones inferiores, la página de ayuda muestra más información sobre la utilización de la función.
 
-En algunos casos, los argumentos incluyen un signo de igual (=), lo que indica que tienen un valor por defecto y, por lo tanto, su especificación es opcional.
+## 1.2 Un detalle más sobre los argumentos en una función
 
-### Obteniendo ayuda sobre la función de la función
-
-La pestaña de ayuda en RStudio (cuadrante inferior derecho) permite conocer en detalle el uso de las funciones. Para obtener información sobre una función, basta con ejecutar:
-
-```{r}
-?mean
-```
-
-### Los argumentos en las funciones
-
-Existen dos formas de proporcionar argumentos a una función en R: especificando su nombre o sin hacerlo. Si no se especifica el nombre, se debe respetar el orden de los argumentos según la documentación de la función para evitar errores. A continuación, se muestra un ejemplo con rnorm(), que genera números aleatorios con distribución normal:
+Existen dos formas de proporcionar argumentos a una función en R: especificando su nombre o sin hacerlo. Si no se especifica el nombre del argumento, entonces se debe respetar el orden de los argumentos según la página de ayuda para la función. `rnorm()` es una función que genera números aleatorios con una distribución normal. La función toma tres argumentos, número de valores, promedio y desviación estandard, en el siguiente orden: `n`, `mean` y `sd`. Las tres líneas de código mostradas abajo, hacen lo mismo.
 
 ```{r}
 rnorm(n = 10, mean = 50, sd = 15)
@@ -50,152 +45,238 @@ rnorm(n = 10, mean = 50, sd = 15)
 rnorm(10, 50, 15)
 ```
 
-Dado que la generación de números es aleatoria, los resultados varían en cada ejecución.
+```{r}
+rnorm(10, mean = 50, sd = 15)
+```
 
-Para obtener el mismo conjunto de números aleatorios en diferentes ejecuciones, usamos set.seed():
+# 2 Tipos de datos en R
+
+Los objetos en R pueden contener varios tipos de valores, incluyendo números (1, 2, 3) o caracteres ("A", "B", "AB"). Los objetos pueden tambien ser tablas o una simple lista de números. La función `class()` identifica el tipo de objeto con el que estemos lidiando. En el siguiente código, creamos el objeto `a` y examinamos a que tipo pertenece.
 
 ```{r}
-set.seed(100)
-rnorm(n = 10, mean = 50, sd = 15)
+a = 8
+class(a)
 ```
 
 ```{r}
-set.seed(100)
-rnorm(10, 50, 15)
+b = c("A", "B", "C")
+class(b)
 ```
 
-# 2. Paquetes (package) versus Librerias (library) en R
+## 2.1 El tipo de objeto llamado `dataframe`
 
-R proporciona muchas funciones útiles para el análisis de datos y la visualización de forma nativa. Sin embargo, para análisis avanzados o gráficos más específicos, es necesario instalar paquetes adicionales. Un paquete es una colección de funciones, datos y código compilado organizados para facilitar tareas específicas.
+Los objetos son de varios tipos, pero será infrecuente que usemos objetos que contienen uno o unos pocos valores. En cambio, será común que lidiemos con objetos cuya información esten organizados como las tablas que se pueden crear en Excel. Este tipo de objeto son llamados `dataframe`. Los dataframes pueden incluir muchas columnas y filas, organizados como se ve en la imagen. Los dataframe son muy útiles porque permite combinar variables (en forma de columnas) para muchas casos u observaciones (filas).
 
-Por ejemplo, el paquete survival contiene funciones para el análisis de datos de supervivencia, como el método de Kaplan-Meier y la regresión de Cox. También incluye conjuntos de datos sobre supervivencia en distintos tipos de cáncer.
-
-Cuando se instala un paquete en R, toda su información se almacena en un directorio de tu computadora. Este directorio se conoce como librería.
-
-# 3. Instalar y cargar paquetes en R
-
-Para instalar paquetes en R, se usa la función install.packages(). El nombre del paquete debe especificarse entre comillas:
+El código de abajo, la cual crea el objeto `mi_data` de tipo `dataframe`, es un poco más complicado en comparación a lo que haz visto hasta el momento. Pero no te preocupes, solo tienes que correrlo. Más adelante, podrás entender completamente lo que esta sucediendo.
 
 ```{r}
-install.packages("here")
-install.packages("tidyverse")
+mi_data <- data.frame(
+  edad = c(25, 32, 40, 28, 36, 50, 44, 29, 60, 38),
+  sexo = c("Masculino", "Femenino", "Femenino", "Masculino", "Femenino",
+           "Masculino", "Femenino", "Masculino", "Masculino", "Femenino"),
+  tipo_sangre = factor(c("A", "O", "B", "AB", "A", "O", "B", "AB", "A", "O"),
+                       levels = c("A", "O", "B", "AB")),
+  hb_glicosilada = c(5.41, 6.24, 7.14, 5.92, 6.57, 7.84, 5.74, 6.98, 8.29, 6.17)
+)
+
+```
+
+Examinemos que el objeto `mi_data` que acabamos de crear es, en realidad, un dataframe.
+
+```{r}
+class(mi_data)
+```
+
+## 2.2 La estructura de un objeto
+
+La función `srt()` permite saber más de un objeto. Por ejemplo, el número de observaciones, las variables, y el tipos de datos por variable.
+
+```{r}
+str(mi_data)
+```
+
+Luego de usar la función, sabemos que el dataframe `mi_data` tiene 4 variables y 10 observaciones. También, conocemos ahora los nombres de las variables (`edad`, `sexo`, `tipo_sangre`, `hb_glicosilada`)
+
+## 2.3 El operador de extracción `$`
+
+Para analizar datos, tendremos que acceder a las variables de un dataframe, las columnas. Podemos usar el operador de extracción `$` para extraer la variable `edad` dataframe `mi_data`, de la siguiente manera.
+
+```{r}
+mi_data$edad
+```
+
+La función `names()` puede también mostrarnos los nombres de las variables (columnas)
+
+```{r}
+names(mi_data)
+```
+
+## 2.4 Vectores
+
+Al ejecutar `mi_edad$edad`, R nos muestra varios números. Este tipo de objetos son llamados vectores. Los vectores pueden tener 1 o más valores. El número 8 es tecnicamente un vector de longitud 1. Puedes saber la longitud de un vector usando la función `lenght()`
+
+```{r}
+length(mi_data$edad)
+```
+
+### 2.4.1 *numeric* (numérico)
+
+La variable `edad` (incluído en el dataframe `mi_data`) es un vector numérico, dado que incluye solo números.
+
+```{r}
+class(mi_data$edad)
+```
+
+Para que un vector sea *numeric*, este solo debe incluir valores numéricos.
+
+### 2.4.2 *character* (caracter)
+
+Nuestro dataframe `mi_data` tambien incluye valores en forma de cadena de caracteres, por ejemplo, en la variable `sexo`. Este tipo de vector es llamado *character*
+
+```{r}
+class(mi_data$sexo)
+```
+
+### 2.4.3 *factor* (factor)
+
+El dataframe `mi_data` incluye la variable `tipo_sangre`. Podriamos esperar que esta sea un vector de tipo caracter, sin embargo, no lo es:
+
+```{r}
+class(mi_data$tipo_sangre)
+```
+
+Es un *factor*. Los objetos de tipo factor permite guardar variables categóricas como tipo de sangre. Las variables categóricas tienen niveles (las categorías). Usando la función `levels()` podemos saber cuáles son los niveles de la variable categórica:
+
+```{r}
+levels(mi_data$tipo_sangre)
+```
+
+### 2.4.4 *list* (lista)
+
+EL dataframe `mi_data` es un tipo especial de *lista*. En los objetos de esta clase podemos podemos varios tipos de datos. Para crear una *lista*, usamos la función `list()`
+
+```{r}
+mi_lista <- list(nombre = "Kevin Paez", 
+                 codigo_estudiante = "14524",
+                 notas_de_2024 = c(14, 12, 11, 17),
+                 estado_final = "Aprobado")
+```
+
+```{r}
+class(mi_lista)
+```
+
+Esta lista incluye objetos con varios tipos de datos
+
+```{r}
+mi_lista
+```
+
+### 2.4.5 Creando un vector
+
+Hasta ahora hemos evaluado varios tipos de vectores. El dataframe `mi_data` es solo una combinación de columnas las cuales son vectores (entre numéricos, caracteres y factor). El objeto más básico que almacenaremos en R serán de este tipo. Para crear vectores debemos usar la función `c()`, la cual una abreviatura para *concatenate* (contatenar). Los valores que se incluyan un vector de tipo caracter deben ser encerrados entre comillas ("" o ''):
+
+```{r}
+nombres = c("Gloria", "Isabel", "Eugenia", "Lucrecia", "Lucero")
+```
+
+```{r}
+nombres
+```
+
+```{r}
+edades = c("29", "32", "28", "27", "38")
+```
+
+```{r}
+edades
+```
+
+# 3 Paquetes en R
+
+Al instalar R por primera vez, este proporciona funciones útiles para el análisis de datos y la visualización. Pero lo que se puede lograr con ellos, es solo una pequeña fracción de lo que es posible. Para expandir las capacidades de lo que puede realizar R es necesario obtener funciones adicionales. Estas funciones adicionales vienen en forma de paquetes, `package`.
+
+Un **package**, paquete, en R es una colección de funciones (y, en ocasiones, también datasets ) con un propósito en particular. Por ejemplo, el paquete `survival` contiene funciones para el análisis de datos de supervivencia, como el método de Kaplan-Meier y la regresión de Cox. Este paquete, survival, también incluye conjuntos de datos sobre supervivencia en distintos tipos de cáncer que pueden ser usados para el entrenamiento del usuario. Podemos adquirir estas funciones a partir de descargar paquetes de repositorios en línea, desde R.
+
+## 3.1 Instalar y cargar paquetes en R
+
+Para instalar paquetes en R, usa la función `install.packages()`. El nombre del paquete debe especificarse entre comillas. Por ejemplo, el código abajo instalará el paquete `survival` .
+
+```{r}
+#| eval: false
 install.packages("survival")
 ```
 
-Después de ejecutar esta línea de código, la consola mostrará actividad. Una vez que reaparezca el símbolo \>, la instalación habrá finalizado.
+Después de ejecutar esta línea de código, la consola (inferior izquierda de tu pantalla) mostrará actividad. Una vez que reaparezca el símbolo `>`, la instalación habrá finalizado.
 
-La instalación solo se realiza una vez, pero cada vez que se abre RStudio es necesario cargar el paquete antes de usarlo. Para ello, utilizamos library():
+Cuando se instala un paquete en R, toda la información se almacenará en un directorio de tu computadora. Este directorio se conoce como librería. Por lo tanto, luego de instalar el paquete, será necesario cargarlo. Para ello, utilizamos `library()`:
 
 ```{r}
-library(tidyverse)
 library(survival)
-library(here)
 ```
 
-# 4. Importando datos en R
+> Recuerda que la instalación solo se realiza una vez, pero cada vez que abramos RStudio será necesario cargar el paquete si deseamos usar sus funciones.
+
+# 4 Importando datos en R
 
 Existen dos formas de importar datos en R: mediante clics o con código. La primera opción se explica en la guía práctica, mientras que aquí abordamos el proceso usando código.
 
-Al importar datos en R, es importante conocer la extensión del archivo, su nombre y su ubicación en el sistema. Una forma sencilla de hacerlo es con los paquetes rio y here:
+Al importar datos en R, es importante conocer la extensión del archivo, su nombre y su ubicación en el sistema. Una forma lidiar con rutas en nuestras computadoras al momento de importar datasets es realizando la importación usando los paquetes `rio` y `here` . El paquete `rio` tiene la función `import()` la cual selecciona automáticamente la mejor opción para importar archivos, independientemente de su extensión. Sin este paquete, tendríamos que elegir manualmente la función adecuada. La función `here()` del paquete `here` lidia con las rutas de la computadora, que suelen ser largar y molestas de escribir. Si los datos se encuentran en una carpeta llamada *data*, dentro del proyecto de trabajo.
 
-rio: Su función import() selecciona automáticamente la mejor opción para importar archivos, independientemente de su extensión. Sin este paquete, tendríamos que elegir manualmente la función adecuada. here: Permite especificar rutas de archivos de forma flexible y reproducible, sin necesidad de escribir la ruta absoluta del sistema operativo. Si los datos se encuentran en una carpeta llamada data, dentro del proyecto de trabajo, se pueden importar con la siguiente estructura:
-
-Primero instalamos los paquetes
+Usaremos el paquete `here` y `rio` para ilustrar el proceso de importar datasets en varios formatos. Primero usaremos la función `install.package()` y `library()` para instalar y cargar los paquetes. Recuerda que la instalación se realiza solo una vez.
 
 ```{r}
-#install.packages("here")
-install.packages("rio") # Selección automatica de funciones
+install.packages("here")
+install.packages("rio") 
 ```
-
-Cargamos los paquetes
 
 ```{r}
 library(here)
 library(rio)
 ```
 
-Estructura (no corra este chunk)
-
-```{r}
-nombre_del_dataset = import(here("nombrecarpeta", "nombre_archivo.extensión"))
-```
-
-### Importanto un archivo .csv
+Para importar el archivo *s02_treat_artritis.csv* que se encuentra en un carpeta *data* de un proyecto, necesitamos el siguiente código.
 
 ```{r}
 data_artritis = import(here("data", "s02_treat_artritis.csv"))
 ```
 
-### Importanto un archivo .xlsx
+Si el archivo a importar tiene otro nombre o extensión, lo cambio en el código. Recuerda que los nombres del objeto para almacenar los datasets en R deben ser distintos y los datasets son distintos.
+
+Para un archivo xlsx, de Excel
 
 ```{r}
 data_artritis_1 = import(here("data", "s02_treat_artritis.xlsx"))
 ```
 
-### Importanto un archivo SPSS, .sav
+Para un archivo de sav, de SPSS
 
 ```{r}
 data_artritis_2 = import(here("data", "s02_treat_artritis.sav"))
 ```
 
-### Importanto un archivo .Rdata
+Para un archivo Rdata
 
 ```{r}
 data_artritis_3 = import(here("data", "s02_treat_artritis.Rdata"))
 ```
 
-Es importante incluir la extensión del archivo para que R la función pueda ejecutarse correctamente.
+# 5 Exportando datos
 
-# 5. Exportando datos
-
-```{r}
-write_excel_csv(nombre_del_objeto, "nombredecarpeta/nombre_archivo.csv")
-```
-
-Ejemplo
+Será común que necesitemos exportar dataframes que hayamos modificado en R. Aunque R permite exportar datos en varios formatos, una manera adecuada es la de usar el formato csv (comma separated values). La función `write_excel_csv()` del paquete `readr` exporta dataframes a archivos con la extensión csv que son reconocidos por Excel.
 
 ```{r}
-write_excel_csv(data_diabetes, "data_diabetes.csv")
-```
-
-El archivo se guardará en el proyecto
-
-# 6. `dataframes`
-
-Los dataframes son datos ordenados de una forma estandard, donde las columnas (vectores) son variables y las filas son observaciones.
-
-En r, podemos generar dataframes usando la función data.frame. Realizamos esto al combinar vectores.
-
-Creando los vectores
-
-```{r}
-edad = c(34, 43, 28, 30, 21)
-sexo = c("mujer", "varon", "mujer", "mujer", "varon")
-hipertension = c("sí", "no", "sí", "no", "no")
-```
-
-Creando un dataframe con la función `data.frame`
-
-```{r}
-mis_datos = data.frame(edad, sexo, hipertension)
-```
-
-Visualizar el `dataframe`
-
-```{r}
-mis_datos
-```
-
-En la mayoría de casos, los datos que importes a R serán dataframes.
-
-Podemos comprobar esto al evaluar el tipo de objeto del conjunto de datos importado usando la función
-
-\`class()\`.
-
-```{r}
-class(data_artritis)
+install.packages(readr)
 ```
 
 ```{r}
-View(data_artritis)
+library(readr)
 ```
+
+En la función `write_excel_csv()` el primer argumento es el nombre del dataframe que deseamos exportar, el segundo es el nombre que deseamos asignarle al dataset exportado. Recuerda incluir la extensión del archivo.
+
+```{r}
+write_excel_csv(mi_data, "mi_data.csv")
+```
+
+El archivo se guardará en la carpeta del proyecto.
