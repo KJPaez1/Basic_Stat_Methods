@@ -89,7 +89,7 @@ class(mi_data)
 
 ## 2.2 La estructura de un objeto
 
-La función `srt()` permite saber más de un objeto. Por ejemplo, el número de observaciones, las variables, y el tipos de datos por variable.
+La función `str()` permite saber más de un objeto. Por ejemplo, el número de observaciones, las variables, y el tipos de datos por variable.
 
 ```{r}
 str(mi_data)
@@ -185,7 +185,7 @@ nombres
 ```
 
 ```{r}
-edades = c("29", "32", "28", "27", "38")
+edades = c(29, 32, 28, 27, 38)
 ```
 
 ```{r}
@@ -203,7 +203,6 @@ Un **package**, paquete, en R es una colección de funciones (y, en ocasiones, t
 Para instalar paquetes en R, usa la función `install.packages()`. El nombre del paquete debe especificarse entre comillas. Por ejemplo, el código abajo instalará el paquete `survival` .
 
 ```{r}
-#| eval: false
 install.packages("survival")
 ```
 
