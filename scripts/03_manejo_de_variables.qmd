@@ -18,8 +18,8 @@ Este paquete es una colección de paquetes que permiten, entre otras cosas, el m
 Al igual que en la sesión anterior, usaremos la función `install.packages()` para instalar el paquete `tidyverse` y la función library para cargar los paquetes `tidyverse`, `rio` y `here`.
 
 ```{r}
-# install.packages("tidyverse")
-# install.packages("janitor")
+install.packages("tidyverse")
+install.packages("janitor")
 ```
 
 ```{r}
@@ -134,7 +134,18 @@ La función `View()` (con la V mayúscula), permite ver los datos en una pestañ
 View(data_artritis_3)
 ```
 
-Ahora, seguro notaste que la fila 5 y la columna 6 no contienen valores. Probablemente sean una fila y columna añadidas involuntariamente. La función `remove_empty()` del paquete `dplyr` puede eliminar todas las columnas y filas que no tengan algún valor.
+Ahora, seguro notaste que la fila 5 y la columna 6 no contienen valores. Probablemente sean una fila y columna añadidas involuntariamente. La función `remove_empty()` del paquete `dplyr` puede eliminar todas las columnas y filas que no tengan algún valor. No obstante, es importante que antes de esto convertamos los valores "vacíos" a NA. Los NAs son los valores correctos para indicar que no hay dato en una celda de un dataset. Para realizarlo en un dataset entero, usemos la función `mutate_if()`, la cual es una función condicional: realiza la operaración en base a una condición. La condición en el código abajo es de que el valor en las celdas sean vacías.
+
+```{r}
+data_artritis_3 = mutate_if(data_artritis_3, is.character, list(~na_if(.,"")))
+```
+Nota el constraste. Ahora todos los valores vacíos aparecen como NA.
+
+```{r}
+head(data_artritis_3)
+```
+
+Ahora sí, aplicamos la función `remove_empty()` para remover columnas y filas vacias.
 
 ```{r}
 data_artritis_4 = data_artritis_3 |> 
