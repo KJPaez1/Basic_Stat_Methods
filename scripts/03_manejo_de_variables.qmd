@@ -4,261 +4,337 @@ format: html
 editor: visual
 ---
 
-## Instalar paquetes
+# 1 Inspección de datos: el paso siguiente al importe de un dataset
+
+En la sesión de práctica anterior hemos importado y exportado datasets. En el proceso de análisis de datos, el paso siguiente luego de importar un dataset es la inspección para buscar anomalías. Muchas cosas pueden ir mal en el proceso de recolección de datos y esto puede traducirse a anomalías dentro de la tabla de datos.
+
+Muchas de las funciones que usaremos para realizar la inspección y limpieza de datos serán del paquete tidyverse.
+
+![](images/tidyverse.png){width="80%" fig-align="center"}
+
+Este paquete es una colección de paquetes que permiten, entre otras cosas, el manejo de variables y datasets con un formato *tidy*. El formato *tidy* es la forma de organización de una tabla de datos en la que las filas son observaciones (o casos) y cada columna es una variable.
+
+# 2 Los paquetes y el dataset para esta sesión
+
+Al igual que en la sesión anterior, usaremos la función `install.packages()` para instalar el paquete `tidyverse` y la función library para cargar los paquetes `tidyverse`, `rio` y `here`.
 
 ```{r}
 # install.packages("tidyverse")
-# install.packages("rio")
-# install.packages("here")
 # install.packages("janitor")
-# install.packages("skimr")
-# install.packages("visdat")
 ```
-
-## Cargar paquetes
 
 ```{r}
 library(tidyverse)
+library(janitor)
 library(rio)
 library(here)
-library(janitor)
 ```
 
-## Importando s02_treat_artritis.csv usando el paquete rio
+Para mostrar el proceso de inspección y limpieza de datos usaremos un dataset que contiene información de pacientes con artritis reumatoide. Abajo, el código para importar el dataset. Recuerda que el dataset s03_treat_artritis debe estar en tu folder "data".
 
 ```{r}
 data_artritis = import(here("data", "s03_treat_artritis.csv"))
 ```
 
-## Vistazo al contenido
+# 3 El objeto *tibble* (*tbl*)
 
-### ¿Cuántas variables y observaciones hay?
-
-El primer número indica el número de filas, el segundo, el número de columnas.
+Muchas de las funciones del paquete `tidyverse`, trabajan mejor con el objeto *tibble*, el cual un tipo de dataframe en una "versión moderna". Por lo tanto, antes de iniciar el proceso de inspección y limpieza de datos convertiremos el dataframe data_artritis a un objeto tibble.
 
 ```{r}
-dim(data_artritis)
+data_artritis_1 = as_tibble(data_artritis)
+class(data_artritis_1)
 ```
 
-### ¿Cuantas y qué tipos de variables hay?
+Nota que ahora, el objeto `data_artritis_1` es de, tambien, tipo *tibble* (*tbl*).
+
+> ¡Recuerda guardar **siempre** la copia original de tu dataset! Nota que, al convertir el objeto `data_artritis` a un objeto de tipo tibble el nombre que he asignado al objeto es data, diferente al original. De igual manera, si realizas cambios grandes a un dataset, es importante crear versiones nuevas del objeto. Al manipular variables dentro de un dataset, podemos cometer errores. Si tenemos un respaldo o una versión anterior, podremos enmendar el error facilmente.
+
+# 4 Inspeccionando y realizando la limpieza de datos
+
+## 4.1 El número de variables y observaciones
+
+Iniciamos inspeccionando el número de observaciones y el número de variables en nuestro dataset. La función `dim()` cumple este propósito. Por otro lado, `str()` y `glimpe()` del paquete `dplyr` (de `tidyverse`) son funciones que cumplen con este propósito y muestra información adicional, incluyendo los nombres de las variables y una muestra de los tipos de datos.
 
 ```{r}
-str(data_artritis)
+dim(data_artritis_1)
 ```
 
-Una función similar
+El primer número es el número de observaciones y el segundo el número de columnas (variables).
 
 ```{r}
-dplyr::glimpse(data_artritis)
-```
-
-Estadísticos descriptivos y otros parámetros para exploración de datos
-
-```{r}
-skimr::skim(data_artritis)
-```
-
-Resumen por variable
-
-```{r}
-summary(data_artritis)
-```
-
-### Visualmente
-
-```{r}
-#View(data_artritis)
+str(data_artritis_1)
 ```
 
 ```{r}
-#visdat::vis_dat(data_artritis)
+glimpse(data_artritis_1)
 ```
+
+## 4.2 Corrigiendo los nombres de variables.
+
+A partir de nuestra inspección previa, notamos que los nomnbres del dataset no siguen las buenas prácticas para los nombres de variables. Por ejemplo, hay nombres de variables que incluyen espacios o caracteres especiales. En R, podemos mejorar el nombre de las variables usando la función `clean_names()` del paquete `janitor` o podemos cambiar el nombre de variables usando `rename()`.
 
 ```{r}
-#DataExplorer::create_report(data_artritis)
+data_artritis_2 = clean_names(data_artritis_1)
 ```
 
-# Limpieza de datos
-
-## Paso uno: corregir los nombres de variables.
-
-Clean names es una función del paquete janitor
-
-```{r}
-data_artritis_1 = clean_names(data_artritis)
-```
-
-Nota el constraste (la función `names()` imprime los nombres de columnas de un *dataset*)
-
-```{r}
-names(data_artritis)
-```
+Nota el constraste. Estos son los nombres de variables antes de aplicar la función `clean_names()`
 
 ```{r}
 names(data_artritis_1)
 ```
 
-## Paso dos: convertir celdas vacías a NA
+Y estos los nombres de variables despues de aplicar la función `clean_names()`
 
 ```{r}
-data_artritis_2 = mutate_if(data_artritis_1, is.character, list(~na_if(.,"")))
+names(data_artritis_2)
 ```
 
-## Paso tres: eliminar columnas o filas vacias.
+En otro escenario puede que solo sea necesario cambiar el nombre de una variable o unas pocas variables. Para ello, podemos emplear la función `rename()` del paquete `tidyverse()`
+
+La estructura del código para realizar el cambio de nombre de variables, es como sigue:
 
 ```{r}
-data_artritis_3 = remove_empty(data_artritis_2, which = c("rows", "cols"))
+data_artritis_3 = rename(data_artritis_2, tiempo_desde_diagnostico_a = timepo_desde_diagnostico_a)
 ```
 
-## Optimizando el código
+```{r}
+names(data_artritis_3)
+```
 
-### Corregir nombres, celdas vacías a NA y eliminar columnas o filas vacías.
+## Una pausa para aprender sobre el operador pipe `%>%`
+
+En R, es posible realizar una serie de operaciones en una "misma línea" de código, sobre un un objeto. Por ejemplo, podemos emplear la función `clean_names()` y `rename` en una misma línea de código. Esto es posible al usar el operador pipe `%>%`. Si la versión de R que tienes instalado es la versión 4.1.0 o una superior, podrás usar también el operador pipe nativo de R: `|>`.
+
+Veamos un ejemplo. En los pasos anteriores, empleamos la función `clean_names()` y `names()`. El código de abajo muestra como usar el operador pipe para ejecutar dos operaciones sobre el objeto `data_artritis_1`. El resultado la guardaremos en un objeto nombrado `data_artritis_3`
 
 ```{r}
-data_artritis_1 = data_artritis |> 
+data_artritis_3 = data_artritis_1 |> clean_names() |> rename(tiempo_desde_diagnostico_a = timepo_desde_diagnostico_a)
+```
+
+```{r}
+names(data_artritis_3)
+```
+
+Nota que los nombres de variables fueron corregidos, al igual que el nombre *timepo_desde_diagnóstico_a* fue cambiado a *tiempo_desde_diagnostico_a*. Nota tambien que, el código en el que hacemos uso del operador pipe es largo. Si añadieramos funciones adicionales, el código luciría desordenado. Podemos hacer el código amable para nuestra vista al emplear saltos de línea con la tecla enter.
+
+```{r}
+data_artritis_3 = data_artritis_1 |> 
   clean_names() |> 
-  mutate_if(is.character, list(~ na_if(., ""))) |> 
-  remove_empty(which = c("rows", "cols"))
+  rename(tiempo_desde_diagnostico_a = timepo_desde_diagnostico_a)
 ```
 
-## Paso 4: corregir errores ortográficos o valores inválidos
+El código se ejecutará de la misma forma, la diferencia con la anterior es que ahora es más facil de "leer". Por ejemplo, ahora sabemos que la una de las líneas limpiará los nombres y otra modifica un nombre de variable en específico. Es recomendable añadir estos saltos, al menos luego de cada pipe.
 
-### Inspección tabular
+Ahora que sabemos cómo emplear el operador pipe, lo usaremos en los siguientes pasos de la inspección de datos y limpieza.
+
+## 4.3 Eliminando columnas o filas vacías.
+
+La función `View()` (con la V mayúscula), permite ver los datos en una pestaña.
 
 ```{r}
-data_artritis_1 |> count(categorias_de_edad) # Cambia de variable categórica
+View(data_artritis_3)
 ```
 
-Transformando de data.frame a as tibble
-
-```{r}
-data_artritis_2 = as_tibble(data_artritis_1)
-```
-
-Corregir errores ortográficos usando `mutate()` y `case_when()`
-
-```{r}
-data_artritis_3 = data_artritis_2 |> 
-  mutate(sexo = case_when(
-    sexo == "f" ~ "Femenino", 
-    sexo == "Maculino" ~ "Masculino", 
-    sexo == "Masculin" ~ "Masculino",
-    sexo == "masculino" ~ "Masculino",
-    TRUE ~ sexo))
-```
-
-```{r}
-data_artritis_3 = data_artritis_2 |> 
-  mutate(sexo = case_when(
-    sexo == "f" ~ "Femenino",
-    sexo %in% c("Maculino", "Masculin", "masculino") ~ "Masculino",
-    TRUE ~ sexo)
-    )
-```
-
-## Paso 5: Colapsar una variable categórica en menos niveles
-
-Un vistazo a la variable de interés
-
-```{r}
-data_artritis_3 |> count(categorias_de_edad)
-```
-
-Colapsar a dos categorías
+Ahora, seguro notaste que la fila 5 y la columna 6 no contienen valores. Probablemente sean una fila y columna añadidas involuntariamente. La función `remove_empty()` del paquete `dplyr` puede eliminar todas las columnas y filas que no tengan algún valor.
 
 ```{r}
 data_artritis_4 = data_artritis_3 |> 
-  mutate(categorias_de_edad_2 = case_when(
-    categorias_de_edad %in% c("42-49 años", "50-59 años") ~ "42-59",
-    categorias_de_edad %in% c("60-69 años", "70+ años") ~ "> 60",
-    TRUE ~ categorias_de_edad)
+  remove_empty(which = c("rows", "cols"))
+```
+
+En el argumento which especificamos si se eliminarán solo filas vacías (rows), solo columnas vacías (cols) o ambas. Usa la función `View()` para comprobar que las columnas vacías fueron eliminadas.
+
+## 4.4 Corrigiendo errores de tipeo o valores inválidos
+
+Las variables en un dataset pueden ser numéricas o categóricas. Las categóricas son muy comunes en ciencias de la salud y en el dataset tenemos varios ejemplos de estos: sexo, categoría de edad, etc. Los errores pueden provenir del ingreso de las categorías en estas variables. Para, primero, inspeccionar, usemos la función `count()` la cual muestra la frecuencia de observaciones por cada nivel de la variable categórica.
+
+```{r}
+data_artritis_4 |> count(sexo) # Cambia de variable categórica
+```
+
+Otra opción es la función `table()`, la cual realiza la misma tarea. Al usarla, recuerda incluir el valor "ifany" al argumento `useNA =`. Esto permitirá que en el conteo se muestren tambien los valores perdidos.
+
+```{r}
+table(data_artritis_4$sexo, useNA = "ifany")
+```
+
+Esta inspección permite saber que existe errores de tipeos para la variable sexo ("f", "Maculino", "Masculin", "masculino"). Idealmente, las únicas categorías permitidas debería ser "Masculino" y "Femenino"
+
+En R, podemos usar dos funciones en combinación, `mutate()` y `case_when()`, para corregir estos errores. La función `mutate()` creará una nueva variable y la función `case_when()` la usaremos para buscar los errores y corregirlos. Para propositos de comparaión, antes de realizar la corrección, haré una copia de la variable sexo original con el nombre de sexo_original. Para esto, también usaré la función `mutate()`:
+
+```{r}
+data_artritis_4 = data_artritis_4 |> 
+  mutate(sexo_orig = sexo)
+```
+
+El código de abajo muestra la corrección de los niveles para la variable sexo. Para resumir lo que esta sucediendo allí, la función `mutate` crea (reemplaza) a la variable sexo. Dentro de esta función y seguido de la variable a crear esta `case_when()`, una función condicional, es decir, puede ejecutar acciones a partir de una condición. Para nuestro ejemplo, la función busca los errores de tipeo en la variable sexo_orig (ejemplo `sexo_orig == "f"`) y la reemplaza por la categoría correcta (Ejemplo: `~ "Femenino`). El mismo procedimiento se realiza para todas las otras. Seguro notaste la parte `TRUE ~ sexo_orig` al final de la función `case_when()`. Esa parte del código permite conservar todas las otras observaciones en la variable `sexo_orig` tal como se encuentran.
+
+```{r}
+data_artritis_5 = data_artritis_4 |>
+  mutate(
+    sexo =
+      case_when(
+        sexo_orig == "f" ~ "Femenino",
+        sexo_orig == "Maculino" ~ "Masculino",
+        sexo_orig == "Masculin" ~ "Masculino",
+        sexo_orig == "masculino" ~ "Masculino",
+        TRUE ~ sexo_orig
+      )
+  )
+```
+
+Ahora, comparemos los resultados. Aquí usamos la función `table()` para evaluar la frecuencia de los niveles de la variable sexo_orig (con los errores) y sexo
+
+```{r}
+table(data_artritis_5$sexo_orig, useNA = "ifany")
+```
+
+```{r}
+table(data_artritis_5$sexo, useNA = "ifany")
+```
+
+## 4.5 Transformando una variable a `factor`
+
+Al importar un dataset a R, tipicamente los tipos de vectores dentro de un dataset serán de tipo numérico o *character* para las variables categóricas. Para muchos propósitos, es conveniente que las variables de tipo *character* sean convertidas a *factor.*. Al crear un *factor*, el argumento `levels` permite ingresar todos los niveles posibles para la variable categórica y el argumento `labels` permite ingregar las etiquetas de los niveles. Aquí un ejemplo con la variable sexo.
+
+```{r}
+table(data_artritis_5$sexo)
+```
+
+```{r}
+data_artritis_5 = data_artritis_5 |>  
+  mutate(sexo = factor(sexo,
+                      levels = c("Femenino", "Masculino"),
+                      labels = c("Femenino", "Masculino")))
+```
+
+```{r}
+class(data_artritis_5$sexo)
+```
+
+```{r}
+levels(data_artritis_5$sexo)
+```
+
+## 4.6 Colapsando una variable categórica en menos niveles
+
+En común que durante el proceso de análisis, se propongan formas alternas de categorizar una variable categórica. Por ejemplo, la de reducir 3 niveles a 2. La variable categorias_de_edad de nuestro dataset incluye tiene 4 niveles.
+
+```{r}
+data_artritis_5 |> count(categorias_de_edad)
+```
+
+En R, podemos nuevamente, usar la función `mutate()` y `case_when()` en combinación para collapsar la variable a solo dos niveles. Nuevamente, la función `mutate`() crea la nueva variable, y `case_when()`, en base a una condición, collapsa los niveles de la categoría de edad. En el código de abajo tambien se muestra algo nuevo, el operador %in% la puede interpretarse como "incluído". Nota que aquí el código tiene sentido porque lo que estamos pidiendole a la función `case_when()` es que si dentro de la variable categórica categorias_de_edad esta incluído (`%in%`) los niveles "42-49 años" y "50-59 años", entonces (\~) los transforme a "42-59". Se usa la misma estrutuctura para el nuevo nivel "\>= 60"
+
+```{r}
+data_artritis_5 = data_artritis_5 |>
+  mutate(
+    categorias_edad_2 = case_when(
+      categorias_de_edad %in% c("42-49 años", "50-59 años") ~ "42-59",
+      categorias_de_edad %in% c("60-69 años", "70+ años") ~ ">= 60",
+      TRUE ~ categorias_de_edad
     )
+  )
 ```
 
-Comprobando el cambio
+Ahora, en nuestro dataset existe una nueva variable categórica con dos niveles
 
 ```{r}
-data_artritis_4 |> count(categorias_de_edad_2)
+data_artritis_5 |> count(categorias_edad_2)
 ```
 
-## Paso 6: Transformar una variable
+## 4.7 Transformando valores a valores perdidos usando la función `na_if()` o `case_when()`
 
-Transformación a logaritmo
-
-```{r}
-summary(data_artritis_4$timepo_desde_diagnostico_a)
-```
+Es posible que tambien existan errores en el ingreso de valores numéricos para una variable. Para datasets con cientos o miles de observaciones, podemos usar resúmenes estadísticos para inspeccionar si hay valores atípicos. Para datasets pequeños, podemos emplear la función `table()` para examinar, de un vistazo, los valores ingresados. En este ejemplo, usaremos ambas para examinar la variable tiempo_desde_diagnostico, que tiene valores sobre el número de años desde el diagnóstico el reclutamiento del paciente al estudio. La función `summary()` proporciona medidas estadística de resumen:
 
 ```{r}
-hist(data_artritis_4$timepo_desde_diagnostico_a)
+summary(data_artritis_5$tiempo_desde_diagnostico_a)
 ```
 
 ```{r}
-data_artritis_5 <- data_artritis_4 |>  
-  mutate(log_años_desde_dx = (log(timepo_desde_diagnostico_a + 1)))
+table(data_artritis_5$tiempo_desde_diagnostico_a)
+```
 
+Para este caso, la función `table()` muestra los valores en la variable y sus frecuencias (debajo). A partir de usar ambas funciones, algo evidente es que hay hay menos un valor inválido: -7. Este valor no es una entrada válida, dado que el número de días no puede ser negativo.
+
+En R, podemos transformar este valor inválido a valor perdido usando en combinación la función `mutate()` y `na_if()`. La función `na_if()` es una función condicional, que transforma valores a *NA* (perdidos) si estos cumplen una condición. En el código de abajo, la condición es que el valor sea -7.
+
+```{r}
+data_artritis_6 = data_artritis_5 |> 
+  mutate(tiempo_desde_diagnostico_a = na_if(tiempo_desde_diagnostico_a, -7))
 ```
 
 ```{r}
-data_artritis_5 |>  
+summary(data_artritis_6$tiempo_desde_diagnostico_a)
+```
+
+Nota que ahora el número de valores perdidos es 17 y que el valor -7 ya no es el valor mínimo.
+
+Alternativamente, podemos transformar valores inválidos a NA usando la función `case_when()`, la cual también es una función condicional. La variable edad_a, medida en años, tiene valores inválidos, como se muestra a continuación:
+
+```{r}
+summary(data_artritis_6$edad_a)
+```
+
+El dataset contiene información solo de personas adultas y el ser humano no llega a vivir 999 años. Por lo tanto, el valor 3 y 999 son valores inválidos. El código abajo muestra como tranformarlos a valores perdidos usando `case_when()`.
+
+```{r}
+data_artritis_7 = data_artritis_6 |>
+  mutate(edad_a = case_when(edad_a %in% c(3, 999) ~ NA, 
+                            TRUE ~ edad_a))
+```
+
+```{r}
+summary(data_artritis_7$edad_a)
+```
+
+Ahora el resumen de datos esta acorde a lo que uno podría esperar de un estudio en pacientes adultos con artritis reumatoide.
+
+## 4.8 Transformando una variable numérica
+
+En el proceso de análisis estadístico puede surgir la necesidad de transformar variables a, por ejemplo, una escala distinta. El objetivo de esto es tener una variable numérica apropiada para modelos estadísticos. Por ejemplo, muchas modelos estadísticos requieren que la variable numérica sea continua o que tenga cierta distribución, como la distribución normal. Veamos un ejemplo usando la variable tiempo_desde_diagnostico, la cual es una variable numérica de números enteros y su distribución esta sesgada hacia la izquierda (la mayoría de valores van de 0 a 20).
+
+```{r}
+summary(data_artritis_7$tiempo_desde_diagnostico_a)
+```
+
+```{r}
+hist(data_artritis_7$tiempo_desde_diagnostico_a)
+```
+
+En R, podemos usar la función `mutate()` y `log()` para transformar la variable numérica de enteros a una continua. La función `log()` una por defecto la base 10. Puedes cambiarlo usando el argumento `base =`
+
+```{r}
+data_artritis_8 <- data_artritis_7 |>  
+  mutate(log_años_desde_dx = (log(tiempo_desde_diagnostico_a)))
+```
+
+Nota que, ahora, los valores numéricos son continuos y la distribución se aproxima a una distribución normal (más sobre esto en sesiones posteriores)
+
+```{r}
+head(data_artritis_8$log_años_desde_dx, 15)
+```
+
+```{r}
+data_artritis_8 |>  
   ggplot(aes(x = log_años_desde_dx)) +
   geom_histogram(bins = 10) +
   labs(y = "Frecuencia", x = "log(años desde el diagnóstico + 1)")
 ```
 
-Transformación a binario
+## 4.9 Transformando una variable numérica a binario
+
+Como en casos anteriores, para propósitos de análisis, es común desear convertir una variable numérica a categórica binaria. En R, usamos la combinación de la función `mutate()` (para crear la nueva variable) y `case_when()` para generar los niveles de la nueva variable binaria. Nota que aquí las condiciones son dadas a partir de usar operadores lógicos de comparación: *menor que*, *mayor o igual que*.
 
 ```{r}
-data_artritis_6 = data_artritis_5 |>
+data_artritis_9 = data_artritis_8 |>
   mutate(
     tiempo_desde_dx_c = case_when(
-      timepo_desde_diagnostico_a <  10 ~ "< 10",
-      timepo_desde_diagnostico_a >= 10 ~ ">= 10"
-    )
-  ) |>
-  mutate(tiempo_desde_dx_c = factor(tiempo_desde_dx_c, levels = "< 10", ">= 10"))
+      tiempo_desde_diagnostico_a <  10 ~ "< 10",
+      tiempo_desde_diagnostico_a >= 10 ~ ">= 10",
+      TRUE ~ as.character(tiempo_desde_diagnostico_a)))
 ```
 
-Transformando valores a valores perdidos usando la función `na_if()`
-
 ```{r}
-data_artritis_7 = data_artritis_6 |> 
-  mutate(timepo_desde_diagnostico_a = na_if(timepo_desde_diagnostico_a, -7))
-```
-
-Transformando valores a valores perdidos usando la función `case_when()`
-
-```{r}
-data_artritis_7 = data_artritis_6 |> 
-  mutate(edad_a = case_when(edad_a %in% c(3, 999) ~ NA,
-                            TRUE ~ edad_a))
-```
-
-## Paso 7: Renombrar una variable
-
-Imprimir los nombres. ¿Cuáles necesitann cambio?
-
-```{r}
-names(data_artritis_7)
-```
-
-Cambiando un nombre de variables
-
-```{r}
-data_artritis_8 <- data_artritis_7 |>  
-  rename(tiempo_desde_dx = timepo_desde_diagnostico_a)
-```
-
-Varios a la vez
-
-```{r}
-data_artritis_8 <- data_artritis_7 |>  
-  rename(tiempo_desde_dx = timepo_desde_diagnostico_a,
-         indice_de_activ_enf_clin = valor_cdai)
-```
-
-Comprobando
-
-```{r}
-names(data_artritis_8)
+table(data_artritis_9$tiempo_desde_dx_c)
 ```
