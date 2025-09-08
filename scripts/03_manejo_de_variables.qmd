@@ -11,8 +11,6 @@ En la sesión de práctica anterior hemos importado y exportado datasets. En el 
 
 Muchas de las funciones que usaremos para realizar la inspección y limpieza de datos serán del paquete tidyverse.
 
-![](images/tidyverse.png){width="80%" fig-align="center"}
-
 Este paquete es una colección de paquetes que permiten, entre otras cosas, el manejo de variables y datasets con un formato *tidy*. El formato *tidy* es la forma de organización de una tabla de datos en la que las filas son observaciones (o casos) y cada columna es una variable.
 
 # 2 Los paquetes y el dataset para esta sesión
