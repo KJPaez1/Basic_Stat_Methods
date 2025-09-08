@@ -1,5 +1,6 @@
 ---
 title: "Manejo de variables"
+author: "Kevin J. Paez"
 format: html
 editor: visual
 ---
