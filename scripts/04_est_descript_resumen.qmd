@@ -5,105 +5,140 @@ format: html
 editor: visual
 ---
 
-# Paquetes para resumir datos
+# 1 Los paquetes y el dataset para esta sesión
 
-Instalar paquetes
+Al igual que en la sesión anterior, usaremos la función `install.packages()` para instalar el paquete `finalfit` y `flextable` y la función library para cargar los paquetes necesarios. Los paquetes finalfit y flextable serán necesarios para generar tablas descriptivas.
 
 ```{r}
-#install.packages("gtsummary")
-#install.packages("finalfit")
-#install.packages("flextable")
+# install.packages("finalfit")
+# install.packages("flextable")
+# install.packages("gtsummary")
 ```
-
-Cargar paquetes
 
 ```{r}
 library(tidyverse)
 library(here)
 library(rio)
 library(gtsummary) ## Para la "Tabla 1"
-library(finalfit)
-library(flextable)
+library(finalfit) ## Para recodificar
+library(flextable) ## Para exportar tablas
 ```
 
-# Cargando los datos
+Para mostrar el proceso de inspección y limpieza de datos usaremos un dataset que contiene información de pacientes con diabetes. Abajo, el código para importar el dataset. Recuerda que el dataset `s04_data_diabetes` debe estar en tu folder "data".
 
 ```{r}
-data_diabetes <- import(here("data", "s04_diabetes.csv"))
+data_diabetes = import(here("data", "s04_diabetes.csv"))
 ```
 
-## Recuerda
+# 2 Resumen de datos
 
-Antes de iniciar el análisis descriptivo de tus datos, estos deben ser inspeccionados para la eliminación de errores en la codificación o transformación de valores perdidos o anómalos.
+Un paso fundamental en el análisis de datos es la estadística descriptiva la cual la realizamos para resumir los datos y ganar conocimiento sobre estos. En la estadística descriptiva se pueden emplear medidas de resumen y gráficos. Esta sesión mostrará el uso de medidas de resumen para describir datos de pacientes. Pero primero, veamos los tipos de datos con lo que lidiaremos.
 
-La transformación de variable (por ejemplo, para obtener una distribución similar a la normal) puede ocurrir en etapas avanzadas del análisis.
+## 2.1 Tipos de variables
 
-### La "estructura" de los datos
+La información de, por ejemplo, pacientes, vienen en forma de variables que pueden ser de dos tipos: variables categóricas o variables numéricas. Los datos de las variables categóricas pueden ser ordinales o no, y los datos de variables numéricas pueden ser discretos o contínuos. Dos ejemplos de datos categóricos son sexo (*masculino* y *femenino*) y tipo de seguro medico (*sis*, *essalud*, *privado*). Algunas variables categóricas pueden ser ordenadas aunque estos no sean números, por ejemplo, severidad de Dengue (*leve*, *moderada*, *grave*). Este último ejemplo es conocida como variable ordinal. Ejemplo de variables numéricas son peso, tasa de suicidios, y número de hospitalizaciones. Los datos numéricos pueden ser de tipo continuo o discreto. Las variables continuas son estas que pueden tomar cualquier valor entre dos números (si son medidos con precisión). Por ejemplo, en un grupo de niños de 5 años de edad, el peso para dos de estos puede ser *18.457 kg* y *18.459 kg*. Un ejemplo de variable numérica discreta es número de hijos, debido a que el número de hijos se presentan siempre como números enteros.
+
+# 3 El "paso 0" del análisis descriptivo
+
+Antes de iniciar el análisis descriptivo de tus datos, estos deben ser inspeccionados para la eliminación de errores en la codificación o transformación de valores perdidos o anómalos. La transformación de variable (por ejemplo, para obtener una distribución similar a la normal) puede ocurrir en etapas avanzadas del análisis. Además de esto, es importante estar conciente de los tipos de datos presentes, el número de variables y el número de observaciones.
 
 ```{r}
 str(data_diabetes)
 ```
 
-# 1. Resumen de variables categóricas
+El dataset `data_diabetes` tiene variables numéricas y categoricas (*character*) e incluye 11 variables para 768 observaciones.
 
-Para resumir variables categóricas usamos frecuencias simples y frecuencias porcentuales. Es importante resumir, también, los datos perdidos. Resumen con la función `table()` para la variable `Diabetes`.
+# 4 Resumen de variables categóricas
+
+Las variables categóricas pueden ser resumidas usando sus distribuciones, es decir al estimar la frecuencia de cada categoría. Aquí podemos usar frecuencias simples y frecuencias porcentuales. Es importante resumir también los datos perdidos. En R, podemos resumir una variable categórica usando la función `table()`. Aquí un ejemplo para la variable variable `Diabetes`.
 
 ```{r}
 table(data_diabetes$Diabetes, useNA = "ifany")
 ```
 
+Un resumen igual de útil es la frecuencia relativa. Podemos realizar esto al combinar la función `prop.table()` y `table()`. La primera función calcula la proporción.
+
 ```{r}
-table(data_diabetes$insulina_cat, useNA = "ifany")
+prop.table(table(data_diabetes$Diabetes, useNA = "ifany"))
 ```
 
-Con tidyverse
+En el dataset, *65.1%* de los pacientes no tienen diabetes y el *34%* sí lo tiene.
+
+Una forma alternativa de calcular la frecuencia simple y relativa es usando la función `count()` de `tidyverse`.
 
 ```{r}
 data_diabetes |> 
-  dplyr::count(insulina_cat, sort = TRUE)
+  count(Diabetes, sort = TRUE)
 ```
 
-Valores perdidos en proporciones
+Conocer y mostrar los valores perdidos en un dataset es importante, por ejemplo para decidir si podría ser necesario realizar una imputación de datos o para que los resultados y conclusiones de un estudio sean interpretados con cautela. El valor `ifany` del argumento `useNA =` permite que los valores perdidos se muestren. La variable diabetes no tienen valores perdidos, pero la variable categórica `insulina_cat` sí.
 
 ```{r}
 prop.table(table(data_diabetes$insulina_cat, useNA = "ifany"))
 ```
 
-# 2. Resumen de variables continuas
+Por otra parte, la función `count()` de `tidyverse` muestra por defecto los valores perdidos.
 
-Para resumir variables numéricas hay funciones en la base de R que permiten calcular los principales estadísticos. Por ejemplo, la función `mean()` y `sd()`, calcula el promedio y desviación estandard de un conjunto de datos.
+```{r}
+data_diabetes |> 
+  count(insulina_cat, sort = TRUE)
+```
+
+374 pacientes en el dataset `data_diabetes` no tienen información sobre el nivel de insulina.
+
+# 5 Resumen de variables continuas
+
+## 5.1 Media
+
+Los datos numéricos también tienen una distribución. No obstante, reportar la distribución de cada valor no es adecuado debido a que los valores únicos en una variable numérica son muchos. Una manera efectiva de resumir las variables numéricas es a partir de usar solo uno, dos o unas cuantas medidas resumen. Una de estos es el resumen con medidas de centralidad: media, mediana o moda. En R, usamos la función `mean()` para calcular el valor promedio para una variable numérica. Si hay datos perdidos en la variable (como sucede con `imc`), es importante añadir el valor `TRUE` al argumento `na.rm =`. Esta elimina los valores perdidos del cálculo.
 
 ```{r}
 mean(data_diabetes$imc, na.rm = TRUE)
 ```
 
+## 5.2 La desviación estandard
+
+Otra medida util para describir datos numéricos son las estadísticos de dispersión (medidas de dispersión). La desviación estandard es una de estas y puede ser definido como "*La distancia promedio entre los valores y su promedio*". En R, calculamos la desviación estandard usando la función `sd()`.
+
 ```{r}
 sd(data_diabetes$imc, na.rm = TRUE)
 ```
 
-Ojo, en este ejemplo sólo será posible calcular el promedio y desviación estandard si el valor para el argumento na.rm es TRUE. Esto elimina los valores perdidos en el cálculo.
+## 5.3 Otras medidas de resumen
 
-Otras funciones que puedes encontrar útil son `min()`, `max()`, `median()` y `IQR()`
-
-```{r}
-min(data_diabetes$imc, na.rm = TRUE) # Proporciona el valor mínimo
-
-IQR(data_diabetes$imc, na.rm = TRUE) # Calcula el rango intercuartilico
-
-median(data_diabetes$imc, na.rm = TRUE) # Calcula la mediana
-```
-
-### La función `summary()` para calcular todas las medidas, a la vez.
-
-`summary()` es una función nativa de R que permite calcular todas las medidas estadísticas a la vez. Abajo, un ejemplo con la variable Glucosa
+Otras medidas útiles para describir datos numéricos incluyen la mediana, el rango intercuartílico y el rango (mínimo y máximo). La mediana es el valor que divide a los datos en la mitad: 50% de los datos se encuentran arriba y 50% debajo de este. En R, las funciones para calcular la mediana es `median()`, `IQR()` para el rango intercuartílico, y `min()` y `max()` para encontrar el valor mínimo y máximo, respectivamente.
 
 ```{r}
-summary(data_diabetes$Glucosa)
+median(data_diabetes$imc, na.rm = TRUE)
 ```
 
-## ¿Mediana o media?
+```{r}
+min(data_diabetes$imc, na.rm = TRUE)
+```
 
-Una de las cosas que queremos saber al realizar un análisis descriptivo es la distribución de los datos. La media y mediana puede informarnos al respecto. Abajo, un ejemplo para la variable `imc`
+```{r}
+IQR(data_diabetes$imc, na.rm = TRUE)
+```
+
+## 5.4 ¿Mediana o media? ¿Desviación estandard o rango intercuartílo?
+
+En estadística existe un concepto llamado la "distribución normal", conocida tambien como la distribución Gausiana. En la naturaleza existen variables (como peso o presión sanguínea) que si los mostraramos en un histograma, estos se aproximarían a una distribución normal. La distribución normal puede ser definida con la siguiente formula matemática:
+
+$$\mbox{Pr}(a < x \leq b) = \int_a^b \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{1}{2}\left( \frac{x-\mu}{\sigma} \right)^2} \, dx$$
+
+De esta formula matemática es importante notar que esta definida por dos parámetros: la media ($\mu$) y desviación estandard ($\sigma$). La importancia de reconocer esto es que a partir de conocer el promedio y desviación estandard de una distribución que se aproxima a la normal, podremos conocer muchas de sus propiedades.
+
+Entonces, la respuesta a la pregunta sobre cuál medida medida descriptiva es conveniente usar, es, dependende de la distribución. Para variables numéricas que son similares a la distribución normal, es conveniente usar la media y la desviación estandard. Para variables numéricas con distribuciones distinta a la normal, podemos usar otras como la mediana o el rango intercuartílico.
+
+Para ilustrar mejor aún esto, veamos la distribución de la variable `imc` e `insulina`
+
+```{r}
+par(mfrow=c(1,2)) 
+hist(data_diabetes$imc)
+hist(data_diabetes$insulina)
+```
+
+Nota que mientras que la distribución de la variable imc es similar a la distribución normal, la distribución de la variable insulina acumula los valores a la derecha. Ahora veamos cómo la media varía de la mediana cuando los datos tienen una distribución normal vs una distribución no normal.
 
 ```{r}
 mean(data_diabetes$imc, na.rm = T)
@@ -113,10 +148,6 @@ mean(data_diabetes$imc, na.rm = T)
 median(data_diabetes$imc, na.rm = T)
 ```
 
-La media y mediana de la variable `imc` son similares. Estos sugiere que los datos tienen una distribución simétrica.
-
-Debajo otro ejemplo con la variable `insulina`
-
 ```{r}
 mean(data_diabetes$insulina, na.rm = T)
 ```
@@ -125,19 +156,21 @@ mean(data_diabetes$insulina, na.rm = T)
 median(data_diabetes$insulina, na.rm = T)
 ```
 
-La media y mediana de la variable `insulina` son diferentes. Estos sugiere que los datos tienen una distribución asimétrica.
+## 6.5 La función `summary()`
 
-Comprobémoslo visualmente
+`summary()` es una función de R que permite calcular varias medidas estadísticas a la vez. Incluyendo las que ya hemos visto arriba. Abajo, un ejemplo con la variable Glucosa
 
 ```{r}
-par(mfrow=c(1,2)) # Configuramos e número de elementos por Figura
-hist(data_diabetes$imc)
-hist(data_diabetes$insulina)
+summary(data_diabetes$Glucosa)
 ```
 
-# \[resumen\] Por otra variable
+1st. y 3rd Qu. son los valores del rango intercuartílico.
 
-Frecuentemente es importante realizar el resumen de datos por otra variable. Por ejemplo, la media de edad según estado de diabetes o el número de individuos por grupo de edad. En R, podemos calcular esto usando la función `group_by()` y `summarize()`
+# 7 Resumen por otra variable
+
+Conocer la frecuencia de pacientes con diabetes o la media de glucosa, son ambos informativos. No obstante, en el proceso de análisis será inevitable preguntarnos, por ejemplo como es el promedio de pacientes con diabetes y sin diabetes. O, cómo es la distribución de los niveles de insulina según grupo de edad. En R, podemos calcular esto usando la función `group_by()` y `summarize()`. La función `group_by()` es la primera de varias funciones de `tidyverse` que usaremos frecuentemente. Esta función agrupa las observaciones de acuerdo a una o más variables y este agrupamiento puede ser usado para obtener resultados por por estos subgrupos.
+
+El código abajo agrupa a los participantes según la variable grupo_edad (los grupos de edad: \<50, \<=25, 26-35, 36-50) y en la función `summarize()` se realiza el conteo del número de observaciones y el porcentaje.
 
 ```{r}
 data_diabetes |> 
@@ -146,13 +179,15 @@ data_diabetes |>
             porcentaje = (n_observ / nrow(data_diabetes)*100))
 ```
 
+Aquí otro ejemplo con la variable `Diabetes.` Aquí, `group_by()` agrupa a los pacientes según estado de diabetes y con `summarize()` calcula el promedio de glucosa de cada grupo.
+
 ```{r}
 data_diabetes |>  
   group_by(Diabetes) |> 
   summarize(promedio = mean(Glucosa, na.rm = T))
 ```
 
-Podemos hacer resumenes incluso más complejos. Por ejemplo, calcular la media de glucosa por estado de `diabetes` y categoría de `grupo_edad`. Para esto, añade la variable edad_cat a la función `group_by()`
+Podemos hacer resumenes incluso más complejos. Por ejemplo, podemos calcular la media de glucosa por estado de `diabetes` y categoría de `grupo_edad`. Para esto, añadimos la variable adicional de interés a la función `group_by()`. Aquí un ejemplo de agrupamiento por estado de diabetes y grupo de edad para calcular el promedio de glucosa.
 
 ```{r}
 data_diabetes |>  
@@ -160,7 +195,7 @@ data_diabetes |>
   summarize(promedio = mean(Glucosa, na.rm = T))
 ```
 
-Otros estadísticos
+Podemos calcular varios tipos de resúmenes a la vez para los datos agrupados. Aquí, además del promedio, se calcula la desviación estandard y el valor máximo de cada grupo.
 
 ```{r}
 data_diabetes |>  
@@ -170,7 +205,7 @@ data_diabetes |>
             max_valor_glucosa = max(Glucosa, na.rm = TRUE))
 ```
 
-Estadística descriptiva condicional: resumen por grupo de estado de diabetes
+Al calcular los resúmenes estadísticos podemos hacer filtros de modo que el cálculo de haga para un grupo en específico y estos se muestren en formas de columnas. Por ejemplo, podría ser de nuestro interés calcular resumenes estadísticos para comparar pacientes con diabetes y sin diabetes, según grupo de edad. Esto es posible usando el filtro como se muestra abajo.
 
 ```{r}
 data_diabetes |>  
@@ -181,7 +216,9 @@ data_diabetes |>
             prom_imc_no_diab = mean(imc[Diabetes == "No"], na.rm = TRUE))
 ```
 
-Percentiles del nivel de glucosa por grupo de edad solo en participantes con diabetes usando la función `filter()`
+La función `filter()` de tidyverse es otra función para el manejo de datasets. Esta función permite filtrar las observaciones en base a una variable.
+
+En R, podemos usar filter para filtrar observaciones y luego realizar resúmenes en estos. Abajo un ejemplo usando la función `filter()` para seleccionar solo a los pacientes con diabetes. En la función summarize calculamos los percentiles (25, 50, 75) del nivel de glucosa por grupo de edad solo en participantes con diabetes.
 
 ```{r}
 data_diabetes |> 
@@ -192,7 +229,9 @@ data_diabetes |>
             p75 = quantile(Glucosa, probs = 0.75, na.rm=T))
 ```
 
-Usando `across()` para multiples estadísticos descriptivos para multiples variables
+Otra función de `tidyverse` para manipular datasets es `across()`. Esta función permite manipular multiples variables a la vez (multiples columnas a la vez).
+
+Para el resumen de datos, podemos usar `group_by()` para agrupar pacientes según una variable y luego usar across dentro de `summarize()` para realizar resumenes para multiples variables. Hay dos argumentos en la función `across()`: `.cols =` y `.fns =`. La primera es para especificar cuales serán las columnas a usar y la segunda cuales funciones se aplicarán para las variables seleccionadas.
 
 ```{r}
 data_diabetes |> 
@@ -204,6 +243,8 @@ data_diabetes |>
                    na.rm = TRUE))
 ```
 
+Podemos mejorar incluso más el código de arriba añadiendo la función `where()` al argumento `.cols =`. la función `where()` de tidyverse selecciona las variables con una característica específica, por ejemplo, que sea numérica.
+
 ```{r}
 data_diabetes |> 
   group_by(Diabetes) |> 
@@ -213,18 +254,15 @@ data_diabetes |>
                    na.rm = TRUE))
 ```
 
-# La "Tabla 1" con gtsummary
+# 8 Una pausa para hablar sobre el select()
 
-```{r}
-#install.packages("finalfit")
-#install.packages("gtsummary")
-```
+En la siguiente sesión usaremos la función `select()`, una función más para el manejo de datasets. Especificamente, `select()` extrae variables (columnas) a una nueva tabla.
 
-```{r}
-library(gtsummary)
-```
+# 9 La "Tabla 1" con el paquete de `gtsummary`
 
-Tabla 1 básico
+En investigación de ciencias en la salud los estudios epidemiológicos son comunes. Estos estudios muestran la descripción de la muestra o población en estudio en la primera tabla, la tabla 1. En la tabla 1 es entonces donde tendremos que mostrar los resúmenes descriptivos que creamos pertinentes. La función `tbl_summary()` del paquete `gtsummary` facilita la construcción de esta tabla.
+
+El código abajo muestra como podemos construir la tabla 1. Para este ejemplo, se seleccionan 8 variables.
 
 ```{r}
 data_diabetes |> 
@@ -233,6 +271,8 @@ data_diabetes |>
   tbl_summary()
 ```
 
+La función `tbl_summary()` acepta argumentos para modificar o añadir información a la tabla descriptiva. Por ejemplo, el argumento `by =` permite describir a los pacientes según estado de diabetes.
+
 ```{r}
 data_diabetes |> 
   select(Edad, grupo_edad, imc, Embarazos, Glucosa, 
@@ -242,25 +282,14 @@ data_diabetes |>
   )
 ```
 
-Pero las tablas deben ser autoexplicativas...
-
-## Configurando el estilo e idioma
+Pero las tablas deben ser autoexplicativas. Al construir la tabla asegúrate de configurar el idioma acorde a las instrucciones del tutor o las instrucciones para el autor de la revista. Abajo, se muestra cómo configurar el idioma y el estilo de la tabla (esto es secundario, el modo por defecto es lo suficientemente bueno).
 
 ```{r}
 theme_gtsummary_language(language = "es") # idioma es = español
 theme_gtsummary_journal(journal = "jama")
 ```
 
-```{r}
-data_diabetes |> 
-  select(Edad, grupo_edad, imc, Embarazos, Glucosa, 
-         insulina, grosor_pliegue_cut_triceps, Diabetes) |> 
-  tbl_summary(
-    by = Diabetes
-  )
-```
-
-## Recodificación de variables y adición de nombres correctos a variables
+Adicionalmente, es importante que cuando se construya la tabla 1 para un reporte, las variables deben estar correctamente codificadas y se deben corregir errores en los nombres. El código abajo muestra la las modificaciones necesarias para el dataset data_diabetes. Las funciones mostradas aquí las hemos usado en sesiones anteriores, excepto `ff_label()` del paquete `finalfit` la cual es una función que facilita añadir las etiquetas a las variables.
 
 ```{r}
 data_diabetes_0 = data_diabetes |>
@@ -289,37 +318,32 @@ data_diabetes_0 = data_diabetes |>
     )
 ```
 
+Ahora, generamos la tabla según estado de diabetes.
+
 ```{r}
-tabla_1.v1 = data_diabetes_0 |> 
+data_diabetes_0 |> 
   select(Edad, grupo_edad, imc, Embarazos, insulina_cat, Diabetes, Glucosa) |> 
   tbl_summary(by = Diabetes) 
 ```
 
-Añadiendo nombre a la variable dependiente
-
-```{r}
-tabla_1.v2 = data_diabetes_0 |> 
-  select(Edad, grupo_edad, imc, Embarazos, insulina_cat, Diabetes, Glucosa) |> 
-  tbl_summary(by = Diabetes) |> 
-  modify_spanning_header(all_stat_cols() ~ "**Diabetes mellitus**") |>
-  add_overall() 
-```
+Podemos mejorar aún más la tabla al añadir el nombre Añadiendo nombre a la variable dependiente y una columna de totales.
 
 ```{r}
 tabla_1 = data_diabetes_0 |> 
   select(Edad, grupo_edad, imc, Embarazos, insulina_cat, Diabetes, Glucosa) |> 
   tbl_summary(by = Diabetes) |> 
   modify_spanning_header(all_stat_cols() ~ "**Diabetes mellitus**") |>
-  add_overall() |> 
-  modify_caption("**Tabla 1**. Características de los pacientes del departamento de medicina interna del Hospital Regional de Ica")
+  add_overall() 
+tabla_1
 ```
 
-```{r}
-install.packages("flextable")
-library(flextable)
-```
+## 9.1 Exportando la tabla.
+
+Para exportar la tabla que hemos generado, usaremos la función as_flex_table() y save_as_docx del paquete `flextable`. La primera función transforma el objeto (la tabla) a un formato exportable y la segunda la guarda en nuestro directorio.
 
 ```{r}
 tabla_1_flex = as_flex_table(tabla_1) # Convertir a flex table
 save_as_docx(tabla_1_flex, path = "tabla_1_flex.docx") # Guardar tabla
 ```
+
+Deberías poder ver la tabla exportaba en la carpeta de tu proyecto.
