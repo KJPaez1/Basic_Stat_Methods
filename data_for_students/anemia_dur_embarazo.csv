@@ -1,0 +1,381 @@
+﻿id,edad_a,procedencia_rural,estado_civil,grado_de_instruccion,ocupacion,ingreso_economico,control_prenatal,numero_de_gestaciones_previas,periodo_intergenesico,antecedentes_de_aborto,parasitosis,consejeria_nutricional,suplemento_de_hierro,comorbilidad,historial_de_its,anemia,nivel_de_hemoglobina,peso_al_nacer_g,parto_prematuro,anemia_neonatal,asfixia_perinatal
+1,30,si,Conviviente,secundaria incompleta,Ama de casa (Inferido),Medio,No,G3 P1011,≤ de 2 años,no,Negativo,no,si,presente,Ausente,anemia leve ,10.2,2734,No,No,no
+2,27,no,Soltera,secundaria completa,Ama de casa (Inferido),Medio,Sí,G1 P1001,≤ de 2 años,no,no especifica,si,si,Ausente,Ausente,sin anemia,12.4,3130,No,No,no
+3,41,No,Casada,secundaria completa,Ama de casa (Inferido),Medio,No,G2 P2002,≤ de 2 años,no,Negativo,si,si,presente,Ausente,sin anemia,13.3,2780,No,No,no
+4,29,si,Soltera,ninguno,Ama de casa (Inferido),Medio,No,G1 P1001,≤ de 2 años,no,Negativo,si,si,presente,Ausente,anemia leve ,10.5,3240,No,No,no
+5,16,si ,Soltera,secundaria incompleta,Ninguno,Bajo,si,G1 P1001,≤ de 2 años,no,Negativo,si,si,presente,Ausente,anemia moderada,7.9,2550,No,No,no
+6,29,no,coviviente,secundaria completa,ama de casa,Medio,no,G3 P3012,≥ de 2 años,si,Negativo,si,si,Ausente,Ausente,sin anemia,11.8,2634,No,No,no
+7,32,no,Conviviente,superior,dependiente,alto,si,G1 P1001,≤ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,12.6,3125,No,No,no
+8,39,si,casada,secundaria completa,ama de casa,Medio,si,G2 P2002,≥ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,12.9,3300,No,No,no
+9,35,si,casada,secundaria incompleta,ama de casa,Medio,si,G2 P2002,≥ de 2 años,no,Negativo,si,si,presente,Ausente,sin anemia,12.6,3459,No,No,no
+10,43,no,coviviente,primaria imcompleto,ama de casa,Medio,si,G3 P3003,≥ de 2 años,no,Negativo,si,si,Ausente,Ausente,anemia leve ,10.7,2258,No,No,si
+11,32,no,Soltera,secundaria incompleta,ama de casa,Medio,si,G1 P1001,≤ de 2 años,no,Negativo,si,no,Ausente,Ausente,anemia moderada,8.7,2678,No,No,no
+12,28,si,Soltera,primaria imcompleto,ama de casa,Bajo,si,G1 P1001,≤ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,12.2,2845,No,No,no
+13,25,no,Soltera,primaria completa,ama de casa,Medio,si,G2 P2002,≤ de 2 años,no,Negativo,si,si,presente,Ausente,sin anemia,13,2970,No,No,no
+14,35,si,Conviviente,secundaria completa,ama de casa ,Medio,no,G2 P2002,≥ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,12.1,3230,No,No,no
+15,24,no,Conviviente,superior,independiente,Medio,no,G1 P1001,≥ de 2 años,no,Negativo,si,si,presente,Ausente,sin anemia,13.3,3080,No,No,no
+16,43,si,casada,primaria completa,ama de casa ,Medio,si,G6 P4024,≥ de 2 años,si,Negativo,si,si,Ausente,Ausente,sin anemia,11.4,3190,No,No,no
+17,21,no,Conviviente,superior,Ninguno,Medio,no,G1 P1001,≤ de 2 años,no,Negativo,si,si,presente,Ausente,sin anemia,12.9,2764,No,No,no
+18,25,no,coviviente,superior,independiente,Medio,no,G2 P1011,≥ de 2 años,si,Negativo,si,si,presente,Ausente,anemia leve ,10.8,2550,No,No,no
+19,17,no,Conviviente,secundaria,desempleada,bajo,si,G1 P1001,≥ de 2 años,no,Negativo,si,si,presente,Ausente,anemia leve ,10.5,2500,No,No,no
+20,30,si,Conviviente,superior,independiente,alto,no,G1 P1001,≥ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,12.9,3080,No,No,no
+21,21,si,casada,superior,independiente,alto,no,G1 P1001,≥ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,14.2,2875,No,No,no
+22,40,no,Soltera,superior,independiente,alto,si,G2 P1101,≤ de 2 años,si,Negativo,no,no,Ausente,Ausente,sin anemia,15.3,2685,No,No,no
+23,22,si,Conviviente,secundaria completa,ama de casa,Medio,si,G1 P1001,≥ de 2 años,no,Negativo,no,si,Ausente,Ausente,sin anemia,12.5,2625,No,No,no
+24,15,si,Conviviente,secundaria incompleta,Ninguno,bajo,no,G1 P1001,≥ de 2 años,no,Negativo,si,si,Ausente,Ausente,anemia leve ,10.3,2235,No,No,si
+25,23,si,Conviviente,superior,independiente,alto,no,G1 P1001,≥ de 2 años,no,Negativo,si,si,Ausente,Ausente,anemia leve ,10.5,2735,No,No,no
+26,39,no,casada,superior,independiente,Medio,no,G3 P3003,≥ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,11.5,2890,No,No,no
+27,25,no,casada,secundaria completa,ama de casa,Medio,no,G1 P1001,≥ de 2 años,no,Negativo,no,no,presente,Ausente,anemia leve ,10.7,2460,No,No,no
+28,33,no,Conviviente,superior,independiente,Medio,si,G2 P2002,≤ de 2 años,no,Negativo,no,si,presente,presente,anemia moderada,9.4,1900,si,No,no
+29,35,no,casada,tecnica,Independiente,Medio,No,G2 P2002,≤ de 2 años,No,Negativo,no,si,Presente,Ausente,anemia moderada,8.8,2190,si,si,si
+30,16,no,soltera,Secundaria,Desempleada,Bajo,Si,G1 P1001,≤ de 2 años,No,Negativo,Si,si,Presente,Ausente,Anemia leve,10.6,2650,sI,Si,No
+31,40,No,Casada,superior,Independiente,Medio,No,G3 P3003,≥ de 2 años,No,negativo,sI,Si,Presente,Ausente,Sin anemia,12,3100,No,No,No
+32,26,No,Casada,Secundaria,Ama de casa,Medio,No,G1 P1001,≤ de 2 años,No,negativo,No,No,presente,ausente,Sin anemia,12.7,2600,No,No,No
+33,21,Si,Conviviente,Secundaria,Ama de casa,Medio,Si,G1 P1001,≤ de 2 años,No,negativo,Si,Si,Ausente,Ausente,Anemia Leve,10.1,2350,No,no,No
+34,18,Si,Conviviente,Secundaria,Ninguno,Bajo,No,G1 P1001,≤ de 2 años,No,negativo,Si,Si,Ausente,Ausente,anemia moderada,9.3,2200,no,Si,si
+35,30,Si,Casada,superior,Independiente,Medio,No,G1 P1001,≤ de 2 años,No,negativo,Si,No,Ausente,Ausente,Sin anemia,11.7,3450,no,no,No
+36,17,No,Conviviente,Secundaria,Ninguno,Bajo,No,G1 P1001,≤ de 2 años,No,negativo,No,No,ausente,Ausente,Anemia Leve,10.2,2721,No,No,No
+37,19,Si,Conviviente,Secundaria,Ama de casa,medio,No,G1 P1001,≤ de 2 años,No,negativo,Si,Si,ausente,Ausente,Anemia Leve,10.4,2100,Si,Si,Si
+38,31,Si,Casada,Secundaria,Ama de casa,medio,No,G2 P2002,≤ de 2 años,no,negativo,Si,Si,ausente,Ausente,Anemia Leve,10.1,3200,no,No,No
+39,47,Si,Casada,ninguno,Ama de casa,Bajo,Si,G2 P1011,≤ de 2 años,si,negativo,No,No,presente,Ausente,Anemia Leve,10.7,2200,Si,Si,Si
+40,19,No,Conviviente,Secundaria,Ama de casa,Bajo,No,G1 P1001,≤ de 2 años,si,Positivo,No,No,Presente,Ausente,Sin anemia,12,2400,Si,Si,Si
+41,39,Si,Casada,Secundaria,Independiente,medio,Si,G2 P2002,≤ de 2 años,no,negativo,Si,Si,Presente,Ausente,Sin anemia,13.1,2680,no,No,No
+42,33,Si,Conviviente,Primaria,Ama de casa,Bajo,Si,G4 P3013,≤ de 2 años,Si,negativo,No,No,Presente,Ausente,Anemia Leve,10.5,3080,Si,No,Si
+43,26,Si,Conviviente,Secundaria,Ama de casa,Medio,No,G1 P1001,≤ de 2 años,no,negativo,Si,Si,Ausente,Ausente,Sin anemia,13.8,2630,No,No,No
+44,26,No,Conviviente,Secundaria,Ama de casa,Medio,Si,G2 P1011,≥ de 2 años,Si,negativo,Si,Si,Presente,presente,Anemia Leve,10.5,2350,Si,Si,Si
+45,30,No,Conviviente,superior,Dependiente,Medio,No,G3 P3003,≥ de 2 años,no,negativo,Si,Si,Presente,Ausente,Anemia Leve,10.4,2890,No,No,No
+46,47,Si,Conviviente,Primaria,Ama de casa,Medio,No,G7 P5025,≤ de 2 años,si,negativo,Si,Si,Presente,Ausente,anemia moderada,8.5,2990,No,No,No
+47,25,No,Conviviente,Secundaria,Ama de casa,Medio,No,G1 P1001,≤ de 2 años,No,negativo,Si,No,Ausente,Ausente,Anemia Leve,10.5,3100,No,No,No
+48,28,Si,Conviviente,Secundaria,Ama de casa,Medio,No,G1 P1001,≤ de 2 años,No,Positivo,si,Si,Ausente,Ausente,Anemia Leve,10.2,2250,Si,Si,Si
+49,20,Si,Soltera,Superior,Dependiente,medio,No,G1 P1001,≤ de 2 años,No,negativo,Si,Si,Ausente,Ausente,Anemia Leve,10.9,2500,No,No,No
+50,26,no,conviviente,secundaria,ama de casa,medio,si,G2 P1011,≤ de 2 años,si,negativo,si,no,presente,ausente,sin anemia,11.1,2800,no,no,no
+51,30,no,conviviente,superior,dependiente,medio,si,G2 P2002,≤ de 2 años,no,positivo,si,si,presente,ausente,anemia leve,10.4,2940,no,no,no
+52,47,si,conviviente,secundaria ,ama de casa,medio,no,G8 P5025,≤ de 2 años,si,positivo,si,si,presente,ausente,anemia leve,10.3,2990,no,no,no
+53,25,no,conviviente,secundaria,ninguno,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,anemia leve,10.5,3100,no,no,no
+54,19,si,conviviente,secundaria,ama de casa,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,no,presente,ausente,anemia moderada,8.6,3855,no,no,no
+55,28,si,conviviente,primaria,ama de casa,medio,no,G2 P2002,≥ de 2 años,no,positivo,no,no,ausente,ausente,anemia leve,10.7,2450,no,no,no
+56,20,si,soltera,superior,dependiente,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,presente,ausente,anemia leve,10.9,2400,no,no,no
+57,25,no,conviviente,secundaria,ama de casa,bajo,si,G1 P1011,≥ de 2 años,si,negativo,si,si,presente,ausente,sin anemia,14.1,2500,no,no,no
+58,22,si,conviviente,superior,dependiente,medio,si,G1 P1001,≤ de 2 años,no,negativo,si,si,presente,ausente,anemia leve,10.2,3350,no,no,no
+59,34,si,conviviente,secundaria,independiente,medio,no,G5 P4014,≤ de 2 años,si,negativo,si,si,presente,ausente,anemia leve,10.5,3300,no,no,no
+60,19,si,conviviente,secundaria,ninguno,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,11.4,3780,no,no,no
+61,19,si,conviviente,superior,ninguno,medio,no,G2 P1101,≤ de 2 años,si,negativo,si,no,presente,ausente,anemia leve,10.5,1540,si,si,no
+62,37,si,conviviente,superior,dependiente,medio,si,G2 P1011,≤ de 2 años,si,negativo,no,no,presente,ausente,sin anemia,11.4,2600,no,no,no
+63,36,si,conviviente,secundaria,independiente,medio,no,G3 P2012,≤ de 2 años,si,negativo,no,no,ausente,ausente,anemia leve,10.6,3474,no,no,no
+64,35,si,casada,secundaria,ama de casa,medio,si,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,anemia leve,10.8,3640,no,no,no
+65,24,no,conviviente,secundaria,ninguno,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,11.1,2550,no,no,no
+66,23,no,conviviente,secundaria,ama de casa,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,14.4,2730,no,no,no
+67,16,no,soltera,secundaria,ninguno,bajo,si,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,anemia moderada,9.5,2400,no,no,no
+68,22,no,soltera,secundaria,ninguno,medio,si,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,anemia moderada,8.4,2100,no,no,no
+69,33,si,conviviente,primaria,ama de casa,medio,no,G3 P3003,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,13.7,2480,no,no,no
+70,22,si,conviviente,secundaria ,ninguno,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,presente,ausente,anemia leve,9.2,3340,no,no,no
+71,26,si,conviviente,secundaria,ama de casa,medio,no,G2 P1011,≤ de 2 años,si,positivo,no,no,presente,ausente,anemia leve,10.8,2330,no,no,no
+72,30,no,conviviente,superior,dependiente,medio,si,G2 P1011,≤ de 2 años,si,negativo,si,s,ausente,ausente,sin anemia,11.4,3200,no,no,no
+73,30,no,soltera,secundaria,ninguno,bajo,no,G1 P1001,≥ de 2 años,no,negativo,no,no,presente,ausente,sin anemia,11.9,2570,no,no,no
+74,40,no,conviviente,secundaria,ama de casa,bajo,si,G3 P3003,≤ de 2 años,no,negativo,no,no,presente,ausente,anemia leve,10.9,2790,no,no,no
+75,25,si,soltera,secundaria,ama de casa,medio,no,G1 P1001,≥ de 2 años,no,negativo,si,no,presente,ausente,anemia moderada,9.5,2490,no,no,no
+76,18,si,conviviente,superior,ninguno,medio,no,G1 P1001,≥ de 2 años,no,negativo,si,si,presente,ausente,sin anemia,11.8,2630,no,no,no
+77,16,si,soltera,secundaria,ninguno,bajo,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,anemia moderada,8.2,3190,no,no,no
+78,28,no,conviviente,secundaria,ama de casa,medio,no,G1 P1001,≤ de 2 años,no,negativo,no,no,presente,ausente,anemia leve,10.7,3265,no,no,no
+79,22,si,conviviente,secundaria,ninguno,medio,si,G1 P1001,≤ de 2 años,no,positivo,si,si,presente,ausente,anemia moderada,9.9,1790,no,no,no
+80,22,si,soltera,secundaria,ninguno,medio,si,G1 P1001,≤ de 2 años,no,positivo,si,si,ausente,ausente,anemia leve,10.6,3200,si,no,no
+81,21,no,conviviente,superior,dependiente,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,no,presente,ausente,anemia leve,9.8,3225,no,no,no
+82,27,no,conviviente,ama de casa,ama de casa,medio,no,G2 P2002,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,12.1,3770,no,no,no
+83,42,si,conviviente,secundaria,ama de casa,medio,no,G3 P3003,≤ de 2 años,no,positivo,si,si,ausente,ausente,anemia leve,10.6,4100,no,no,no
+84,33,no,conviviente,secundaria,independiente,bajo,si,G1 P1001,≤ de 2 años,no,negativo,si,no,presente,ausente,anemia leve,10.2,3450,no,no,no
+85,20,no,soltera,secundaria,ninguno,bajo,si,G1 P1001,≤ de 2 años,no,negativo,si,si,presente,presente,anemia leve,10.9,2480,no,no,no
+86,30,si,conviviente,secundaria,ninguno,bajo,no,G2 P1011,≤ de 2 años,si,negativo,si,si,ausente,ausente,sin anemia,13,2890,no,no,no
+87,31,no,conviviente,superior,dependiente,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,no,presente,ausente,sin anemia,12.7,2630,no,no,no
+88,28,si,soltera,superior,independiente,alto,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,13.8,2700,no,no,no
+89,31,si,conviviente,secundaria,independiente,medio,no,G1 P1001,≤ de 2 años,no,negativo,no,no,ausente,ausente,anemia leve,10.3,2985,no,no,no
+90,21,Si,Conviviente,Secundaria,Independiente,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Presente(Sangre),Ausente,Sin anemia,11.3,3580,No,No,No
+91,19,Si,Conviviente,Secundaria,Ninguno,Medio,Si,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Presente,Anemia Leve,10.2,2400,No,No,No
+92,16,Si,Conviviente,Secundaria,Ninguno,Medio,Si,G2 P2002,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Anemia Leve,10.1,2150,No,No,No
+93,36,Si,Conviviente,Secundaria,Ama de casa,Medio,No,G2 P1111,≤ de 2 años,Si,Negativo,Si,No,Presente ,Ausente,Sin anemia,12.4,2550,No,No,No
+94,23,Si,Conviviente,Secundaria,Ama de casa,Bajo,Si,G1 P1001,≤ de 2 años,No,Negativo,No,Si,Presente,Presente,Anemia Leve,10.3,2475,No,No,No
+95,20,Si,Soltera,Primaria,Ama de casa,Bajo,Si,G2 P1011,≤ de 2 años,Si,Negativo,No,No,Ausente,Presente,Anemia moderada,9.8,1980,Si,Si,Si
+96,24,Si,Soltera,Secundaria,Independiente,Medio,Si,G3 P2012,≤ de 2 años,Si,Positivo,No,Si,Presente,Ausente,Sin anemia,11.2,2780,No,No,No
+97,27,No,Casada,Técnico,Independiente,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin anemia,13.3,2850,No,No,No
+98,26,No,Casada,Superior,Independiente,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin anemia,11.6,2650,No,No,No
+99,31,Si,Conviviente,Primaria,Ama de casa,Bajo,Si,G2 P1011,≤ de 2 años,Si,Positivo,No,No,Presente,Presente,Anemia Leve,10.1,1980,Si,Si,Si
+100,33,Si,Soltera,Técnico,Independiente,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,No,Si,Presente,Ausente,Sin Anemia,12.3,2750,No,No,No
+101,34,No,Casada,Superior,Independiente,Alto,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin Anemia,12.9,2930,No,No,No
+102,37,Si,Conviviente,Secundaria,Ama de casa,Bajo,Si,G2 P1011,≤ de 2 años,Si,Negativo,No,No,Presente,Ausente,Sin Anemia,13.1,3800,No,No,No
+103,39,Si,Conviviente,Secundaria,Ama de casa,Bajo,Si,G3 P3003,≤ de 2 años,No,Negativo,Si,No,Presente,Ausente,Anemia Leve,10.3,2200,No,Si,Si
+104,22,No,Conviviente,Secundaria,Ama de casa,Medio,No,G1 P1001,≤ de 2 años,Si,Negativo,Si,Si,Presente,Ausente,Sin Anemia,12.3,2575,No,No,No
+105,28,Si,Conviviente,Superior,Independiente,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin Anemia,13.8,2780,No,No,No
+106,22,Si,Conviviente,Superior,Independiente,Alto,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin Anemia,11.9,3250,No,No,No
+107,36,Si,Conviviente,Secundaria,Ama de casa,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,No,No,Presente,Ausente,Sin Anemia,11.4,3000,No,No,No
+108,20,si,Soltera,secundaira,Independiente,Bajo,No,G1 P1001,≤ de 2 años,No,Negativo,Si,si,presente,Ausente,anemia leve,10.4,3455,No,No,No
+109,18,si,Conviviente,secundaria,Ninguno,Bajo,Si,G2 P2002,≤ de 2 años,No,positivo,Si,no,Ausente,Ausente,anemia leve ,10,2150,No,No,No
+110,33,si,coviviente,Superior,Independiente,Alto,No,G2 P1011,≤ de 2 años,Si,Negativo,Si,si,presente,Ausente,Sin Anemia,12.5,2650,No,No,No
+111,25,Si,Conviviente,Secundaria,Ama de casa,Medio,Si,G2 P1101,≤ de 2 años,Si,Negativo,Si,Si,Ausente,Ausente,Anemia Leve,10.7,3050,No,No,No
+112,17,No,Conviviente,Secundaria,Desempleada,Bajo,Si,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Presente,Ausente,Anemia Leve,10.5,2500,No,No,No
+113,30,Si,Conviviente,Superior,Independiente,Alto,No,G1 P1001,≤ de 2 años,No,Negativo,No,Si,Ausente,Ausente,Sin anemia,12.9,3080,No,No,No
+114,27,Si,Casada,Superior,Independiente,Alto,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin anemia,14.2,2875,No,No,No
+115,40,No,Soltera,Superior,Independiente,Alto,Si,G2 P1101,≤ de 2 años,Si,Negativo,No,No,Ausente,Ausente,Sin anemia,15.3,2685,No,No,No
+116,22,Si,Conviviente,Secundaria,Ama de casa,Medio,Si,G1 P1001,≤ de 2 años,No,Negativo,No,Si,Ausente,Ausente,Sin anemia,12.5,2625,No,No,No
+117,15,Si,Conviviente,Secundaria,Ninguno,Bajo,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin anemia,12.3,2935,No,No,No
+118,23,Si,Conviviente,Superior,Independiente,Alto,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Anemia Leve,10.5,2735,No,No,No
+119,19,No,Soltera,Secundaria,Ninguno,Bajo,si,G1 P0101,≤ de 2 años,No,positivo,si,si,presente,presente,anemia leve,10.1,2240,si,si,si
+120,22,si,Conviviente,Técnico,dependiente,Medio,Si,G2 P1011,≤ de 2 años,Si,Negativo,Si,si,Ausente,presente,anemia leve ,10.6,2875,No,No,no
+121,35,No,Casada,superior,independiente,Medio,Sí,G3 P2012,≥ de 2 años,Si,Negativo,no,Si,Ausente,Ausente,sin anemia,13.1,3250,No,No,no
+122,28,Si,Soltera,Secundaria,desempleada,Bajo,Si,G1 P1001,≤ de 2 años,no,Negativo,si,si,presente,Ausente,sin anemia,12.1,2985,No,No,no
+123,17,si,Soltera,ninguno,Ninguno,Bajo,No,G1 P1001,≤ de 2 años,no,Negativo,si,No,Ausente,Ausente,anemia leve ,10.7,2890,No,No,no
+124,40,si,Conviviente,secundaria incompleta,Ama de casa,Medio,Si,G4 P4004,≥ de 2 años,no,Negativo,si,si,presente,Ausente,Anemia Leve,10,2760,No,No,no
+125,17,No,Soltera,Secundaria ,Ninguno,Bajo,no,G1 P1001,≤ de 2 años,no,Negativo,no,No,Ausente,Ausente,sin anemia,12.2,2800,No,No,no
+126,20,No,Conviviente,Secundaria,Ama de casa,Bajo,si,G2 P1011,≤ de 2 años,Si,Negativo,si,si,Ausente,Ausente,anemia moderada,9.6,3210,No,No,no
+127,36,No,casada,superior,Dependiente,Medio,si,G2 P2002,≤ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,12.9,3150,No,No,no
+128,29,si,Conviviente,Secundaria,Independiente,Medio,no,G2 P2102,≥ de 2 años,No,Positivo,si,si,Ausente,Ausente,Anemia Leve,10.3,3350,No,No,no
+129,38,no,coviviente,Técnico,Independiente,Medio,si,G2 P1011,≤ de 2 años,Si,Negativo,si,si,Ausente,Ausente,sin anemia,11.8,2650,No,No,si
+130,21,no,Soltera,Secundaria,ama de casa,Bajo,si,G1 P1001,≤ de 2 años,no,Negativo,si,Si,Ausente,Ausente,sin anemia,12.6,2980,No,No,no
+131,29,si,Conviviente,Secundaria,Independiente,Medio,si,G1 P1001,≤ de 2 años,no,Negativo,no,No,Ausente,Ausente,Anemia Leve,12.2,3010,No,No,no
+132,18,no,Conviviente,Secundaria,ama de casa,Bajo,si,G1 P1001,≤ de 2 años,no,Negativo,si,si,presente,Ausente,sin anemia,12.6,3050,No,No,no
+133,30,si,Conviviente,secundaria completa,Independiente,Medio,no,G1 P0101,≤ de 2 años,no,Negativo,si,si,Ausente,Ausente,Anemia Leve,10.3,2900,No,No,no
+134,25,no,casada,superior,independiente,Medio,Si,G1 P1001,≤ de 2 años,no,Negativo,si,si,presente,Ausente,sin anemia,13.2,3050,No,No,no
+135,20,si,Conviviente,Secundaria,ama de casa ,Bajo,si,G2 P1011,≥ de 2 años,si,Negativo,si,si,Ausente,Ausente,sin anemia,11.6,3150,No,No,no
+136,37,no,Conviviente,superior,Independiente,Medio,Si,G1 P1001,≤ de 2 años,no,Negativo,si,si,presente,Ausente,Anemia Leve,10.4,3750,No,No,no
+137,31,no,casada,Técnico,Dependiente,Medio,no,G1 P1001,≤ de 2 años,no,Negativo,si,No,Ausente,Ausente,anemia leve ,10.6,3500,No,No,no
+138,22,Si,Conviviente,Secundaria,Ama de casa,bajo,si,G1 P1001,≤ de 2 años,no,Negativo,si,si,Ausente,Ausente,anemia moderada,9.6,2850,No,No,no
+139,15,si,Soltera,Secundaria Incompleta,Ninguno,bajo,no,G1 P1001,≤ de 2 años,no,Negativo,no,No,Ausente,Ausente,Anemia Leve,10.8,3050,No,No,no
+140,35,No,Conviviente,Secundaria,Ama de casa,Medio,Si,G2 P2002,≥ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,13.1,2975,No,No,no
+141,24,No,Conviviente,Secundaria,Ama de casa,Medio,si,G1 P0101,≤ de 2 años,no,Positivo,si,Si,Ausente,Ausente,sin anemia,13.8,3250,No,No,no
+142,27,no,Conviviente,secundaria completa,ama de casa,bajo,no,G1 P1001,≤ de 2 años,no,Negativo,si,No,Ausente,Ausente,Anemia leve,10.3,2687,No,No,no
+143,23,si,Conviviente,secundaria incompleta,Dependiente,Medio,Si,G1 P1001,≤ de 2 años,no,Negativo,si,si,Ausente,Ausente,anemia leve ,10.5,3320,No,No,no
+144,32,No,Casada,superior,independiente,Medio,Si,G1 P1001,≤ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,12.5,3150,No,No,no
+145,41,Si,casada,Secundaria,Ama de casa,Medio,no,G4 P3104,≥ de 2 años,no,Positivo,si,si,Ausente,Ausente,Anemia Leve,10.6,2780,No,No,no
+146,29,Si,Conviviente,secundaria completa,ama de casa,Medio,Si,G1 P1001,≤ de 2 años,no,Negativo,no,Si,Ausente,Ausente,anemia leve ,10.4,3150,No,No,no
+147,38,no,Conviviente,Primaria,Dependiente,Bajo,si,G3 P2103,≤ de 2 años,no,Negativo,si,si,presente,Ausente,anemia moderada,8.9,2900,No,No,no
+148,19,no,Conviviente,Secundaria,Ama de casa,Bajo,No,G1 P1001,≤ de 2 años,No,Negativo,no,No,Ausente,presente,sin anemia,12.1,2760,No,No,no
+149,22,no,soltera,Secundaria,Desempleada,Bajo,Si,G2 P1011,≤ de 2 años,si,Negativo,Si,si,Ausente,Ausente,Anemia leve,10.8,3220,No,No,no
+150,36,si,Casada,superior,Independiente,alto,Si,G2 P2002,≥ de 2 años,No,negativo,sI,Si,Ausente,Ausente,Sin anemia,12.4,3560,No,No,No
+151,27,Si,Conviviente,superior,Independiente,Medio,Si,G2 P1102,≤ de 2 años,si,negativo,sI,Si,Ausente,ausente,Sin anemia,24,3790,No,No,No
+152,45,no,casada,secundaria,Ama de casa,Bajo,No,G6 P4115,≥ de 2 años,si,negativo,no,No,Presente,Ausente,Anemia Leve,10.4,2880,No,no,No
+153,25,no,Conviviente,superior,Dependiente,Medio,No,G1 P1001,≤ de 2 años,No,negativo,Si,Si,Ausente,Ausente,anemia moderada,8.8,2670,no,Si,No
+154,15,Si,soltera,secundaria incompleta,Ninguno,Bajo,No,G1 P1001,≤ de 2 años,No,negativo,Si,No,Ausente,Ausente,Sin anemia,11.7,3450,no,no,No
+155,33,No,Conviviente,superior,independiente,alto,si,G1 P1001,≤ de 2 años,No,negativo,No,No,ausente,Ausente,Anemia Leve,10.2,2990,No,No,No
+156,19,Si,Conviviente,Secundaria,Ama de casa,medio,No,G1 P1001,≤ de 2 años,No,negativo,Si,Si,ausente,Ausente,Anemia Leve,10.4,2100,Si,Si,Si
+157,31,Si,Casada,Secundaria,Ama de casa,medio,No,G2 P2002,≤ de 2 años,no,negativo,Si,Si,ausente,Ausente,Anemia Leve,10.1,3200,no,No,No
+158,47,Si,Casada,ninguno,Ama de casa,Bajo,Si,G2 P1011,≤ de 2 años,si,negativo,No,No,presente,Ausente,Anemia Leve,10.7,2200,Si,Si,Si
+159,19,No,Conviviente,Secundaria,Ama de casa,Bajo,Si,G1 P1001,≤ de 2 años,si,Positivo,No,No,Presente,Ausente,Sin anemia,12,2400,Si,Si,Si
+160,39,Si,Casada,Secundaria,Independiente,medio,Si,G2 P2002,≤ de 2 años,no,negativo,Si,Si,Presente,Ausente,Sin anemia,13.1,2680,no,No,No
+161,33,Si,Conviviente,Primaria,Ama de casa,Bajo,Si,G4 P3013,≤ de 2 años,Si,negativo,No,No,Presente,Ausente,Anemia Leve,10.5,3080,Si,No,Si
+162,31,No,Conviviente,superior,Independiente,Medio,Si,G2 P2002,≤ de 2 años,no,Positivo,Si,Si,Ausente,Ausente,Sin anemia,13.1,3550,No,No,No
+163,24,No,Conviviente,Secundaria,Dependiente,Medio,No,G1 P1001,≤ de 2 años,no,negativo,Si,No,Ausente,presente,Anemia Leve,10.1,3300,No,No,No
+164,16,Si,soltera,secundaria incompleta,Ninguno,Bajo,No,G1 P0101,≤ de 2 años,no,negativo,No,No,Presente,Ausente,anemia moderada,8.9,2240,Si,Si,Si
+165,26,No,Conviviente,Técnico,Ama de casa,Medio,Si,G2 P1011,≥ de 2 años,si,negativo,Si,Si,Ausente,Ausente,Anemia leve,10.4,3650,No,No,No
+166,37,No,Casada,superior,Independiente,alto,Si,G2 P1102,≤ de 2 años,No,negativo,Si,S,Ausente,Ausente,Sin anemia,13.6,3450,No,No,No
+167,19,No,Conviviente,Secundaria,Ninguno,Bajo,No,G1 P1001,≤ de 2 años,No,Positivo,si,Si,Ausente,Ausente,Sin anemia,12.9,2340,Si,Si,Si
+168,20,No,Soltera,Secundaria,Dependiente,medio,No,G1 P1001,≤ de 2 años,No,negativo,Si,No,Ausente,Ausente,Anemia Leve,10.9,2870,No,No,No
+169,39,No,conviviente,superior,Dependiente,alto,si,G2 P1011,≤ de 2 años,si,negativo,si,Si,Ausente,Ausente,sin anemia,12,3420,no,no,no
+170,33,si,conviviente,Secundaria,Ama de casa,medio,si,G2 P2002,≤ de 2 años,no,negativo,si,si,Ausente,Ausente,sin anemia,11.6,3560,no,no,no
+171,28,No,conviviente,superior,ama de casa,medio,Si,G2 P0111,≤ de 2 años,si,positivo,si,No,presente,ausente,anemia leve,10.7,2100,Si,Si,Si
+172,25,si,conviviente,secundaria,Ama de casa,Bajo,Si,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,anemia leve,10.8,3050,no,no,no
+173,17,si,conviviente,secundaria,Ninguno,Bajo,no,G1 P1001,≤ de 2 años,no,negativo,No,No,ausente,ausente,anemia moderada,9.2,2780,no,no,no
+174,28,si,conviviente,primaria,ama de casa,medio,no,G3 P2012,≥ de 2 años,si,positivo,no,no,ausente,ausente,anemia leve,10.6,2950,no,no,no
+175,30,si,conviviente,superior,dependiente,medio,Si,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,13.2,3010,no,no,no
+176,35,no,conviviente,superior,Independiente,Alto,si,G2 P1011,≥ de 2 años,si,negativo,si,si,Presente,ausente,sin anemia,12.5,2790,no,no,no
+177,22,no,Casada,Secundaria,Ama de casa,medio,si,G1 P1001,≤ de 2 años,no,negativo,si,si,presente,ausente,anemia leve,10.6,2870,no,no,no
+178,28,si,conviviente,secundaria,independiente,medio,no,G2 P1101,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,11.9,3200,no,no,no
+179,32,si,conviviente,secundaria,dependiente,Bajo,no,G1 P1001,≤ de 2 años,no,negativo,si,no,ausente,ausente,sin anemia,12.3,3150,No,no,no
+180,19,No,Soltera,Secundaria,ninguno,Bajo,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,anemia leve,10.5,2750,No,No,no
+181,25,No,conviviente,Técnico,dependiente,medio,si,G1 P0101,≤ de 2 años,no,positivo,no,no,ausente,ausente,sin anemia,13,2680,no,no,no
+182,22,si,conviviente,secundaria,Ama de casa,Bajo,no,G3 P1021,≥ de 2 años,si,negativo,no,Si,ausente,ausente,anemia leve,10.5,3420,no,no,no
+183,16,si,Soltera,secundaria incompleta,ninguno,Bajo,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,anemia leve,10.8,2960,no,no,no
+184,39,no,Casada,superior,independiente,Alto,Si,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,12.4,2940,no,no,no
+185,24,no,conviviente,secundaria,ama de casa,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,13.8,2730,no,no,no
+186,30,no,conviviente,superior,independiente,Alto,si,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,Anemia Leve,10.3,3020,no,no,no
+187,27,Si,conviviente,Técnico,Ama de casa,medio,si,G2 P0111,≤ de 2 años,si,negativo,si,si,ausente,ausente,Anemia Leve,10.8,2100,Si,Si,Si
+188,17,si,conviviente,primaria,ama de casa,Bajo,no,G1 P1001,≤ de 2 años,no,negativo,si,no,ausente,ausente,sin anemia,13.4,2870,no,no,no
+189,34,no,conviviente,superior,independiente,medio,si,G1 P1001,≤ de 2 años,no,negativo,si,si,presente,ausente,Sin anemia,11.6,3360,no,no,no
+190,31,si,Casada,secundaria,ama de casa,medio,no,G2 P1011,≤ de 2 años,si,positivo,no,no,ausente,ausente,Sin anemia,13.5,3060,no,no,no
+191,46,Si,conviviente,Primaria incompleta,Ama de casa,medio,si,G5 P3114,≤ de 2 años,si,negativo,si,Si,ausente,ausente,sin anemia,11.7,3210,no,no,no
+192,16,no,soltera,secundaria incompleta,ninguno,bajo,no,G1 P1001,≤ de 2 años,no,negativo,no,no,ausente,ausente,sin anemia,12.9,2670,no,no,no
+193,37,no,conviviente,secundaria,ama de casa,medio,si,G3 P3003,≤ de 2 años,no,negativo,no,no,ausente,ausente,anemia leve,10.6,2790,no,no,no
+194,25,si,conviviente,Técnico,dependiente,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,presente,ausente,anemia moderada,9.2,2945,no,no,no
+195,20,si,conviviente,Secundaria,Ama de casa,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,13.2,2680,no,no,no
+196,32,no,Casada,superior,independiente,Alto,si,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,14,3290,no,no,no
+197,38,no,conviviente,superior,independiente,medio,Si,G2 P1011,≥ de 2 años,si,positivo,no,Si,presente,ausente,anemia leve,10.5,3020,no,no,no
+198,38,si,conviviente,secundaria,Ama de casa,medio,si,G1 P1001,≤ de 2 años,no,positivo,si,si,ausente,ausente,sin anemia,11,3500,no,no,no
+199,23,si,conviviente,secundaria,Ama de casa,bajo,si,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,anemia leve,10.1,3190,no,no,no
+200,27,no,conviviente,superior,Independiente,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,no,presente,ausente,anemia leve,9.1,3560,no,no,no
+201,22,no,conviviente,Secundaria,ama de casa,medio,no,G2 P0111,≥ de 2 años,si,negativo,si,si,ausente,ausente,sin anemia,13,2860,no,no,no
+202,15,si,soltera,Secundaria incompleta,ninguno,bajo,no,G1 P0101,≤ de 2 años,no,positivo,no,si,ausente,ausente,anemia leve,10.3,2150,Si,Si,Si
+203,27,no,conviviente,secundaria,independiente,bajo,si,G1 P1001,≤ de 2 años,no,negativo,no,si,presente,ausente,anemia leve,10,2955,no,no,no
+204,33,no,conviviente,superior,independiente,medio,si,G1 P1001,≤ de 2 años,no,negativo,si,si,presente,presente,sin anemia,12,2690,no,no,no
+205,30,si,conviviente,Técnico,dependiente,medio,no,G2 P1011,≥ de 2 años,si,negativo,si,si,ausente,ausente,sin anemia,13.2,2940,no,no,no
+206,21,no,conviviente,Secundaria,dependiente,bajo,no,G1 P1001,≤ de 2 años,no,negativo,si,no,presente,ausente,sin anemia,13.7,3000,no,no,no
+207,28,si,soltera,superior,independiente,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,no,ausente,ausente,Anemia leve,10.6,2790,no,no,no
+208,19,si,conviviente,secundaria,independiente,bajo,no,G1 P1001,≤ de 2 años,no,negativo,no,si,ausente,ausente,anemia leve,10,3210,no,no,no
+209,21,Si,Conviviente,Secundaria,Ama de casa,bajo,si,G1 P1001,≤ de 2 años,No,positivo,Si,Si,presente,presente,Sin anemia,11.4,3670,No,No,No
+210,24,Si,Casada,Técnico,Independiente,Medio,Si,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,ausente,Sin anemia,14,2980,No,No,No
+211,38,no,Casada,superior,Ama de casa,Alto,Si,G2 P2002,≤ de 2 años,No,Negativo,no,Si,Ausente,Ausente,Anemia Leve,10.1,3480,No,No,No
+212,36,Si,Conviviente,superior,independiente,Medio,No,G2 P1111,≤ de 2 años,Si,positivo,Si,si,Presente ,Ausente,Sin anemia,13.5,2190,Si,Si,Si
+213,41,Si,Conviviente,Secundaria incompleta,Ama de casa,Bajo,Si,G5 P2123,≥ de 2 años,Si,Positivo,No,no,Presente,Presente,Anemia Leve,10.1,2380,Si,Si,Si
+214,26,no,Conviviente,Técnico,Ama de casa,Bajo,Si,G2 P0111,≤ de 2 años,Si,Negativo,Si,Si,Ausente,Presente,Anemia moderada,9.6,2100,Si,Si,Si
+215,17,Si,Soltera,Secundaria incompleta,ninguno,Bajo,No,G1 P1001,≤ de 2 años,No,Positivo,No,Si,Presente,Ausente,Sin anemia,12.7,2780,No,No,No
+216,27,No,Casada,Técnico,Ama de casa,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin anemia,13.4,3140,No,No,No
+217,25,No,Soltera,secundaria completa,ninguno,Bajo,No,G1 P1001,≤ de 2 años,No,Negativo,Si,no,Ausente,Ausente,Sin anemia,11.6,2650,No,No,No
+218,31,Si,Conviviente,superior,Ama de casa,Bajo,Si,G2 P1011,≤ de 2 años,Si,Positivo,No,si,Presente,Presente,Anemia Leve,10.1,2780,No,No,No
+219,33,Si,Soltera,Técnico,Independiente,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,Si,no,Presente,Ausente,Sin Anemia,12.3,2750,No,No,No
+220,34,No,Casada,Superior,Independiente,Alto,si,G1 P1001,≤ de 2 años,No,Positivo,Si,Si,Ausente,Ausente,Sin Anemia,12.9,3080,No,No,No
+221,17,Si,Soltera,Secundaria,ninguno,Bajo,Si,G2 P1011,≤ de 2 años,Si,Negativo,No,si,Presente,Presente,Sin Anemia,14.2,3810,No,No,No
+222,39,Si,Conviviente,Secundaria,Ama de casa,Bajo,Si,G3 P3003,≤ de 2 años,No,Negativo,Si,Si,Ausente,Presente,Anemia Leve,10.3,2600,No,Si,Si
+223,22,No,Conviviente,Secundaria,Ama de casa,Medio,No,G1 P1001,≤ de 2 años,Si,Negativo,Si,Si,Presente,Ausente,Sin Anemia,12.3,2575,No,No,No
+224,26,Si,Conviviente,Superior,Independiente,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin Anemia,12.8,2780,No,No,No
+225,32,Si,Conviviente,Superior,Desempleada,Alto,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin Anemia,11.9,3870,No,No,No
+226,36,Si,Conviviente,Secundaria,Ama de casa,Medio,No,G2 P2002,≥ de 2 años,No,Negativo,No,Si,Presente,Ausente,Sin Anemia,12.4,3190,No,No,No
+227,20,si,Soltera,secundaria,Independiente,Bajo,No,G1 P1001,≤ de 2 años,No,Negativo,Si,si,presente,Ausente,anemia leve,10.6,3655,No,No,No
+228,15,si,Soltera,Secundaria incompleta,Ninguno,Bajo,Si,G1 P1001,≤ de 2 años,No,positivo,Si,Si,Ausente,Presente,Anemia moderada,9.6,2150,Si,Si,Si
+229,23,No,coviviente,Técnico,dependiente,Medio,No,G2 P1011,≤ de 2 años,Si,Negativo,Si,si,presente,Ausente,Sin Anemia,12.3,2650,No,No,No
+230,35,Si,casada,superior,independiente,Medio,Si,G2 P1101,≤ de 2 años,Si,Negativo,Si,Si,presente,Ausente,Anemia Leve,10.7,3760,No,No,No
+231,27,No,Casada,superior,Desempleada,Medio,Si,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Presente,Anemia Leve,10.5,2950,No,No,No
+232,30,Si,Conviviente,Técnico,Ama de casa,Bajo,Si,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin anemia,12.5,3060,No,No,No
+233,27,Si,Casada,Superior,desempleada,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin anemia,13.2,2875,No,No,No
+234,41,Si,Conviviente,Secundaria incompleta,Ama de casa,Bajo,Si,G4 P2113,≥ de 2 años,Si,positivo,No,si,presente,Ausente,Sin anemia,14,2460,si,si,Si
+235,22,No,Conviviente,Secundaria,Ama de casa,Bajo,Si,G1 P1001,≤ de 2 años,No,Negativo,No,Si,Ausente,Ausente,Sin anemia,12.7,3860,No,No,No
+236,18,Si,Conviviente,Secundaria,Ninguno,Bajo,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Anemia leve,10.7,2940,No,No,No
+237,23,Si,Conviviente,Técnico,desempleada,Medio,No,G1 P0101,≤ de 2 años,No,Negativo,Si,Si,Ausente,Presente,Anemia Leve,10.5,2340,si,si,Si
+238,33,No,Casada,superior,independiente,Alto,si,G2 P1102,≤ de 2 años,No,positivo,Si,Si,presente,Ausente,Sin anemia,11.8,2480,si,si,si
+239,19,No,Soltera,secundaria,ama de casa,Bajo,si,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin anemia,14.1,3080,No,No,No
+240,21,No,Conviviente,secundaria,ama de casa,Bajo,no,G2 P1011,≤ de 2 años,Si,Negativo,No,Si,Ausente,Ausente,Anemia leve,10.8,3750,No,No,No
+241,36,No,casada,superior,independiente,Alto,si,G3 P1112,≥ de 2 años,Si,Negativo,No,no,Ausente,Ausente,Anemia moderada,9.6,2350,No,No,No
+242,24,Si,Conviviente,superior,desempleada,Medio,si,G1 P1001,≤ de 2 años,No,Negativo,No,si,Ausente,Ausente,Sin anemia,12,3540,No,No,No
+243,22,Si,Conviviente,secundaria,ama de casa,Bajo,si,G1 P1001,≤ de 2 años,No,positivo,Si,si,Ausente,Presente,Sin anemia,14.5,2090,si,si,si
+244,33,No,Soltera,secundaria,ama de casa,Medio,no,G2 P1102,≤ de 2 años,No,Negativo,Si,no,Ausente,Presente,anemia leve,10.8,2380,si,si,si
+245,31,si,soltera,secundaria,ama de casa,bajo,No,G2 P1011,≤ de 2 años,si,Positivo,si,no,presente,Ausente,anemia leve ,10.2,2835,No,No,no
+246,24,no,Soltera,tecnica,ama de casa,alto,Sí,G1 P1001,≤ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,12.4,2630,No,No,no
+247,42,No,Casada,superior,ama de casa,alto,No,G2 P2002,≤ de 2 años,no,positivo,si,no,presente,Ausente,sin anemia,10.3,2790,No,No,no
+248,28,si,Soltera,primaria,ama de casa,bajo,No,G1 P1001,≤ de 2 años,no,positivo,si,si,presente,Ausente,anemia leve ,10.5,3155,No,No,no
+249,17,si ,Soltera,secundaria,Ninguno,Bajo,si,G1 P1001,≤ de 2 años,no,Negativo,si,no,presente,Ausente,anemia moderada,8.7,2654,No,No,no
+250,30,no,coviviente,secundaria,ama de casa,Medio,no,G2 P1011,≤ de 2 años,si,Negativo,si,si,Ausente,Ausente,anemia leve,10.8,2743,No,No,no
+251,29,no,Conviviente,superior,independiente,alto,si,G1 P1001,≤ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,13.2,3190,No,No,no
+252,35,no,casada,superior,independiente,alto,si,G2 P2002,≥ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,14.1,3210,No,No,no
+253,33,si,casada,secundaria,ama de casa,bajo,si,G2 P2002,≤ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,11.7,3560,No,No,no
+254,40,si,coviviente,primaria,ama de casa,bajo,no,G3 P3003,≥ de 2 años,no,Negativo,si,no,Ausente,Ausente,anemia leve ,10.7,2640,No,No,no
+255,28,no,Soltera,secundaria,ama de casa,Medio,si,G1 P1001,≤ de 2 años,no,Negativo,si,no,Ausente,Ausente,anemia moderada,9.8,2780,No,No,no
+256,25,si,Soltera,primaria,Ninguno,Bajo,si,G1 P1001,≤ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,13.3,2950,No,No,no
+257,25,no,Soltera,secundaria,ama de casa,bajo,si,G2 P2002,≤ de 2 años,no,Negativo,si,no,presente,Ausente,sin anemia,10.8,3040,No,No,no
+258,33,si,Conviviente,secundaria ,ama de casa ,Medio,no,G2 P1011,≤ de 2 años,si,Negativo,si,no,Ausente,Ausente,anemia leve,10.1,3240,No,No,no
+259,26,no,Conviviente,superior,independiente,alto,no,G1 P1001,≤ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,13.2,3010,No,No,no
+260,40,si,casada,primaria,ama de casa ,bajo,si,G4 P2022,≤ de 2 años,si,Negativo,si,si,Ausente,Ausente,anemia leve,10.4,3200,No,No,no
+261,23,si,Conviviente,secundaria,ama de casa,bajo,no,G1 P1001,≤ de 2 años,no,Negativo,si,si,presente,Ausente,anemia leve,10.6,2766,No,No,no
+262,25,no,Soltera,superior,independiente,alto,no,G2 P1011,≤ de 2 años,si,Negativo,no,no,Ausente,Ausente,anemia leve ,10.8,2650,No,No,no
+263,18,no,Conviviente,secundaria,desempleada,bajo,si,G1 P1001,≥ de 2 años,no,Negativo,si,no,presente,Ausente,anemia leve ,10.3,2568,No,No,no
+264,31,si,Conviviente,tecnica,independiente,Medio,no,G1 P1001,≥ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,13.9,3100,No,No,no
+265,27,si,casada,superior,independiente,alto,no,G1 P1001,≥ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,13.2,2975,No,No,no
+266,39,no,casada,superior,independiente,alto,si,G2 P1101,≥ de 2 años,no,Negativo,no,no,Ausente,Ausente,sin anemia,14.2,2764,No,No,no
+267,20,si,Conviviente,secundaria,independiente,Medio,si,G1 P1001,≥ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,13.2,2675,No,No,no
+268,17,si,Conviviente,secundaria,Ninguno,bajo,no,G1 P1001,≥ de 2 años,no,Negativo,si,si,Ausente,Ausente,anemia leve ,10.4,2356,No,No,no
+269,25,no,Conviviente,superior,independiente,alto,no,G1 P1001,≥ de 2 años,no,positivo,no,si,Ausente,Ausente,anemia leve ,10.7,2845,No,No,no
+270,35,no,casada,superior,independiente,alto,no,G3 P3003,≤ de 2 años,no,Negativo,si,si,Ausente,Ausente,sin anemia,12.5,2990,No,No,no
+271,23,no,casada,secundaria,ama de casa,Medio,no,G1 P1001,≥ de 2 años,no,positivo,no,no,Ausente,Ausente,anemia leve ,10.8,2540,No,No,no
+272,31,no,Conviviente,superior,independiente,alto,si,G2 P2002,≥ de 2 años,no,positivo,no,si,presente,presente,anemia moderada,8.7,2170,si,No,no
+273,33,no,casada,tecnica,Independiente,alto,No,G2 P2002,≥ de 2 años,No,Negativo,no,no,Ausente,Ausente,anemia moderada,8.9,2295,No,Si,no
+274,16,si,soltera,Secundaria,Desempleada,Bajo,Si,G1 P1001,≥ de 2 años,No,Negativo,Si,si,Presente,Ausente,Anemia leve,10.3,2748,sI,Si,No
+275,39,No,Casada,superior,Independiente,alto,No,G3 P3003,≤ de 2 años,No,negativo,sI,Si,Presente,Ausente,Sin anemia,12.7,3150,No,No,No
+276,23,si,Conviviente,Secundaria,Ama de casa,Medio,No,G1 P1001,≥ de 2 años,No,negativo,si,si,Ausente,ausente,Sin anemia,12.8,2678,No,No,No
+277,22,Si,Conviviente,Secundaria,Ama de casa,Bajo,Si,G1 P1001,≥ de 2 años,No,negativo,Si,Si,Ausente,Ausente,Anemia Leve,10.4,2450,No,no,No
+278,17,Si,Conviviente,Secundaria,Ninguno,Bajo,No,G1 P1001,≥ de 2 años,No,negativo,Si,Si,Ausente,Ausente,anemia moderada,9.5,2325,no,Si,si
+279,28,Si,Casada,superior,Independiente,alto,No,G1 P1001,≥ de 2 años,No,negativo,Si,No,Ausente,Ausente,Sin anemia,12.7,3560,no,no,No
+280,16,No,Conviviente,Secundaria,Ninguno,Bajo,No,G1 P1001,≥ de 2 años,No,negativo,No,No,ausente,Ausente,Anemia Leve,10.2,2834,No,No,No
+281,18,Si,Conviviente,Secundaria,Ama de casa,medio,No,G1 P1001,≥ de 2 años,No,positivo,Si,Si,presente,Ausente,Anemia Leve,10.3,2180,No,No,No
+282,29,Si,Casada,Secundaria,Ama de casa,medio,No,G2 P2002,≤ de 2 años,no,positivo,Si,Si,ausente,Ausente,Anemia Leve,10.2,3230,no,No,No
+283,45,Si,Casada,primaria,Ama de casa,Bajo,Si,G2 P1011,≤ de 2 años,si,positivo,No,No,presente,Ausente,Anemia Leve,10.6,2234,no,No,No
+284,20,No,Conviviente,Secundaria,Ama de casa,Bajo,si,G1 P1001,≤ de 2 años,no,Positivo,No,No,Presente,Ausente,anemia leve,10.2,2380,no,No,No
+285,37,Si,Casada,Secundaria,ama de casa,medio,Si,G1 P1001,≤ de 2 años,no,negativo,Si,Si,Presente,Ausente,Sin anemia,13,2790,no,No,No
+286,32,Si,soltera,Primaria,Ama de casa,Bajo,Si,G2 P1011,≤ de 2 años,Si,negativo,No,No,Presente,Ausente,Anemia Leve,10.4,2800,Si,No,No
+287,24,Si,Conviviente,Secundaria,Ama de casa,Medio,No,G1 P1001,≤ de 2 años,no,negativo,Si,Si,Ausente,Ausente,Sin anemia,13.5,2740,No,No,No
+288,23,No,Conviviente,Secundaria,Ama de casa,Medio,Si,G2 P1011,≤ de 2 años,Si,negativo,Si,no,Presente,presente,Anemia Leve,10.3,2650,No,No,No
+289,27,No,Conviviente,superior,Dependiente,Medio,No,G2 P2002,≤ de 2 años,no,negativo,Si,Si,Presente,Ausente,Sin anemia,13.4,2990,No,No,No
+290,37,Si,Conviviente,secundaria,Ama de casa,Medio,No,G3 P2022,≤ de 2 años,si,positivo,Si,no,Presente,Ausente,anemia moderada,8.5,3050,No,No,No
+291,22,No,Conviviente,Secundaria,Ama de casa,Medio,No,G1 P1001,≤ de 2 años,No,negativo,Si,No,Ausente,Ausente,Sin anemia,13.5,3130,No,No,No
+292,26,Si,Conviviente,Secundaria,Ama de casa,Medio,No,G1 P1001,≤ de 2 años,No,Positivo,si,no,Ausente,Ausente,Anemia Leve,10.1,2375,No,No,No
+293,25,Si,Soltera,Superior,Dependiente,alto,No,G1 P1001,≤ de 2 años,No,negativo,Si,Si,Ausente,Ausente,Sin anemia,13.9,2540,No,No,No
+294,24,no,conviviente,secundaria,ama de casa,medio,si,G1 P1001,≤ de 2 años,No,negativo,si,no,Ausente,ausente,sin anemia,12.3,2860,no,no,no
+295,32,no,casada,superior,dependiente,alto,si,G2 P2002,≤ de 2 años,no,negativo,si,si,Ausente,ausente,sin anemia,13.7,3140,no,no,no
+296,45,si,conviviente,secundaria ,ama de casa,medio,no,G6 P5015,≤ de 2 años,si,positivo,No,no,presente,ausente,anemia leve,10.4,3065,no,no,no
+297,23,no,soltera,secundaria,Independiente,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,13.2,3150,no,no,no
+298,20,si,conviviente,secundaria,ama de casa,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,presente,ausente,sin anemia,13.4,3550,no,no,no
+299,26,si,conviviente,secundaria,ama de casa,medio,no,G1 P1001,≤ de 2 años,no,positivo,no,no,ausente,ausente,anemia leve,10.5,2590,no,no,no
+300,28,si,conviviente,superior,dependiente,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,presente,ausente,sin anemia,12.9,2640,no,no,no
+301,23,no,conviviente,secundaria,Independiente,medio,si,G1 P1011,≥ de 2 años,si,negativo,si,si,presente,ausente,sin anemia,14,2734,no,no,no
+302,29,si,conviviente,superior,dependiente,medio,si,G1 P1001,≥ de 2 años,no,negativo,si,si,presente,ausente,sin anemia,13.8,3468,no,no,no
+303,33,si,conviviente,secundaria,ama de casa,medio,no,G4 P3013,≤ de 2 años,si,negativo,si,si,presente,ausente,anemia leve,10.8,3346,no,no,no
+304,18,si,conviviente,secundaria,ama de casa,Bajo,no,G1 P1001,≤ de 2 años,no,positivo,si,si,presente,presente,anemia leve,10.9,3276,no,no,no
+305,23,si,conviviente,superior,Independiente,medio,no,G2 P1011,≤ de 2 años,si,negativo,si,no,ausente,ausente,anemia leve,10.4,2579,no,no,no
+306,35,si,conviviente,secundaria,Independiente,medio,si,G2 P2002,≤ de 2 años,no,negativo,no,no,ausente,ausente,sin anemia,12.4,2649,no,no,no
+307,34,no,conviviente,superior,independiente,medio,no,G2 P2002,≤ de 2 años,no,positivo,no,no,ausente,ausente,anemia leve,10.7,3480,no,no,no
+308,30,no,casada,superior,independiente,medio,si,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,13.8,3540,no,no,no
+309,22,si,conviviente,secundaria,ninguno,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,12.1,2675,no,no,no
+310,21,si,conviviente,secundaria,ama de casa,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,13.9,2850,no,no,no
+311,18,no,soltera,secundaria,ninguno,bajo,si,G1 P1001,≤ de 2 años,no,negativo,no,no,ausente,ausente,anemia leve,10.2,2400,no,no,no
+312,24,no,soltera,superior,ninguno,medio,si,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,13.3,2168,no,no,no
+313,31,si,conviviente,secundaria,ama de casa,medio,no,G4 P4004,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,13.6,2790,no,no,no
+314,21,si,conviviente,secundaria ,ama de casa,medio,no,G1 P1001,≤ de 2 años,no,negativo,no,no,presente,ausente,anemia leve,9.8,3464,no,no,no
+315,22,si,conviviente,secundaria,ama de casa,medio,no,G1 P1001,≤ de 2 años,no,positivo,no,no,ausente,ausente,anemia leve,10.8,2460,no,no,no
+316,28,no,conviviente,superior,independiente,medio,si,G2 P1011,≤ de 2 años,si,negativo,si,s,ausente,ausente,sin anemia,12.8,3350,no,no,no
+317,29,no,soltera,superior,independiente,alto,si,G3 P2012,≥ de 2 años,si,negativo,no,no,presente,ausente,sin anemia,13.6,3740,no,no,no
+318,37,no,conviviente,secundaria,ama de casa,bajo,si,G3 P3003,≤ de 2 años,no,negativo,no,no,ausente,ausente,anemia leve,10.7,2810,no,no,no
+319,23,si,soltera,secundaria,independiente,medio,no,G1 P1001,≥ de 2 años,no,negativo,si,no,ausente,ausente,anemia leve,10.5,2534,no,no,no
+320,17,si,conviviente,secundaria,ninguno,medio,no,G1 P1001,≥ de 2 años,no,negativo,si,si,presente,ausente,sin anemia,12.8,2747,no,no,no
+321,15,si,soltera,secundaria,ninguno,bajo,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,anemia leve,10.2,3260,no,no,no
+322,26,si,conviviente,secundaria,ama de casa,medio,no,G1 P1001,≤ de 2 años,no,negativo,no,no,presente,ausente,anemia leve,10.4,3344,no,no,no
+323,24,si,soltera,secundaria,ama de casa,bajo,si,G1 P1001,≤ de 2 años,no,negativo,si,si,presente,ausente,anemia moderada,9.7,3045,no,no,no
+324,20,si,soltera,secundaria,ama de casa,bajo,si,G1 P1001,≤ de 2 años,no,positivo,no,no,ausente,ausente,anemia leve,10.4,3266,si,no,no
+325,23,si,conviviente,superior,dependiente,medio,no,G2 P2002,≤ de 2 años,no,negativo,si,no,presente,ausente,sin anemia,13.5,3025,no,no,no
+326,26,no,conviviente,superior,independiente,medio,no,G2 P2002,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,12.4,3643,no,no,no
+327,38,si,conviviente,secundaria,ama de casa,medio,no,G3 P2012,≤ de 2 años,si,negativo,si,si,ausente,ausente,anemia leve,10.8,3852,no,no,no
+328,31,no,conviviente,superior,independiente,alto,si,G2 P2002,≥ de 2 años,no,negativo,si,no,presente,ausente,anemia leve,10.7,3556,no,no,no
+329,18,no,soltera,secundaria,independiente,bajo,si,G1 P1001,≤ de 2 años,no,negativo,si,si,presente,presente,sin anemia,11.2,2672,no,no,no
+330,29,si,conviviente,secundaria,ama de casa,bajo,no,G2 P1011,≤ de 2 años,si,negativo,si,si,ausente,ausente,sin anemia,13.5,2990,no,no,no
+331,32,si,conviviente,secundaria ,independiente,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,13.7,2734,no,no,no
+332,26,si,soltera,superior,independiente,alto,no,G1 P1001,≤ de 2 años,no,negativo,si,si,ausente,ausente,sin anemia,13.6,2756,no,no,no
+333,34,si,conviviente,secundaria,dependiente,medio,no,G1 P1001,≤ de 2 años,no,negativo,si,si,presente,ausente,anemia leve,10.4,3085,no,no,no
+334,21,Si,Conviviente,Secundaria,dependiente,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,ausente,Ausente,anemia leve,10.3,3286,No,No,No
+335,17,Si,soltera,Secundaria,Ninguno,bajo,Si,G1 P1001,≤ de 2 años,No,Negativo,no,no,Ausente,Presente,Anemia Leve,10.6,2548,No,No,No
+336,19,Si,soltera,Secundaria,Ninguno,bajo,Si,G1 P1001,≤ de 2 años,No,Negativo,no,no,Ausente,Ausente,Anemia Leve,10.9,2673,No,No,No
+337,33,no,Conviviente,superior,independiente,alto,No,G2 P1011,≤ de 2 años,Si,Negativo,Si,No,Presente ,Ausente,Sin anemia,13.6,2651,No,No,No
+338,27,no,Conviviente,tecnica,dependiente,Medio,Si,G1 P1001,≤ de 2 años,No,positivo,No,Si,Presente,Presente,Anemia Leve,10.6,2789,No,No,No
+339,18,Si,Conviviente,secundaria,Ama de casa,Bajo,Si,G1 P1001,≤ de 2 años,No,Negativo,si,si,Ausente,Ausente,Sin anemia,13.4,2370,No,No,No
+340,27,Si,Conviviente,Secundaria,ama de casa,Medio,Si,G3 P2012,≤ de 2 años,Si,Negativo,si,Si,Ausente,presente,anemia leve,10.3,2845,No,No,No
+341,25,No,Casada,superior,Independiente,alto,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin anemia,13.7,2900,No,No,No
+342,25,No,Casada,Superior,Independiente,alto,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin anemia,12.6,2754,No,No,No
+343,29,Si,Conviviente,secundaria,Ama de casa,Bajo,no,G1 P1001,≤ de 2 años,Si,Negativo,No,No,Presente,Presente,Anemia Leve,10.8,2642,No,No,No
+344,35,Si,Conviviente,Técnico,Independiente,Medio,si,G1 P1001,≤ de 2 años,No,Negativo,No,Si,Presente,Ausente,Sin Anemia,13.3,2890,No,No,No
+345,32,No,Casada,Superior,Independiente,Alto,si,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin Anemia,13.1,3030,No,No,No
+346,26,Si,Conviviente,Secundaria,Ama de casa,Medio,Si,G1 P1001,≤ de 2 años,no,Negativo,No,No,Presente,Ausente,anemia leve,10.1,3790,No,No,No
+347,37,Si,Conviviente,Superior,Independiente,Alto,Si,G2 P2002,≥ de 2 años,No,Negativo,si,si,Presente,Ausente,Sin Anemia,12.4,2675,No,No,No
+348,23,No,Conviviente,Secundaria,Ama de casa,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,no,no,Presente,Ausente,Anemia Leve,10.3,3140,No,No,No
+349,26,Si,Conviviente,Secundaria,dependiente,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin Anemia,13.9,2890,No,No,No
+350,27,Si,Conviviente,Superior,Independiente,Alto,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin Anemia,12.8,3345,No,No,No
+351,33,Si,Conviviente,Secundaria,Ama de casa,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,si,No,Presente,Ausente,Sin Anemia,13.4,3178,No,No,No
+352,27,si,Soltera,secundaira,Independiente,Medio,No,G1 P1001,≤ de 2 años,No,positivo,Si,si,presente,Ausente,anemia leve,10.7,3678,No,No,No
+353,20,si,Conviviente,secundaria,Ninguno,Bajo,Si,G2 P2002,≤ de 2 años,No,Negativo,Si,no,Ausente,Ausente,anemia leve ,10.1,3430,No,No,No
+354,30,si,Conviviente,Superior,Independiente,Alto,No,G2 P2002,≤ de 2 años,No,Negativo,Si,si,presente,Ausente,Sin Anemia,13.5,2750,No,No,No
+355,24,Si,Conviviente,Secundaria,Ama de casa,Medio,Si,G2 P2002,≤ de 2 años,no,Negativo,Si,Si,Ausente,Ausente,Sin Anemia,13.7,3150,No,No,No
+356,19,si,Conviviente,Secundaria,Ama de casa,Bajo,Si,G2 P2002,≤ de 2 años,No,Negativo,Si,Si,Presente,Ausente,Sin Anemia,12.7,2670,No,No,No
+357,32,Si,Conviviente,tecnica,Independiente,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin anemia,13.9,3180,No,No,No
+358,29,Si,Conviviente,tecnica,Independiente,medio,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin anemia,14.1,3245,No,No,No
+359,36,No,casada,Superior,Independiente,Alto,Si,G2 P2002,≤ de 2 años,no,Negativo,No,No,Ausente,presente,Sin anemia,14.8,2675,No,No,No
+360,20,Si,Conviviente,Secundaria,Ama de casa,Medio,Si,G1 P1001,≤ de 2 años,No,Negativo,No,no,Ausente,Ausente,Sin anemia,13.6,3187,No,No,No
+361,24,Si,Conviviente,Secundaria,Ama de casa,Bajo,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin anemia,13.3,3250,No,No,No
+362,22,Si,Conviviente,Secundaria,Ama de casa,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin anemia,13.6,2960,No,No,No
+363,18,No,Soltera,secundaria,Ninguno,Bajo,si,G2 P1011,≥ de 2 años,Si,positivo,Si,no,Ausente,presente,anemia leve,10.7,3050,no,No,no
+364,27,Si,Casada,Superior,Independiente,alto,No,G2 P2002,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin anemia,13.6,2865,No,No,No
+365,32,Si,Conviviente,secundaria,Ama de casa,Medio,no,G2 P2002,≤ de 2 años,No,Negativo,No,No,Presente,Presente,Anemia Leve,10.1,3210,No,No,No
+366,33,Si,Conviviente,Técnico,Independiente,Alto,si,G2 P2002,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin Anemia,14.3,3140,No,No,No
+367,35,No,Casada,Superior,Independiente,Alto,si,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin Anemia,13.1,3230,No,No,No
+368,26,Si,Conviviente,Secundaria,Ama de casa,Medio,Si,G1 P1001,≤ de 2 años,no,Negativo,No,No,Presente,Ausente,anemia leve,10.2,3810,No,No,No
+369,36,Si,Conviviente,Secundaria,Ama de casa,Medio,Si,G2 P2002,≥ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin Anemia,14.1,2760,No,No,No
+370,24,No,Conviviente,Secundaria,Ama de casa,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin Anemia,14.3,3150,No,No,No
+371,25,Si,Conviviente,Secundaria,Independiente,Medio,No,G1 P1001,≤ de 2 años,No,Negativo,Si,Si,Ausente,Ausente,Sin Anemia,13.9,2990,No,No,No
+372,20,Si,Conviviente,Secundaria,desempleada,Bajo,No,G1 P1001,≤ de 2 años,No,positivo,Si,Si,Ausente,Ausente,anemia leve,10.2,3450,No,No,No
+373,36,Si,casada,superior,Independiente,Medio,si,G2 P2002,≤ de 2 años,No,Negativo,si,Si,Presente,Ausente,Sin Anemia,13.3,3456,No,No,No
+374,25,si,Soltera,tecnica,desempleada,Bajo,No,G1 P1001,≤ de 2 años,No,positivo,Si,si,Ausente,Ausente,anemia leve,10.6,2978,No,No,No
+375,30,No,Conviviente,superior,Ninguno,Bajo,Si,G3 P2103,≤ de 2 años,si,Negativo,Si,si,Ausente,Ausente,anemia leve ,10.6,2420,si,si,si
+376,17,si,Soltera,Secundaria,Ninguno,Bajo,No,G2 P2011,≤ de 2 años,si,Negativo,Si,No,presente,Ausente,anemia moderada,9.4,2845,No,No,No
+377,34,Si,casada,superior,Independiente,Alto,Si,G2 P2002,≤ de 2 años,no,Negativo,No,Si,Ausente,Ausente,Sin Anemia,12.9,3485,No,No,No
+378,19,si,Conviviente,Secundaria,Ama de casa,Bajo,Si,G1 P0101,≤ de 2 años,No,Negativo,Si,Si,Presente,Ausente,Sin Anemia,11.8,2970,No,No,No
+379,35,No,casada,tecnica,desempleada,Medio,No,G1 P1011,≤ de 2 años,si,positivo,Si,Si,Ausente,Ausente,anemia moderada,9.4,2940,No,No,No
+380,22,Si,Conviviente,Secundaria,Ama de casa,Bajo,No,G1 P1001,≤ de 2 años,No,Negativo,Si,No,Ausente,Ausente,Sin anemia,12.3,3250,No,No,No
