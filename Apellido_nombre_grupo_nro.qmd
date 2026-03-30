@@ -6,37 +6,42 @@ author:
 format: html
 ---
 
-## Práctica Calificada 1
+# 3 Actividades para el Portafolio Electrónico de las Actividades de Enseñanza y Aprendizaje
 
-### Entrega 1 de 3
+## Semana 01
 
-1.  Escriba un código de R que muestre el uso de 3 funciones de R. Estas deben ser distintas a las ya usadas en clase.
+Sube un documento en word (.docx):
 
-2.  Escriba un código de R que instale y cargue 3 paquetes. Estas deben ser distintas a las ya usadas en clase.
+1.  Que muestre capturas de pantalla de la interaz de RStudio (contará como evidencia de la instalación de R y RStudio)
 
-### Entrega 2 de 3
+2.  Que incluya capturas de pantalla del proyecto de RStudio y las carpetas pertinentes del proyecto.
 
-1.  Escriba un código de R que permita subir el dataset asignado a su grupo al ambiente de RStudio.
+## Semana 02
 
-2.  Escriba un código de R que permita exportar un dataframe en formato csv
+En este documento de Quarto (.qmd)
 
-3.  Escriba un código de R que muestre el proceso de limpieza de el dataset asignado a su grupo.
+1.  Haz uso de 3 funciones distintas a las usadas en esta sesión y resume su función (Explica con tus propias palabras su utilidad)
 
-### Entrega 3 de 3
+2.  Realiza la descarga y activación (carga de librerías) de 2 paquetes distintos a los instalados en esta sesión
 
-1.  Documente el análisis de resumen de datos aplicado al dataset asignado a su grupo.
+3.  Escribe código en R para la importación del dataset asignado a tu grupo de práctica.
 
-Nota: El resumen de datos debe ser aplicado a sus variables numéricas y categóricas. Adicionalmente, los resultados deben estar acompañados de una interpretación.
+## Semana 03
 
-2.  Escriba el código de R para crear la "tabla 1" usando el dataset asignado a su grupo.
+En este documento de Quarto (.qmd)
 
-Nota: Añada también la interpretación de la tabla.
+1.  Escribe código de r para la limpieza de datos al menos en 2 aspectos usando la base de datos asignado a tu grupo.
 
-## Práctica Calificada 2
+2.  Escribe código de r para la tranformación de al menos 2 variables usando la base de datos asignada a tu grupo.
 
-### Entrega 1 de 3
+## Semana 04
 
-1.  Documente el análisis descriptivo empleando gráficos usando el dataset asignado a su grupo.
+En este documento de Quarto (.qmd)
 
-Nota: Los gráficos mostrados como entrega para la práctica, deben ser aquellos que crea pertienentes para sus variables. Los gráficos deben estar acompañados de la interpretación (25 a 50 palabras por gráfico).
+1.  Escribe código de r para la limpieza de datos al menos en 2 aspectos usando la base de datos asignado a tu grupo.
 
+2.  Escribe código de r para la tranformación de al menos 2 variables usando la base de datos asignada a tu grupo.
+
+## Semana 05
+
+En este documento de Quarto (.qmd)
