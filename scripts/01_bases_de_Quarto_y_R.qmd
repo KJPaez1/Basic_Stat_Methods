@@ -5,13 +5,30 @@ format: html
 editor: visual
 ---
 
-# 1 Aspectos básicos sobre el uso de R
+# 1 Instalando R y RStudio
 
-## 1.1. La interfaz de RStudio
+Para usar R, necesitaremos instalar dos softwares: R y RStudio. R es el lenguaje que permite comunicarnos con la computadora y RStudio es el software que facilita esa comunicación, haciendola amigable e intuitiva. Para instalar R, sigue uno de los enlaces mostrados abajo según el sistema operativo de tu computador:
 
-Para realizar algo en R, es necesario comunicarnos con la computadora. La instalación de R nos da el lenguaje y RStudio permite la comunicación. Al abrir RStudio, entre otras cosas, podrás ver la consola, "donde todo sucede". Para realizar algo en R debemos escribir código de R en el prompt (la cual se encuentra en la parte inferior derecha) y "correrlo", presionando la tecla Enter.
+| Sistema Operativo | Enlace                                         |
+|-------------------|------------------------------------------------|
+| Windows           | <https://cran.r-project.org/bin/windows/base/> |
+| Mac               | <https://cran.r-project.org/bin/macosx/>       |
 
-## 1.2 Corriendo códigos en R
+Para instalar R en el sistema operativo Windows, tendrás que hacer click en el lugar que se indica la imagen de abajo y se descargará un archivo ejecutable (.exe). Ejecuta el archivo e instala el software con las opciones por defecto.
+
+Intenta abrir R luego de instalarlo. Deberías ser capaz de de ver una intefaz similar a la que se muestra abajo
+
+La interfaz de R no luce muy amigable y, en realidad, no lo es. Es por eso que la mayoría de usuarios de R usan también de RStudio. RStudio es, tecnicamente, un Entorno de Desarrollo Intergrado. Más simplemente, una "mascara" que permite usar R de una manera intuitiva.
+
+Para instalar RStudio, dirígete al siguiente enlace: https://posit.co/download/rstudio-desktop/ En la página web, descarga el archivo ejecutable (.exe) de RStudio para el sistema operativo de tu computador.
+
+# 2 Aspectos básicos sobre el uso de R
+
+## 2.1 La interfaz de RStudio
+
+Para realizar algo en R, es necesario comunicarnos con la computadora. La instalación de R proporciona el lenguaje y RStudio permite la comunicación. Al abrir RStudio, entre otras cosas, podrás ver la consola, "donde todo sucede". Para realizar algo en R debemos escribir código de R en el prompt (la cual se encuentra en la parte inferior derecha) y "correrlo", presionando la tecla Enter.
+
+## 2.2 Corriendo códigos en R
 
 Cuando escribas código de R en el prompt y presiones la tecla Enter, la consola te dará una respuesta. Por ejemplo, en el prompt podemos hacer una operación aritmética:
 
@@ -27,25 +44,25 @@ Al correr la línea de código, R nos muestra el resultado de la operación: 3. 
 
 En general, esta notación no es importante.
 
-## 1.3 Scripts
+## 2.3 Scripts
 
-Una ventaja importante al usar RStudio en comparación a otros softwares estadísticos es que podemos llevar registro del código de R (llamado tambienb scripts) que corramos. Este archivo, puede ser guardado y editado tal como cualquier otro editor de texto (por ejemplo, un archivo Word de Office). Existen varios tipos de editores en RStudio, cada uno con características propias y similares entre sí.
+Una ventaja importante al usar RStudio en comparación a otros softwares estadísticos es que podemos llevar registro (llamado tambienb scripts) del código de R que corramos. Este archivo puede ser guardado y editado tal como cualquier otro editor de texto (por ejemplo, un archivo Word de Office). Existen varios tipos de editores en RStudio, cada uno con características propias y similares entre sí. El tipo más básico es el archivo R script la cual puede ser creado como se muestra en la imagen inferior.
 
-## 1.4 La interfaz de RStudio, en detalle.
+## 2.4 La interfaz de RStudio, en detalle.
 
-Al crear el R Script, notarás que la interfaz de R se divide en 4 paneles. Cada panel incluye características propias que en conjunto facilitan el análisis de datos.
+Al crear el R Script, notarás que la interfaz de R se divide ahora en 4 paneles. Cada panel incluye funcionalidades que en conjunto facilitan el análisis de datos. La imagen de abajo muestra las características más importantes de cada panel.
 
-## 1.5 Quarto
+## 2.5 Quarto
 
-Como mencioné, RStudio permite guardar los códigos de R en un archivo. Quarto es un tipo de documento disponible en RStudio que permite combinar código, resultados y texto (como este) en un mismo documento. Los archivos Quarto permite hacer el analisis de datos reproducible, es decir, permite registrar lo que obtuviste, pero tambien captura cómo lo hiciste.
+Como mencioné, RStudio permite guardar los códigos de R en un archivo. Quarto es un tipo de documento disponible en RStudio que permite combinar código, resultados y texto (como este) en un mismo documento. Los archivos Quarto permite hacer el analisis de datos reproducible, es decir, permite registrar lo que obtuviste, pero tambien captura cómo lo hiciste. Para crear un documento de Quarto sigue los pasos mostrados en en la imagen de abajo.
 
 Una consideración importante: manten los nombres de tus archivos tan simple como puedas. Cuando nombres a tus archivos de Quarto asegúrate de que el nombre sea corto, no tenga espacios ni caracteres especiales (como tíldes o comillas). El archivo de Quarto mostrado arriba tiene de nombre *semana_01*.
 
-### 1.5.1 Anatomía de Quarto
+### 2.5.1 Anatomía de Quarto
 
 Un archivo Quarto tiene 3 partes: **1) la sección de Metadata**, **2)** **secciones de Código** y **3)** **secciones de texto**. La sección de Metadata (una sección opcional) para este documento esta al inicio. En esta sección puedes añadir datos generales del documento, datos del autor del documento, o el tipo de archivo a producir, entre otras. Las secciones de código o chunk son estas secciones sombreadas delimitados por caracteres especiales. Las secciones de texto son todo lo que esta fuera de las secciones de metadata y los chunks, incluyendo estas líneas de texto.
 
-Para añadir un chunk a tu documento puedes usar el atajo en el teclado: ctrl + alt + i o hacer click en el ícono superior derecho de este documento:
+Para añadir un chunk a tu documento puedes usar el atajo en el teclado: *ctrl* + *alt* + *i* o hacer click en el ícono superior derecho de este documento:
 
 A continuación, el ejemplo de un chunk:
 
@@ -53,14 +70,16 @@ A continuación, el ejemplo de un chunk:
 # Este es un chunk
 ```
 
-### 1.5.2 Dos formas de visualizar Quarto
+### 2.5.2 Dos formas de visualizar Quarto
 
 El documento de Quarto puede ser visualizado de dos formas: **a)** **Visual** (izquierda) y **b) Source** (derecha). El modo visual es similiar a un procesador de texto (como Microsoft Office) por lo que es amigable para usuarios nuevos. Cuando te encuentres en el modo visual, podrás usar la barra superior para cambiar a **negrita** el texto, hacer *cursiva* texto o añadir otros elementos (como imágenes). El modo Source (código fuente) muestra lo que hay "detrás" del telón. Usa el modo Source cuando intentes solucionar un problema de sintaxis en tu documento de Quarto o cuando estés iniciando tu documentación de análisis de datos.
 
-### 1.5.3 formas de correr código de R en un documento Quarto.
+Aspectos básicos sobre el uso de Quarto
 
-1.  Usando la opción Run (superior derecha de este cuadrante)
-2.  Usando la opción "play" (el símbolo de play de la esquina superior derecha del chunck)
+### 2.5.3 formas de correr código de R en un documento Quarto.
+
+1.  Usando la opción **Run** (superior derecha de este cuadrante)
+2.  Usando la opción "play" (el símbolo de play de la esquina superior derecha del chunk)
 3.  Con el atajo: Ctrl + Enter (recomendable)
 
 Para correr código usando la tercera forma, localiza tu cursor al inicio de la línea de código en el chunk de abajo y presiona la combinación de las teclas Ctrl + Enter
@@ -69,11 +88,11 @@ Para correr código usando la tercera forma, localiza tu cursor al inicio de la 
 1 + 1
 ```
 
-## 1.6 Objetos en R
+## 2.6 Objetos en R
 
 R permite guardar valores dentro de un objeto para ser usados cuando lo necesitemos. por ejemplo podemos guardar las edades de 5 estudiantes en un objeto para, luego, calcular el promedio de la edad. La acción de asignar valores a un objeto es algo que usaremos de forma recurrente.
 
-## 1.7 Asignando valores a un objeto
+## 2.7 Asignando valores a un objeto
 
 Para guardar información en un objeto debemos usar el operador de asignación `<-` o `=` entre el nombre del objeto y los valores a guardar. Abajo, asigno chunk asigno el valor 5 a un objeto nombrado "x"
 
@@ -89,16 +108,24 @@ x
 
 Nota que cuando creas un objeto, este se guarda en tu ambiente de trabajo (cuadrante superior derecho)
 
-El nombre del objeto es arbitrario, no obstante, es importante que consideres las siguientes recomendaciones: el nombre del objeto a) no debe iniciar con un número, b) no debe tener caracteres especiales (por ejemplo \@, ´, \~, o !), c) no debe ser, y d) evita espacios. Al nombrar objetos, considera que estos sean cortos, descriptivos de lo que contiene y asigna diferentes nombres a diferentes objetos.
+El nombre del objeto es arbitrario, no obstante, es importante que consideres las siguientes recomendaciones: el nombre del objeto a) no debe iniciar con un número, b) no debe tener caracteres especiales (por ejemplo \@, ´, \~, o !), c) no debe ser un número, y d) evita espacios. Al nombrar objetos, considera que estos sean cortos, descriptivos de lo que contiene y asigna diferentes nombres a diferentes objetos.
 
-## 1.8 Comentando códigos en R
+## 2.8 Comentando códigos en R
 
-Al escribir código en R, dentro de chunks, es importante documentar algunos pasos que podrían no ser fáciles de intepretar. En R, puedes añadir comentarios dentro de un chunk a partir de anteponer el numeral "\#".
+Al escribir código en R es importante desribir algunos pasos que podrían no ser fáciles de intepretar. En R, puedes añadir comentarios dentro de un chunk a partir de anteponer el numeral "\#".
 
 ```{r}
 # ¡R no correrá esta línea!
 ```
 
 ```{r}
-x <- 5 # Un valor a un objeto nombrado "x". 
+x <- 5 # Un valor a un objeto nombrado "x"
 ```
+
+# 3 Actividades para el Portafolio Electrónico de las Actividades de Enseñanza y Aprendizaje
+
+En un documento en word (.docx):
+
+1.  Añade capturas de pantalla de la interaz de RStudio (evidencia de la instalación de RStudio)
+
+2.  Añade capturas de pantalla que muestre que el proyecto de RStudio y las carpetas pertinentes han sido creadas.
