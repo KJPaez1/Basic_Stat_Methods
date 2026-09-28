@@ -3,7 +3,15 @@ title: "Poder estadístico y cálculo de muestra"
 format: html
 ---
 
-# Instalar y Cargar paquetes para el cálculo de análisis de poder estadístico
+# Cálculo del poder estadístico: también conocido como ¿Cuántos sujetos debo incluir en el estudio?
+
+Estimar el tamaño de muestra u observaciones para un estudio es una parte importante durante la elaboración del proyecto de investigación. Un estudio que incluya un número menor de sujetos de lo necesario podría llevar a fallar en rechazar la hipótesis nula, aunque sí exista un efecto real a nivel de la población. Un estudio que incluya más sujetos de los que era necesario, podría llevar a desperdiciar recursos.
+
+Existen varias fórmulas para realizar el cálculo de tamaño de muestra, la elección de alguna de estas depende del tipo de diseño y el desenlace de estudio (variable dependiente). En esta sesión se muestra ejemplos de cálculo de tamaño de muestra para estudios comunes en investigación de ciencias de la salud usando funciones del paquete **epiR** y la calculadora de tamaño de muestra Riskcal.
+
+# 1 Instalar y Cargar paquetes para el cálculo de análisis de poder estadístico
+
+Para esta sesión usaremos el paquete **epiR** que incluye funciones para calcular tamaños de muestra para estudios tranversales, casos y controles y estudios de cohorte.
 
 ```{r}
 install.packages("epiR")
@@ -13,75 +21,123 @@ install.packages("epiR")
 library(epiR)
 ```
 
-# 1. Cálculo de muestra para un estudio de prevalencia (survey)
+# 2 Cálculo de muestra para un estudio de tranversal o de prevalencia (survey)
 
-Para el cálculo de muestra de un estudio de prevalencia es necesaria la información sobre la prevalencia esperada (`Py`) y, opcionalmente, el tamaño de la población.
+Los estudios de prevalencia son estudios descriptivo que buscan describir un fenomeno de salud en una población en un momento dado. En este tipo de estudios, los estadísticos de interés incluye una proporción (o prevalencia), cuando la variable es categórica; o el promedio, cuando la variable es continua. Por lo tanto, para el cálculo de muestra de un estudio de prevalencia es necesaria la información sobre la prevalencia esperada (Py) (cuando la variable de interés es categórica) y, opcionalmente, el tamaño de la población. Veamos dos ejemplos.
 
-Caso 1: Un grupo de investigadores desea determinar la frecuencia de anemia en niños menores de 5 años de edad en el departamento de Ica. Un estudio previo en Arequipa, realizado en 106 499 niños, ha determinado que la prevalencia de anemia fue de 18.7 % (DOI: 10.5867/medwave.2020.07.8004).
+Caso 1: Un grupo de investigadores desea determinar la frecuencia de anemia en niños menores de 5 años de edad en el departamento de Ica. Un estudio previo en Arequipa, realizado en 106 499 niños, ha determinado que la prevalencia de anemia fue de 18.7 %. ¿Cuál sería el tamaño de muestra necesario?
 
-¿Cuál sería el tamaño de muestra necesario?
+## 2.1 Cálculo de tamaño de muestra usando la función `epi.sssimpleestb()` de **epiR**
 
-Aquí, usamos la función `episssimpleestb()`: Sample size to estimate a binary outcome using simple random sampling
+La función episssimpleestb() del paquete epiR permite calcular el tamaño de muestra para un estudio de prevalencia, cuando la variable dependiente es categórica. Es recomendable que se mantengan los valores de los argumentos mostrados en el código de abajo, excepto por Py que indica la prevalencia esperada del desenlace de interés.
 
 ```{r}
-epi.sssimpleestb(N = NA, Py = 0.187, 
-                 epsilon = 0.20, error = "relative", 
-                 se = 1, sp = 1, 
-                 nfractional = FALSE, conf.level = 0.95)
+epi.sssimpleestb(N = NA, 
+                 Py = 0.187, # Prevalencia esperada
+                 epsilon = 0.05, 
+                 error = "absolute", 
+                 se = 1, 
+                 sp = 1, 
+                 nfractional = FALSE, 
+                 conf.level = 0.95)
 ```
 
-Es necesario 418 participantes.
+El tamaño de muestra necesario es de 234 niños menores de 5 años.
 
-# 2. Cálculo de muestra para un estudio de casos y controles
+## 2.2 Usando la calculadora de tamaño de muestra en línea riskcalc
 
-Caso 2. Un investigador desea evaluar la asociación entre la exposición al humo del tabaco y el riesgo de sufrir un accidente cerebrovascular. Para ello, se comparará la frecuencia de exposición activa al humo de cigarrillo entre dos grupos: una muestra de pacientes diagnosticados por primera vez con accidente cerebrovascular isquémico (casos) y una muestra de pacientes sin antecedente de accidente cerebrovascular (controles).
+Riskcalc es una calculadora en línea que permite calcular el tamaño de muestra para estudios de prevalencia, casos y controles y estudios de cohorte. Para acceder a la calculadora, haga clic en el siguiente enlace: https://riskcalc.org/samplesize/.
 
-Se plantea que el número de casos y controles será igual. El estudio busca detectar una razón de momios (odds ratio) de 1.85. Además, un estudio previo reportó que la prevalencia de exposición al humo de tabaco en los controles es del 22.4% (DOI: 10.1016/j.eclinm.2024.102515).
+Eliga el tipo de desenlace de interés. Para nuestro ejemplo, el desenlace es proporcional (prevalencia). Cambia el valor absoluto o precisión (d) a 0.05 e indica la proporción esperada en la población, el equivalente a Py (prevalencia esperada del desenlace de interés). Luego, haga click en calcular.
 
-¿Cuál sería el tamaño de muestra necesario de casos y controles?
+Debería obtener un tamaño de muestra necesario de 234.
 
-Aquí, usamos la función `epi.sscc()`: Sample size, power or minimum detectable odds ratio for an unmatched or matched case-control study
+# 3 Cálculo de muestra para un estudio de casos y controles
+
+En los estudios de casos y controles se compara dos grupos: un grupo con el desenlace de interés (casos) y un grupo sin el desenlace de interés (controles). Tipicamente, el estadístico de interés es la razón de momios (odds ratio) y, por lo tanto, para calcular el tamaño de muestra es necesario, como mínimo, conocer la prevalencia del desenlace en los controles y el odds ratio (la razón de momios) que se desea detectar. Si el odds ratio no esta disponible, podrás usar la prevalencia del desenlace en el grupo de casos. Veamos un caso.
+
+Caso 2. Un investigador desea evaluar la asociación entre la exposición al humo del tabaco y el riesgo de sufrir un accidente cerebrovascular. Para ello, se comparará la frecuencia de exposición activa al humo de cigarrillo entre dos grupos: una muestra de sujetos diagnosticados por primera vez con accidente cerebrovascular isquémico (casos) y una muestra de sujetos sin antecedente de accidente cerebrovascular (controles). Se plantea que el número de casos y controles sea igual y que los casos y controles sean grupos independientes. El estudio busca detectar una razón de momios (odds ratio) de 1.85.
+
+Un estudio previo reportó que la prevalencia de exposición al humo de tabaco en los controles es del 22.4%. ¿Cuál es el número de casos y controles necesarios para llevar a cabo el estudio?
+
+## 3.1 Cálculo de tamaño de muestra usando la función `epi.sscc()` de **epiR**
+
+La función epi.sscc(): Sample size, power or minimum detectable odds ratio for an unmatched or matched case-control study del paquete epiR permite calcular el número de casos y controles. En el ejemplo mostrado abajo, la función toma datos del odds ratio mínimo a detectar (OR = 1.85) y la proporción del desenlace en los controles (p0 = 0.224) (prevalencia de exposición al humo del tabaco en el grupo de sujetos sin antecedentes de accidente cerebrovascular).
 
 ```{r}
-epi.sscc(OR = 1.85, p1 = NA, 
-         p0 = 0.224, n = NA, 
-         power = 0.80, r = 1, 
-         phi.coef = 0, design = 1, 
-         sided.test = 2, conf.level = 0.95, 
-         method = "unmatched", nfractional = FALSE, 
+epi.sscc(OR = 1.85, 
+         p1 = NA, 
+         p0 = 0.224, 
+         n = NA, 
+         power = 0.80, 
+         r = 1,
+         phi.coef = 0, 
+         design = 1, 
+         sided.test = 2, 
+         conf.level = 0.95, 
+         method = "unmatched", 
+         nfractional = FALSE, 
          fleiss = FALSE)
 ```
 
-Es necesario 207 casos y 207 controles.
+Para este estudio será necesario 414 sujetos: 207 casos y 207 controles.
 
-# 3. Cálculo de muestra para un estudio de cohorte
+## 3.2 Cálculo de tamaño de muestra línea riskcalc
 
-Caso 3. Un grupo de investigadores desea evaluar el efecto de la anemia sobre el riesgo de mortalidad en pacientes con trasplante renal. Para ello, reclutarán participantes del Hospital Regional de Ica y los seguirán durante 4 años para identificar los casos de fallecimiento. Los investigadores buscan tener un 80% de poder estadístico para detectar un riesgo de muerte 1.69 veces mayor en pacientes con anemia, en comparación con aquellos sin anemia ([DOI: 10.1111/j.1600-6143.2006.01727.x](https://doi.org/10.1111/j.1600-6143.2006.01727.x)), utilizando un nivel de significancia del 0.05. Un estudio previo reportó que, entre los pacientes con trasplante renal sin anemia, fallecieron 60 de 621.
+En riskcalc, elige la opción *Unmatched* (no emparejado). Indica el OR mínimo a detectar y P0, la proporción del desenlace en el grupo de controles. Conserve todos los otros valores por defecto.
 
-**Pregunta:** ¿Cuál sería el tamaño de muestra necesario para los grupos de expuestos (con anemia) y no expuestos (sin anemia)?
+El tamaño de muestra necesario debería ser 414 sujetos: 207 casos y 207 controles.
+
+# 4 Cálculo de muestra para un estudio de cohorte
+
+Caso 3. Un grupo de investigadores desea evaluar el efecto de la anemia sobre el riesgo de mortalidad en pacientes con trasplante renal. Para ello, reclutarán participantes del Hospital Regional de Ica y los seguirán durante 4 años para identificar los casos de fallecimiento. Los investigadores buscan tener un 80% de poder estadístico para detectar un riesgo de muerte 1.69 veces mayor en pacientes con anemia, en comparación con aquellos sin anemia, utilizando un nivel de significancia del 0.05. Un estudio previo reportó que, entre los pacientes con trasplante renal sin anemia, fallecieron 60 de 621. ¿Cuál sería el tamaño de muestra necesario para los grupos de expuestos (con anemia) y no expuestos (sin anemia)?
 
 Para responder, utilizamos la función `epi.sscohortt()`: *Sample size, power or minimum detectable incidence rate ratio for a cohort study using person or animal time data*.
 
 ```{r}
-epi.sscohortt(irexp1 = 58/317, irexp0 = 60/621, FT = 4, n = NA, 
-              power = 0.80, r = 1, design = 1, sided.test = 2, 
-              nfractional = FALSE, conf.level = 0.95)
+epi.sscohortt(irexp1 = 58/317, 
+              irexp0 = 60/621, 
+              FT = 4, 
+              n = NA, 
+              power = 0.80, 
+              r = 1, 
+              design = 1, 
+              sided.test = 2,
+              nfractional = FALSE,
+              conf.level = 0.95)
 ```
 
 Es necesario 177 de expuestos y 177 no expuestos.
 
 # 4. Cálculo de poder estadístico
 
-**Caso 4.** Un grupo de investigadores desea evaluar el efecto de la anemia sobre el riesgo de mortalidad en pacientes con trasplante renal. Para ello, reclutarán participantes del Hospital Regional de Ica y los seguirán durante 4 años para identificar los casos de fallecimiento. Se planea incluir a 150 pacientes con trasplante renal y anemia y a 150 pacientes con trasplante renal sin anemia, con el objetivo de detectar un riesgo de muerte asociado a la anemia de 1.69 ([DOI: 10.1111/j.1600-6143.2006.01727.x](https://doi.org/10.1111/j.1600-6143.2006.01727.x)), utilizando un nivel de significancia de 0.05. Un estudio previo reportó que, entre los pacientes con trasplante renal **sin** anemia, fallecieron 60 de 621.
+A veces, un estudio debe llevarse a cabo con un número específico de sujetos disponibles. Por ejemplo, un estudio que investigue el efecto de ciertas conductas alimentarias sobre el desarrollo de úlceras pépticas podría contar con presupuesto suficiente para evaluar solo a 70 pacientes. En otro escenario, un estudio podría realizarse en un centro de salud donde el número de atenciones por año es bajo y, por ende, el número de pacientes con la condición de interés también es limitado. En estos escenarios, el tamaño de muestra ya está determinado de antemano, por lo que la pregunta relevante deja de ser cuántos sujetos se necesitan y pasa a ser qué poder estadístico se alcanza con el número de participantes disponibles. Calcular el poder permite anticipar si el estudio tiene una probabilidad razonable de detectar el efecto de interés o si, por el contrario, sus resultados serían poco concluyentes. Convencionalmente, el poder mínimo aceptable es 80% (0.8).
 
-Pregunta: ¿Cuál es el poder estadístico con el tamaño de muestra propuesto para cada grupo?
+**Caso 4.** Un grupo de investigadores desea evaluar el efecto de la anemia sobre el riesgo de mortalidad en pacientes con trasplante renal. Para ello, reclutarán participantes del Hospital Regional de Ica y los seguirán durante 4 años para identificar los casos de fallecimiento. Se planea incluir a 150 pacientes con trasplante renal y anemia y a 150 pacientes con trasplante renal sin anemia, con el objetivo de detectar hazard ratio (razón de riesgo instantáneo) de muerte asociado a la anemia de 1.69[@molnar2007], utilizando un nivel de significancia de 0.05. Un estudio previo reportó que, entre los pacientes con trasplante renal sin anemia, fallecieron 60 de 621.
 
-Para responder, utilizamos la función `epi.sscohortt()`: *Sample size, power or minimum detectable incidence rate ratio for a cohort study using person or animal time data*.
+Con 150 pacientes por grupo, ¿tiene el estudio un poder estadístico adecuado (≥ 80 %) para detectar un riesgo de muerte de 1,69 asociado a la anemia?
+
+La función `epi.sscohortt()`, del ejecicio anterior, tambien permite calcular el poder estadístico.
 
 ```{r}
-epi.sscohortt(irexp1 = 58/317, irexp0 = 60/621, FT = 4, n = 300, 
-              power = NA, r = 1, design = 1, sided.test = 2, 
-              nfractional = FALSE, conf.level = 0.95)
+epi.sscohortt(irexp1 = 58/317, 
+              irexp0 = 60/621, 
+              FT = 4, 
+              n = 300, 
+              power = NA, 
+              r = 1, 
+              design = 1, 
+              sided.test = 2, 
+              nfractional = FALSE, 
+              conf.level = 0.95)
 ```
 
-Tendremos un poder estadístico de 73% para recharazar correctamente la hipótesis nula.
+El resultado muestra que con 150 participantes por grupo, el estudio tendría un poder estadístico de 73 % para detectar un hazard ratio de 1,69, bajo los supuestos establecidos. Esto significa que, si en la población realmente existe un efecto de esa magnitud, el estudio tendría una probabilidad aproximada del 73 % de detectarlo como estadísticamente significativo (rechazar correctamente la hipótesis nula). El poder estadístico es inferior al 80 % convencionalmente establecido como adecuado, por lo que los 150 participantes por grupo no serían suficientes para alcanzar el poder estadístico deseado.
+
+# 6 Actividades para el Portafolio Electrónico de las Actividades de Enseñanza y Aprendizaje
+
+En su documento de Quarto (.qmd) o documento reproducible
+
+1.  Escriba código de R que muestre el cálculo de tamaño de muestra necesario para un estudio de prevalencia
+
+2.  Escriba código de R que muestre el cálculo de tamaño de muestra necesario para un estudio de casos y controles

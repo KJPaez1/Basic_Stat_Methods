@@ -42,6 +42,10 @@ En este documento de Quarto (.qmd)
 
 2.  Escribe código de r para la tranformación de al menos 2 variables usando la base de datos asignada a tu grupo.
 
-## Semana 05
+## Semana 06
 
 En este documento de Quarto (.qmd)
+
+1. Escribe código de R que muestre el cálculo de tamaño de muestra necesario para un estudio de prevalencia
+
+2. Escribe código de R que muestre el cálculo de tamaño de muestra necesario para un estudio de casos y controles
