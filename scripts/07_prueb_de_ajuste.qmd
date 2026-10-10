@@ -1,7 +1,7 @@
 ---
-title: "Bondad de ajuste"
+title: "Bondad de ajuste y Regresión Lineal"
 format: html
-editor: 
+editor: ManuelFeria
   markdown: 
     wrap: 72
 ---
@@ -186,3 +186,48 @@ Interpretación
 Dado que el valor de p es mayor a 0.05, podemos concluir que las
 proporciones observadas no son significativamente diferentes de las
 proporciones esperadas.
+
+
+3. Práctica de Regresión Lineal
+Para complementar el análisis de modelos estadísticos, evaluaremos la relación entre variables continuas mediante regresión lineal usando la función lm().
+
+Relación entre Circunferencia de Cintura y Glucosa
+Primero, visualizamos la dispersión de los datos y ajustamos un modelo lineal simple para ver si la cintura predice los niveles de glucosa.
+
+```{r}
+plot(data_glucosa_circun$circun_cintura, data_glucosa_circun$glucosa,
+     xlab = "Circunferencia de cintura (cm)",
+     ylab = "Glucosa (mg/dL)",
+     main = "Relación: Circunferencia de Cintura vs Glucosa",
+     pch = 19, col = "steelblue")
+
+modelo_glucosa <- lm(glucosa ~ circun_cintura, data = data_glucosa_circun)
+summary(modelo_glucosa)
+```
+Ahora graficamos la línea de ajuste sobre los datos:
+
+```{r}
+plot(data_glucosa_circun$circun_cintura, data_glucosa_circun$glucosa,
+     xlab = "Circunferencia de cintura (cm)",
+     ylab = "Glucosa (mg/dL)",
+     main = "Regresión Lineal con Línea de Ajuste",
+     pch = 19, col = "steelblue")
+abline(modelo_glucosa, col = "firebrick", lwd = 2)
+```
+Relación entre IMC y Circunferencia de Cintura
+
+Como ejercicio adicional, evaluemos una relación que lógicamente sí muestra una tendencia clara, como el Índice de Masa Corporal (IMC) y la circunferencia de cintura.
+
+```{r}
+modelo_cintura_imc <- lm(circun_cintura ~ imc, data = data_glucosa_circun)
+summary(modelo_cintura_imc)
+
+plot(data_glucosa_circun$imc, data_glucosa_circun$circun_cintura,
+     xlab = "IMC",
+     ylab = "Circunferencia de cintura (cm)",
+     main = "Relación lógica: Cintura vs IMC",
+     pch = 19, col = "forestgreen")
+abline(modelo_cintura_imc, col = "darkred", lwd = 2)
+```
+Revisa las imágenes generadas e interpreta los resultados basado en la explicación dada en clases. 
+
